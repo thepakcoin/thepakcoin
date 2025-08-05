@@ -1,44 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ThePakCoin</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e8f5e9;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #1b5e20;
+      padding: 10px 20px;
+      color: white;
+    }
+
+    .menu-icon, .download-btn {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #2e7d32;
+      padding-top: 60px;
+      transition: 0.3s;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px 25px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .sidebar a:hover {
+      background-color: #1b5e20;
+    }
+
+    .main {
+      padding: 20px;
+      text-align: center;
+    }
+
+    #comingSoonMsg {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #1b5e20;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-  <div class="menu">
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <div id="menu-options" class="hidden">
-      <a href="#">Home</a>
-      <a href="#">Updates</a>
-      <a href="#">Download</a>
-      <a href="#">Contact</a>
-    </div>
-  </div>
-  <div class="Download">
-    <button onclick="alert(' coming soon ')">🔗 Download</button>
-  </div>
-  <div class="content">
-    <h1>ThePakCoin</h1>
-    <p>Pak Coin Walking with Future of Crypto </p>
-  <div class="updates">
-    <h2🔔 Latest Updates</h2>
-    <ul>
-      <li>PakCoin whitepaper coming soon...</li>
 
-      <li>Mobile app in development phase</li>
-      <li>Testnet launching Q4 2025</li>
-    </ul>
+  <div class="navbar">
+    <div class="menu-icon" onclick="openMenu()">☰</div>
+    <div class="download-btn" onclick="showComingSoon()">⬇️</div>
   </div>
-  <footer>
-    <p>ThePakCoin © 2025. All rights reserved.</p>
-  </footer>
+
+  <div id="sidebar" class="sidebar">
+    <a href="#">🏠 Home</a>
+    <a href="#">📝 Update</a>
+    <a href="#">ℹ️ About</a>
+  </div>
+
+  <div class="main">
+    <h1>Welcome to ThePakCoin</h1>
+    <p>Start mining or claiming your coins now.</p>
+    <div id="comingSoonMsg">🚧 Coming Soon 🚧</div>
+  </div>
 
   <script>
-    function toggleMenu() {
-      document.getElementById("menu-options").classList.toggle("hidden");
+    function openMenu() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.left = sidebar.style.left === "0px" ? "-250px" : "0px";
+    }
+
+    function showComingSoon() {
+      document.getElementById("comingSoonMsg").style.display = "block";
     }
   </script>
+
 </body>
 </html>
