@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ThePakCoin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="menu">
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div id="menu-options" class="hidden">
+      <a href="#">Home</a>
+      <a href="#">Updates</a>
+      <a href="#">Wallet</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+  <div class="wallet">
+    <button onclick="alert('Wallet connection coming soon!')">🔗 Connect Wallet</button>
+  </div>
+
+  <div class="content">
+    <h1>ThePakCoin</h1>
+    <p>Pakistan's Future of Crypto Mining</p>
+    <div class="app-coming">📱 Auk Mint App Coming Soon!</div>
+  </div>
+
+  <div class="updates">
+    <h2>🔔 Latest Updates</h2>
+    <ul>
+      <li>PakCoin whitepaper coming soon...</li>
+      <li>Mobile app in development phase</li>
+      <li>Testnet launching Q4 2025</li>
+    </ul>
+  </div>
+
+  <div class="coin">
+    <img src="pakcoin.png" alt="Pak Coin"/>
+  </div>
+
+  <footer>
+    <p>ThePakCoin © 2025. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("menu-options").classList.toggle("hidden");
+    }
+  </script>
+</body>
+</html>
