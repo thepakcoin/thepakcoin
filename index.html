@@ -3,44 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ThePakCoin</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>The Pak Coin</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <div class="coin-container">
-      <!-- Classic Style Text -->
-      <div class="coin-title">The Pak Coin</div>
-      
-      <!-- Custom SVG Coin -->
-      <div class="coin-svg rotating">
-        <svg width="200" height="200" viewBox="0 0 200 200">
-          <circle cx="100" cy="100" r="90" fill="#f4b400" stroke="#b8860b" stroke-width="10"/>
-          <ellipse cx="70" cy="80" rx="8" ry="12" fill="black"/>
-          <ellipse cx="130" cy="80" rx="8" ry="12" fill="black"/>
-          <rect x="60" y="60" width="20" height="5" fill="black" transform="rotate(-20 60 60)" />
-          <rect x="120" y="60" width="20" height="5" fill="black" transform="rotate(20 120 60)" />
-          <path d="M60,120 Q100,150 140,120" stroke="black" stroke-width="5" fill="none" />
-          <line x1="20" y1="100" x2="50" y2="100" stroke="black" stroke-width="6" />
-          <line x1="180" y1="100" x2="150" y2="100" stroke="black" stroke-width="6" />
-          <line x1="80" y1="180" x2="80" y2="150" stroke="black" stroke-width="6" />
-          <line x1="120" y1="180" x2="120" y2="150" stroke="black" stroke-width="6" />
-        </svg>
-      </div>
+    <div class="coin-area">
+      <img src="coin.png" alt="Pak Coin" class="rotating-coin" />
+      <h1 class="coin-title">The Pak Coin</h1>
     </div>
-
-    <!-- Download Button -->
     <button class="download-btn" onclick="showPopup()">Download</button>
   </div>
 
-  <!-- Popup Modal -->
-  <div class="popup" id="popup">
+  <div id="popup" class="popup">
     <div class="popup-content">
       <span class="close" onclick="hidePopup()">&times;</span>
-      <h2>Coming Soon</h2>
+      <p>📢 <strong>Coming Soon</strong></p>
     </div>
   </div>
 
-  <script src="js/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
