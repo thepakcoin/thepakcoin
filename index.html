@@ -8,17 +8,16 @@
 </head>
 <body>
   <div class="container">
-    <div class="coin-area">
-      <img src="coin.png" alt="Pak Coin" class="rotating-coin" />
-      <h1 class="coin-title">The Pak Coin</h1>
-    </div>
-    <button class="download-btn" onclick="showPopup()">Download</button>
-  </div>
+    <button id="downloadBtn">Download</button>
 
-  <div id="popup" class="popup">
-    <div class="popup-content">
-      <span class="close" onclick="hidePopup()">&times;</span>
-      <p>📢 <strong>Coming Soon</strong></p>
+    <div class="coin-section">
+      <h1 class="coin-title">The Pak Coin</h1>
+      <div class="coin"></div>
+    </div>
+
+    <div id="popup" class="popup">
+      <span class="close">&times;</span>
+      <p>Coming Soon</p>
     </div>
   </div>
 
