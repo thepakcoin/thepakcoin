@@ -1,0 +1,158 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom right, #004d00, #00cc66);
+  color: white;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+}
+
+.hamburger {
+  font-size: 30px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#menu-options {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#menu-options.hidden {
+  display: none;
+}
+
+#menu-options a {
+  color: white;
+  text-decoration: none;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.wallet {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.wallet button {
+  padding: 10px 20px;
+  background-color: #00e676;
+  border: none;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 0 10px #00e676;
+}
+
+.content {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.content h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: #ccffcc;
+}
+
+.content p {
+  font-size: 20px;
+  color: #e0ffe0;
+  margin-bottom: 10px;
+}
+
+.app-coming {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.updates {
+  position: absolute;
+  bottom: 100px;
+  left: 20px;
+  background: rgba(0,0,0,0.3);
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+.updates h2 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.updates ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.updates li {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.coin {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: floatCoin 3s ease-in-out infinite;
+}
+
+.coin img {
+  width: 150px;
+  height: auto;
+}
+
+footer {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  font-size: 12px;
+  color: #ccffcc;
+}
+
+@keyframes floatCoin {
+  0% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-20px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .content h1 {
+    font-size: 32px;
+  }
+
+  .wallet button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .updates {
+    font-size: 12px;
+    bottom: 80px;
+  }
+}
