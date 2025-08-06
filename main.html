@@ -71,33 +71,45 @@
       font-weight: bold;
     }
 
+    .button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #0a0;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 30px;
+    }
+
+    .opponent-selection {
+      display: none;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .opponent-selection select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
     .game-section {
       width: 100%;
       max-width: 600px;
       height: 500px;
-      display: flex;
+      border: none;
+      display: none;
       align-items: center;
       justify-content: center;
     }
 
-    #ludo-board {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      gap: 10px;
+    iframe {
       width: 100%;
       height: 100%;
+      border-radius: 12px;
     }
-
-    .cell {
-      border: 2px solid #000;
-      border-radius: 8px;
-    }
-
-    .red { background-color: red; }
-    .blue { background-color: blue; }
-    .green { background-color: green; }
-    .yellow { background-color: yellow; }
 
     @media (max-width: 600px) {
       .stat-title {
@@ -121,7 +133,6 @@
   </div>
 
   <div class="main-content">
-
     <div class="stats-section">
       <div class="stat-item">
         <div class="stat-title">Level</div>
@@ -137,15 +148,23 @@
       </div>
     </div>
 
-    <div class="game-section">
-      <div id="ludo-board">
-        <div class="cell red"></div>
-        <div class="cell blue"></div>
-        <div class="cell green"></div>
-        <div class="cell yellow"></div>
-      </div>
+    <button class="button" onclick="showOpponentSelection()">Ludo Game</button>
+
+    <div class="opponent-selection" id="opponentSelection">
+      <h3>Choose Opponent</h3>
+      <select id="opponentSelect">
+        <option value="">-- Select --</option>
+        <option value="computer">Computer</option>
+        <option value="random">Random Online</option>
+        <option value="friend">Invite Friend</option>
+      </select>
+      <br/><br/>
+      <button class="button" onclick="startGame()">Start Game</button>
     </div>
 
+    <div class="game-section" id="gameSection">
+      <iframe src="https://www.crazygames.com/game/ludo-legend" allowfullscreen></iframe>
+    </div>
   </div>
 
   <script>
@@ -161,11 +180,19 @@
       document.getElementById(stat).textContent = value;
     }
 
-    // Example:
-    // updateStat('level', '2');
-    // updateStat('power', '60');
-    // updateStat('speed', '1.2x');
-    // updateStat('balance', '0.050');
+    function showOpponentSelection() {
+      document.getElementById('opponentSelection').style.display = 'block';
+    }
+
+    function startGame() {
+      const opponent = document.getElementById('opponentSelect').value;
+      if (opponent === "") {
+        alert("Please select an opponent!");
+        return;
+      }
+      document.getElementById('opponentSelection').style.display = 'none';
+      document.getElementById('gameSection').style.display = 'flex';
+    }
   </script>
 
 </body>
