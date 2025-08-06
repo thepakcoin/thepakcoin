@@ -14,16 +14,17 @@
       color: white;
     }
 
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 1rem 2rem;
-      background-color: transparent;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
+   header {
+     position: fixed;
+     top: 0;
+     width: 100%;
+     padding: 1rem 2rem;
+     background-color: transparent;
+     display: flex;
+     align-items: center;
+     z-index: 1000;
+     position: relative;
+
     }
 
     .logo {
@@ -40,7 +41,9 @@
     background-color: white;
     padding: 0.3rem 0.6rem;
     border-radius: 6px;
-    margin-right: 0.5rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
     }
     .menu:hover {
     background-color: black;
