@@ -1,82 +1,79 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coin Room</title>
+  <meta charset="UTF-8">
+  <title>3D Room Interface</title>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #d1e7dd;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: sans-serif;
-    }.room {
-  width: 90vw;
-  height: 80vh;
-  background: linear-gradient(to bottom, #a2d2ff 60%, #8ecae6 40%);
-  border: 4px solid #333;
-  border-radius: 12px;
-  position: relative;
-  overflow: hidden;
-}
-
-.table {
-  width: 300px;
-  height: 20px;
-  background-color: #8b5e3c;
-  position: absolute;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  box-shadow: 0 5px 0 #5d3a1a;
-}
-
-.computer {
-  width: 100px;
-  height: 80px;
-  background-color: #333;
-  position: absolute;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 5px;
-}
-
-.chair {
-  width: 80px;
-  height: 80px;
-  background-color: #555;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-160%);
-  border-radius: 10px 10px 0 0;
-}
-
-.coin-character {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-160%);
-  width: 80px;
-  height: auto;
-}
-
+    body { margin: 0; overflow: hidden; }
+    canvas { display: block; }
   </style>
 </head>
 <body>
-  <div class="room">
-    <div class="table"></div>
-    <div class="computer"></div>
-    <div class="chair"></div>
-    <img
-      src="A_2D_digital_illustration_features_an_anthropomorp.png"
-      alt="Coin Character"
-      class="coin-character"
-    />
-  </div>
+  <script type="module">
+    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+    import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+
+    // Scene Setup
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xa0d8ef); // Light blue background
+
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(5, 5, 10);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+
+    // Room (Box with open front)
+    const roomMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff, side: THREE.BackSide });
+    const room = new THREE.Mesh(new THREE.BoxGeometry(10, 6, 10), roomMaterial);
+    scene.add(room);
+
+    // Floor
+    const floorMaterial = new THREE.MeshStandardMaterial({ color: 0xcccccc });
+    const floor = new THREE.Mesh(new THREE.PlaneGeometry(10, 10), floorMaterial);
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.y = -3;
+    scene.add(floor);
+
+    // Table (box)
+    const tableMaterial = new THREE.MeshStandardMaterial({ color: 0x8B4513 });
+    const table = new THREE.Mesh(new THREE.BoxGeometry(3, 0.2, 2), tableMaterial);
+    table.position.set(0, -2.5, 0);
+    scene.add(table);
+
+    // Chair (small cube)
+    const chairMaterial = new THREE.MeshStandardMaterial({ color: 0x444444 });
+    const chair = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), chairMaterial);
+    chair.position.set(-2, -2.5, 1.5);
+    scene.add(chair);
+
+    // Light
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(5, 10, 7.5);
+    scene.add(light);
+
+    const ambient = new THREE.AmbientLight(0x404040); // soft light
+    scene.add(ambient);
+
+    // Animate
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Responsive
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
 </body>
 </html>
