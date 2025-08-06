@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PakCoin Main</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -32,7 +36,7 @@
     }
 
     .main-content {
-      padding-top: 70px;
+      padding: 80px 20px 40px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -41,14 +45,17 @@
     .stats-section {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 15px;
       margin-top: 20px;
       flex-wrap: wrap;
+      width: 100%;
+      max-width: 800px;
     }
 
     .stat-box {
+      flex: 1 1 30%;
       background-color: #e9ffe9;
-      padding: 15px 25px;
+      padding: 15px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 128, 0, 0.1);
       text-align: center;
@@ -68,18 +75,34 @@
 
     .game-section {
       margin-top: 40px;
-      width: 90%;
+      width: 100%;
       max-width: 600px;
-      height: 300px;
+      height: 250px;
       border: 2px dashed #070;
       border-radius: 15px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #070;
-      font-size: 18px;
+      font-size: 16px;
       text-align: center;
       background-color: #f9fff9;
+      padding: 10px;
+    }
+
+    @media (max-width: 500px) {
+      .balance {
+        font-size: 16px;
+      }
+
+      .stat-box {
+        flex: 1 1 100%;
+      }
+
+      .game-section {
+        height: 200px;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
