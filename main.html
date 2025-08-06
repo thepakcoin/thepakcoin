@@ -4,11 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PakCoin Main</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -42,11 +40,21 @@
       align-items: center;
     }
 
+    .section-heading {
+      font-size: 24px;
+      font-weight: bold;
+      color: #060;
+      margin: 20px 0 10px;
+      text-align: center;
+      border-bottom: 2px solid #0f0;
+      padding-bottom: 5px;
+    }
+
     .stats-section {
       display: flex;
       justify-content: center;
       gap: 15px;
-      margin-top: 20px;
+      margin-top: 10px;
       flex-wrap: wrap;
       width: 100%;
       max-width: 800px;
@@ -60,6 +68,17 @@
       box-shadow: 0 0 10px rgba(0, 128, 0, 0.1);
       text-align: center;
       min-width: 100px;
+      transition: transform 0.2s ease;
+    }
+
+    .stat-box:hover {
+      transform: scale(1.03);
+    }
+
+    .stat-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+      color: #080;
     }
 
     .stat-title {
@@ -90,6 +109,23 @@
       padding: 10px;
     }
 
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background-color: #0f0;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
     @media (max-width: 500px) {
       .balance {
         font-size: 16px;
@@ -103,6 +139,10 @@
         height: 200px;
         font-size: 14px;
       }
+
+      .section-heading {
+        font-size: 20px;
+      }
     }
   </style>
 </head>
@@ -113,20 +153,31 @@
   </div>
 
   <div class="main-content">
-    
+
+    <div class="section-heading">🎮 Player Stats Panel</div>
+
     <div class="stats-section">
       <div class="stat-box">
+        <div class="stat-icon"><i class="fas fa-star"></i></div>
         <div class="stat-title">Level</div>
-        <div class="stat-value">1</div>
+        <div class="stat-value" id="level">1</div>
       </div>
       <div class="stat-box">
+        <div class="stat-icon"><i class="fas fa-bolt"></i></div>
         <div class="stat-title">Power</div>
-        <div class="stat-value">50</div>
+        <div class="stat-value" id="power">50</div>
       </div>
       <div class="stat-box">
+        <div class="stat-icon"><i class="fas fa-gauge-high"></i></div>
         <div class="stat-title">Speed</div>
-        <div class="stat-value">2x</div>
+        <div class="stat-value" id="speed">2</div>
       </div>
+    </div>
+
+    <div class="buttons">
+      <button class="btn" onclick="levelUp()">Level +1</button>
+      <button class="btn" onclick="powerUp()">Power +10</button>
+      <button class="btn" onclick="speedUp()">Speed +1</button>
     </div>
 
     <div class="game-section">
@@ -134,6 +185,42 @@
     </div>
 
   </div>
+
+  <script>
+    // Initialize from Local Storage
+    let level = parseInt(localStorage.getItem("level")) || 1;
+    let power = parseInt(localStorage.getItem("power")) || 50;
+    let speed = parseInt(localStorage.getItem("speed")) || 2;
+
+    // Update UI
+    function updateStats() {
+      document.getElementById("level").innerText = level;
+      document.getElementById("power").innerText = power;
+      document.getElementById("speed").innerText = speed;
+    }
+
+    // Functions
+    function levelUp() {
+      level++;
+      localStorage.setItem("level", level);
+      updateStats();
+    }
+
+    function powerUp() {
+      power += 10;
+      localStorage.setItem("power", power);
+      updateStats();
+    }
+
+    function speedUp() {
+      speed++;
+      localStorage.setItem("speed", speed);
+      updateStats();
+    }
+
+    // On load
+    updateStats();
+  </script>
 
 </body>
 </html>
