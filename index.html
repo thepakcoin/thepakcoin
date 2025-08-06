@@ -14,18 +14,21 @@
 
     body {
       height: 100vh;
-      background: url('https://raw.githubusercontent.com/thepakcoin/thepakcoin/main/Picsart_25-08-06_18-38-47-894.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background-color: #000; /* Pure black background */
+      background-image: url('https://raw.githubusercontent.com/thepakcoin/thepakcoin/main/Picsart_25-08-06_18-38-47-894.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .container {
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.85);
       padding: 40px;
       border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0, 255, 0, 0.7);
+      box-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
       width: 90%;
       max-width: 400px;
       animation: glow 3s infinite alternate;
@@ -33,10 +36,10 @@
 
     @keyframes glow {
       0% {
-        box-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
       }
       100% {
-        box-shadow: 0 0 30px rgba(0, 255, 0, 0.8);
+        box-shadow: 0 0 30px rgba(0, 255, 0, 0.9);
       }
     }
 
