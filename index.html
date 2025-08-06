@@ -1,132 +1,85 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pakcoin Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pakcoin Mining</title>
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0a0a0a;
-      color: #fff;
+      font-family: 'Arial', sans-serif;
+      background-color: #000;
+      color: #0f0;
       display: flex;
-      flex-direction: column;
-    }.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  background-color: #000;
-  border-bottom: 1px solid #1f1f1f;
-}
-
-.logo {
-  color: #66ffcc;
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.menu-icon {
-  font-size: 24px;
-  cursor: pointer;
-  color: #66ffcc;
-}
-
-.container {
-  flex: 1;
-  padding: 20px;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }.container {
+  border: 3px solid #00ff00;
+  border-radius: 20px;
+  padding: 30px 20px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 30px #00ff00;
+  background: linear-gradient(180deg, #011, #001);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
-  box-sizing: border-box;
+  justify-content: space-between;
+  height: 500px;
 }
 
-.hex-card {
-  background: radial-gradient(circle at center, #003322, #000);
-  border: 2px solid #66ffcc;
-  border-radius: 20px;
-  padding: 40px;
-  text-align: center;
-  box-shadow: 0 0 15px #33cc99;
-  width: 100%;
-  max-width: 360px;
-  margin: 60px 0 40px;
-}
-
-.hex-card h1 {
-  font-size: 36px;
-  margin: 20px 0;
-  color: #66ffcc;
-}
-
-.hex-card p {
+.balance {
   font-size: 18px;
-  color: #aaa;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.buttons-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 15px;
+.grab-box {
+  font-size: 24px;
+  background-color: rgba(0, 255, 0, 0.1);
+  padding: 40px 20px;
+  border-radius: 15px;
+  border: 2px solid #0f0;
+  box-shadow: 0 0 15px #0f0;
+  margin: 20px 0;
+  text-align: center;
   width: 100%;
-  max-width: 360px;
-}
-
-.button-box {
-  background-color: #001a13;
-  border: 1px solid #66ffcc;
-  padding: 15px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 0 8px #33cc99;
-}
-
-.button-box:hover {
-  background-color: #002a1f;
-}
-
-.footer-tabs {
+  flex-grow: 1;
   display: flex;
-  justify-content: space-around;
-  border-top: 1px solid #1f1f1f;
-  padding: 15px;
-  background-color: #000;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.footer-tab {
-  color: #66ffcc;
-  font-size: 14px;
+.grab-box span {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.extra-box {
+  margin-top: 20px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 2px solid #0f0;
+  box-shadow: 0 0 12px #0f0;
+  background-color: rgba(0, 255, 0, 0.05);
+  width: 100%;
   text-align: center;
-}
-
-@media (max-height: 600px) {
-  .container {
-    padding: 10px;
-  }
-
-  .hex-card h1 {
-    font-size: 28px;
-  }
-
-  .hex-card p {
-    font-size: 14px;
-  }
+  font-size: 18px;
 }
 
   </style>
 </head>
 <body>
-  <div class="navbar">
-    <div class="logo">Pakcoin</div>
-    <div class="menu-icon">&#9776;</div>
-  </div>  <div class="container">
-    <div class="hex-card">
-      <p>Balance: <strong>20.20</strong></p>
-      <h1>Grab 25.00<br />Pakcoin</h1>
-    </div></div>
+  <div class="container">
+    <div class="balance">Balance: <strong>20.20</strong></div><div class="grab-box">
+  <div>Grab</div>
+  <span>25.00</span>
+  <div>Pakcoin</div>
+</div>
 
-  </body>
+<div class="extra-box">Bonus Box</div>
+
+  </div>
+</body>
 </html>
