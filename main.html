@@ -1,1 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PakCoin Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+    }
 
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #111;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00ff99;
+    }
+
+    .balance {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #00ff99;
+    }
+
+    .main-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+    }
+
+    .box {
+      background-color: #1a1a1a;
+      border: 2px solid #00ff99;
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .box img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 0.5rem;
+    }
+
+    .box h3 {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      color: #00ff99;
+    }
+
+    .box p {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    @media (max-width: 500px) {
+      .main-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">PakCoin</div>
+    <div class="balance">Balance: 0.000</div>
+  </header>
+
+  <div class="main-container">
+    <!-- Leaderboard Box -->
+    <div class="box">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/WIN_Logo.png" alt="123win Logo" />
+      <h3>Leaderboard</h3>
+      <p>123win</p>
+    </div>
+
+    <!-- Level Box -->
+    <div class="box">
+      <img src="https://cdn-icons-png.flaticon.com/512/1158/1158100.png" alt="Level" />
+      <h3>Level</h3>
+      <p>Level 1</p>
+    </div>
+
+    <!-- Power Box -->
+    <div class="box">
+      <img src="https://cdn-icons-png.flaticon.com/512/753/753318.png" alt="Power" />
+      <h3>Power</h3>
+      <p>#hpower</p>
+    </div>
+
+    <!-- Speed Box -->
+    <div class="box">
+      <img src="https://cdn-icons-png.flaticon.com/512/1995/1995526.png" alt="Speed" />
+      <h3>Speed</h3>
+      <p>1.2x</p>
+    </div>
+  </div>
+
+</body>
+</html>
