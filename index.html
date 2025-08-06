@@ -1,85 +1,110 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pakcoin Mining</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PakCoin Mining</title>
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #000;
-      color: #0f0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(145deg, #000000, #0f0f0f);
+      color: #00ff88;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: rgba(0, 255, 136, 0.05);
+    }
+
+    .hamburger {
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .label {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .center-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 120px);
+    }
+
+    .mining-icon {
+      font-size: 4rem;
+      margin-bottom: 2rem;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 5px #00ff88;
+      }
+      100% {
+        text-shadow: 0 0 20px #00ff88;
+      }
+    }
+
+    .boxes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .box {
+      width: 120px;
+      height: 120px;
+      background-color: rgba(0, 255, 136, 0.1);
+      border: 1px solid #00ff88;
+      border-radius: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      overflow: hidden;
-    }.container {
-  border: 3px solid #00ff00;
-  border-radius: 20px;
-  padding: 30px 20px;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 0 30px #00ff00;
-  background: linear-gradient(180deg, #011, #001);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  height: 500px;
-}
+      font-size: 1rem;
+      box-shadow: 0 0 10px #00ff88;
+    }
 
-.balance {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.grab-box {
-  font-size: 24px;
-  background-color: rgba(0, 255, 0, 0.1);
-  padding: 40px 20px;
-  border-radius: 15px;
-  border: 2px solid #0f0;
-  box-shadow: 0 0 15px #0f0;
-  margin: 20px 0;
-  text-align: center;
-  width: 100%;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.grab-box span {
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.extra-box {
-  margin-top: 20px;
-  padding: 15px 20px;
-  border-radius: 10px;
-  border: 2px solid #0f0;
-  box-shadow: 0 0 12px #0f0;
-  background-color: rgba(0, 255, 0, 0.05);
-  width: 100%;
-  text-align: center;
-  font-size: 18px;
-}
-
+    @media (max-width: 600px) {
+      .box {
+        width: 100px;
+        height: 100px;
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="balance">Balance: <strong>20.20</strong></div><div class="grab-box">
-  <div>Grab</div>
-  <span>25.00</span>
-  <div>Pakcoin</div>
-</div>
 
-<div class="extra-box">Bonus Box</div>
+  <header>
+    <div class="hamburger">☰</div>
+    <div class="label">NA</div>
+  </header>
 
+  <div class="center-container">
+    <div class="mining-icon">⛏️</div>
+    <div class="boxes">
+      <div class="box">Box 1</div>
+      <div class="box">Box 2</div>
+      <div class="box">Box 3</div>
+      <div class="box">Box 4</div>
+    </div>
   </div>
+
 </body>
 </html>
