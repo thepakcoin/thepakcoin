@@ -3,102 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PakCoin Login</title>
+  <title>PakCoin</title>
   <style>
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      background: black url('IMG_20250806_191910%20(1).png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
     }
 
-    body {
-      height: 100vh;
-      background-color: #000; /* Pure black background */
-      background-image: url('https://raw.githubusercontent.com/thepakcoin/thepakcoin/main/IMG_20250806_191910 (1).png');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      background-color: rgba(0, 0, 0, 0.7);
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
+      z-index: 1000;
     }
 
-    .container {
-      background: rgba(0, 0, 0, 0.85);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
-      width: 90%;
-      max-width: 400px;
-      animation: glow 3s infinite alternate;
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00ff99;
     }
 
-    @keyframes glow {
-      0% {
-        box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
-      }
-      100% {
-        box-shadow: 0 0 30px rgba(0, 255, 0, 0.9);
-      }
-    }
-
-    h2 {
-      color: #00ff88;
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 15px;
-      background: #00ff88;
-      color: black;
-      border: none;
-      border-radius: 8px;
-      font-size: 18px;
+    .menu {
+      font-size: 1.5rem;
       cursor: pointer;
     }
 
-    button:hover {
-      background: #00cc66;
+    .container {
+      margin-top: 100px;
+      text-align: center;
+      padding: 2rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00ff99;
+    }
+
+    .container h2 {
+      margin-bottom: 1rem;
+      color: #00ff99;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 0.7rem;
+      background-color: #00ff99;
+      border: none;
+      color: black;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 1rem;
     }
 
     .link {
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .link a {
-      color: #00ff88;
-      text-decoration: none;
-    }
-
-    .link a:hover {
-      text-decoration: underline;
+      color: #00ff99;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: block;
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="logo">PakCoin</div>
+    <div class="menu">&#9776;</div>
+  </header>
+
   <div class="container">
-    <h2>Login to PakCoin</h2>
-    <input type="email" placeholder="Email" required />
-    <input type="password" placeholder="Password" required />
-    <button>Login</button>
-    <div class="link">
-      <p><a href="#">Forgot Password?</a></p>
-      <p><a href="#">Create New Account</a></p>
-    </div>
+    <h2>Login</h2>
+    <input type="email" placeholder="Email" />
+    <input type="password" placeholder="Password" />
+    <button class="btn">Login</button>
+    <span class="link">Forgot Password?</span>
+    <hr style="margin: 1.5rem 0; border-color: #00ff99;" />
+    <h2>Signup</h2>
+    <input type="email" placeholder="Email" />
+    <input type="password" placeholder="Password" />
+    <button class="btn">Signup</button>
   </div>
 </body>
 </html>
