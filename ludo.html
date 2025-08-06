@@ -3,31 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ludo Game</title>
+  <title>Ludo Game - PakCoin</title>
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
       background: #000;
-    }
-
-    .game-container {
-      width: 100vw;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       height: 100vh;
-      overflow: hidden;
     }
 
-    iframe {
-      width: 100%;
-      height: 100%;
+    #board {
+      width: 90vmin;
+      height: 90vmin;
+      background: #222;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .cell {
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      border: 1px solid #333;
+    }
+
+    #dice {
+      margin-top: 20px;
+      padding: 15px 25px;
+      background: green;
+      color: white;
+      font-size: 20px;
       border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    #value {
+      margin-top: 10px;
+      font-size: 28px;
+    }
+
+    #back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: red;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <div class="game-container">
-    <iframe src="https://www.crazygames.com/game/ludo-legend" allowfullscreen></iframe>
+
+  <button id="back-btn" onclick="window.location.href='main.html'">⬅️ Back</button>
+
+  <div id="board">
+    <div class="cell">🏠</div>
+    <div class="cell"></div>
+    <div class="cell">🏠</div>
+    <div class="cell"></div>
+    <div class="cell">🎯</div>
+    <div class="cell"></div>
+    <div class="cell">🏠</div>
+    <div class="cell"></div>
+    <div class="cell">🏠</div>
   </div>
+
+  <button id="dice">Roll Dice 🎲</button>
+  <div id="value">Waiting...</div>
+
+  <script>
+    document.getElementById("dice").addEventListener("click", () => {
+      const roll = Math.floor(Math.random() * 6) + 1;
+      document.getElementById("value").innerText = `You rolled: ${roll}`;
+    });
+  </script>
+
 </body>
 </html>
