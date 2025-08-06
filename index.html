@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PakCoin Mining</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PakCoin</title>
   <style>
     * {
       margin: 0;
@@ -12,99 +12,66 @@
     }
 
     body {
+      background-color: #000;
+      color: white;
       font-family: Arial, sans-serif;
-      background: linear-gradient(145deg, #000000, #0f0f0f);
-      color: #00ff88;
-      height: 100vh;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem;
-      background-color: rgba(0, 255, 136, 0.05);
+      padding: 15px 25px;
+      z-index: 1000;
+      border-bottom: 1px solid green;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #00ff88;
     }
 
     .hamburger {
-      font-size: 1.8rem;
+      font-size: 28px;
       cursor: pointer;
+      color: white;
     }
 
-    .label {
-      font-weight: bold;
-      font-size: 1.2rem;
+    .container {
+      margin-top: 80px; /* space below fixed header */
+      width: 90%;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      background: linear-gradient(145deg, #00ff88, #006644);
+      border-radius: 15px;
+      box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88 inset;
+      padding: 50px;
+      text-align: center;
     }
 
-    .center-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: calc(100vh - 120px);
-    }
-
-    .mining-icon {
-      font-size: 4rem;
-      margin-bottom: 2rem;
-      animation: glow 1.5s infinite alternate;
-    }
-
-    @keyframes glow {
-      0% {
-        text-shadow: 0 0 5px #00ff88;
-      }
-      100% {
-        text-shadow: 0 0 20px #00ff88;
-      }
-    }
-
-    .boxes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .box {
-      width: 120px;
-      height: 120px;
-      background-color: rgba(0, 255, 136, 0.1);
-      border: 1px solid #00ff88;
-      border-radius: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1rem;
-      box-shadow: 0 0 10px #00ff88;
-    }
-
-    @media (max-width: 600px) {
-      .box {
-        width: 100px;
-        height: 100px;
-        font-size: 0.9rem;
-      }
+    .content {
+      padding: 100px 20px;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <div class="hamburger">☰</div>
-    <div class="label">NA</div>
+    <div class="logo">PakCoin</div>
+    <div class="hamburger">&#9776;</div>
   </header>
 
-  <div class="center-container">
-    <div class="mining-icon">⛏️</div>
-    <div class="boxes">
-      <div class="box">Box 1</div>
-      <div class="box">Box 2</div>
-      <div class="box">Box 3</div>
-      <div class="box">Box 4</div>
+  <div class="content">
+    <div class="container">
+      <h1>Welcome to PakCoin</h1>
+      <p>Yeh container lighting effect ke saath hai</p>
     </div>
   </div>
-
 </body>
 </html>
