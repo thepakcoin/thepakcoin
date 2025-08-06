@@ -1,79 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>3D Room Interface</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pakcoin Dashboard</title>
   <style>
-    body { margin: 0; overflow: hidden; }
-    canvas { display: block; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0a0a0a;
+      color: #fff;
+    }.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #000;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.logo {
+  color: #00ff99;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.menu-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: #00ff99;
+}
+
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hex-card {
+  background: radial-gradient(circle at center, #003322, #000);
+  border: 2px solid #00ff99;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 25px #00ff99;
+  width: 300px;
+  margin-bottom: 30px;
+}
+
+.hex-card h1 {
+  font-size: 28px;
+  margin: 10px 0;
+  color: #00ff99;
+}
+
+.hex-card p {
+  font-size: 16px;
+  color: #aaa;
+}
+
+.buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.button-box {
+  background-color: #001a13;
+  border: 1px solid #00ff99;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px #00ff99;
+}
+
+.button-box:hover {
+  background-color: #002a1f;
+}
+
+.footer-tabs {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #1f1f1f;
+  padding: 15px;
+  background-color: #000;
+}
+
+.footer-tab {
+  color: #00ff99;
+  font-size: 14px;
+  text-align: center;
+}
+
+.info-section {
+  padding: 20px;
+  border-top: 1px solid #1f1f1f;
+}
+
+.info-item {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #aaa;
+}
+
   </style>
 </head>
 <body>
-  <script type="module">
-    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
-    import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+  <div class="navbar">
+    <div class="logo">Pakcoin</div>
+    <div class="menu-icon">&#9776;</div>
+  </div>  <div class="container">
+    <div class="hex-card">
+      <p>Balance: <strong>20.20</strong></p>
+      <h1>Grab 25.00<br />Pakcoin</h1>
+    </div><div class="buttons-grid">
+  <div class="button-box">Join Community</div>
+  <div class="button-box">Invite Friends</div>
+  <div class="button-box">Staking & Rewards</div>
+  <div class="button-box">Get Bonuses</div>
+</div>
 
-    // Scene Setup
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xa0d8ef); // Light blue background
-
-    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(5, 5, 10);
-
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-
-    // Room (Box with open front)
-    const roomMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff, side: THREE.BackSide });
-    const room = new THREE.Mesh(new THREE.BoxGeometry(10, 6, 10), roomMaterial);
-    scene.add(room);
-
-    // Floor
-    const floorMaterial = new THREE.MeshStandardMaterial({ color: 0xcccccc });
-    const floor = new THREE.Mesh(new THREE.PlaneGeometry(10, 10), floorMaterial);
-    floor.rotation.x = -Math.PI / 2;
-    floor.position.y = -3;
-    scene.add(floor);
-
-    // Table (box)
-    const tableMaterial = new THREE.MeshStandardMaterial({ color: 0x8B4513 });
-    const table = new THREE.Mesh(new THREE.BoxGeometry(3, 0.2, 2), tableMaterial);
-    table.position.set(0, -2.5, 0);
-    scene.add(table);
-
-    // Chair (small cube)
-    const chairMaterial = new THREE.MeshStandardMaterial({ color: 0x444444 });
-    const chair = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), chairMaterial);
-    chair.position.set(-2, -2.5, 1.5);
-    scene.add(chair);
-
-    // Light
-    const light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.set(5, 10, 7.5);
-    scene.add(light);
-
-    const ambient = new THREE.AmbientLight(0x404040); // soft light
-    scene.add(ambient);
-
-    // Animate
-    function animate() {
-      requestAnimationFrame(animate);
-      controls.update();
-      renderer.render(scene, camera);
-    }
-
-    animate();
-
-    // Responsive
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-  </script>
+  </div>  <div class="footer-tabs">
+    <div class="footer-tab">Home</div>
+    <div class="footer-tab">Community</div>
+    <div class="footer-tab">Rewards</div>
+    <div class="footer-tab">Profile</div>
+  </div>  <div class="info-section">
+    <div class="info-item">COMMUNITY DRIVEN PROJECT</div>
+    <div class="info-item">UNIQUE STAKING MECHANICS</div>
+  </div>
 </body>
 </html>
