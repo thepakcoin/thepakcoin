@@ -75,11 +75,29 @@
       width: 100%;
       max-width: 600px;
       height: 500px;
-      border: none;
       display: flex;
       align-items: center;
       justify-content: center;
     }
+
+    #ludo-board {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 10px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .cell {
+      border: 2px solid #000;
+      border-radius: 8px;
+    }
+
+    .red { background-color: red; }
+    .blue { background-color: blue; }
+    .green { background-color: green; }
+    .yellow { background-color: yellow; }
 
     @media (max-width: 600px) {
       .stat-title {
@@ -120,12 +138,12 @@
     </div>
 
     <div class="game-section">
-      <iframe src="https://www.crazygames.com/game/ludo-legend" 
-              width="100%" 
-              height="100%" 
-              style="border: none; border-radius: 12px;" 
-              allowfullscreen>
-      </iframe>
+      <div id="ludo-board">
+        <div class="cell red"></div>
+        <div class="cell blue"></div>
+        <div class="cell green"></div>
+        <div class="cell yellow"></div>
+      </div>
     </div>
 
   </div>
