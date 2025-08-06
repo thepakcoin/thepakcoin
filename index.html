@@ -9,123 +9,93 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: Arial, sans-serif;
     }
 
-    body, html {
-      height: 100%;
-      overflow: hidden;
-    }
-
-    /* 🔷 3D Animated Background using gradients */
     body {
-      background: linear-gradient(270deg, #0f0, #050, #000);
-      background-size: 600% 600%;
-      animation: animateBackground 20s ease infinite;
+      height: 100vh;
+      background: url('https://raw.githubusercontent.com/thepakcoin/thepakcoin/main/Picsart_25-08-06_18-38-47-894.jpg') no-repeat center center fixed;
+      background-size: cover;
       display: flex;
-      justify-content: center;
       align-items: center;
-    }
-
-    @keyframes animateBackground {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+      justify-content: center;
     }
 
     .container {
-      background-color: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.7);
       padding: 40px;
       border-radius: 20px;
-      box-shadow: 0 0 30px #00ff88;
+      box-shadow: 0 0 30px rgba(0, 255, 0, 0.7);
       width: 90%;
       max-width: 400px;
-      text-align: center;
-      z-index: 2;
+      animation: glow 3s infinite alternate;
     }
 
-    .container h2 {
+    @keyframes glow {
+      0% {
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
+      }
+      100% {
+        box-shadow: 0 0 30px rgba(0, 255, 0, 0.8);
+      }
+    }
+
+    h2 {
       color: #00ff88;
-      margin-bottom: 20px;
+      text-align: center;
+      margin-bottom: 25px;
     }
 
-    .input-field {
+    input {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin: 10px 0;
       border: none;
-      border-radius: 10px;
-      background: #111;
-      color: #fff;
+      border-radius: 8px;
       font-size: 16px;
     }
 
-    .btn {
-      background-color: #00ff88;
-      color: #000;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
+    button {
       width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: #00ff88;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #00cc66;
+    }
+
+    .link {
+      text-align: center;
       margin-top: 10px;
     }
 
-    .btn:hover {
-      background-color: #00cc66;
-    }
-
-    .switch {
-      color: #ccc;
-      margin-top: 15px;
-      font-size: 14px;
-    }
-
-    .switch a {
+    .link a {
       color: #00ff88;
       text-decoration: none;
-      font-weight: bold;
+    }
+
+    .link a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="container" id="form-container">
-    <h2 id="form-title">Login to PakCoin</h2>
-    <input type="email" class="input-field" placeholder="Email" id="email" />
-    <input type="password" class="input-field" placeholder="Password" id="password" />
-    <button class="btn" onclick="login()">Login</button>
-    <div class="switch">
-      Don't have an account? <a href="#" onclick="toggleForm()">Sign up</a>
+  <div class="container">
+    <h2>Login to PakCoin</h2>
+    <input type="email" placeholder="Email" required />
+    <input type="password" placeholder="Password" required />
+    <button>Login</button>
+    <div class="link">
+      <p><a href="#">Forgot Password?</a></p>
+      <p><a href="#">Create New Account</a></p>
     </div>
   </div>
-
-  <script>
-    let isLogin = true;
-
-    function toggleForm() {
-      const title = document.getElementById('form-title');
-      const btn = document.querySelector('.btn');
-      const switchText = document.querySelector('.switch');
-
-      if (isLogin) {
-        title.innerText = "Create an Account";
-        btn.innerText = "Sign Up";
-        switchText.innerHTML = `Already have an account? <a href="#" onclick="toggleForm()">Login</a>`;
-        isLogin = false;
-      } else {
-        title.innerText = "Login to PakCoin";
-        btn.innerText = "Login";
-        switchText.innerHTML = `Don't have an account? <a href="#" onclick="toggleForm()">Sign up</a>`;
-        isLogin = true;
-      }
-    }
-
-    function login() {
-      alert(isLogin ? "Logging in..." : "Signing up...");
-      // Later: Add real login/signup logic here
-    }
-  </script>
 </body>
 </html>
