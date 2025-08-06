@@ -1,26 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Pak Coin</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coin Room</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #d1e7dd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+    }.room {
+  width: 90vw;
+  height: 80vh;
+  background: linear-gradient(to bottom, #a2d2ff 60%, #8ecae6 40%);
+  border: 4px solid #333;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.table {
+  width: 300px;
+  height: 20px;
+  background-color: #8b5e3c;
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 5px 0 #5d3a1a;
+}
+
+.computer {
+  width: 100px;
+  height: 80px;
+  background-color: #333;
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+}
+
+.chair {
+  width: 80px;
+  height: 80px;
+  background-color: #555;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-160%);
+  border-radius: 10px 10px 0 0;
+}
+
+.coin-character {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-160%);
+  width: 80px;
+  height: auto;
+}
+
+  </style>
 </head>
 <body>
-  <div class="container">
-    <div class="coin-section">
-      <h1 class="coin-title">The Pak Coin</h1>
-      <div class="coin"></div>
-    </div>
-    
-    <button id="downloadBtn">Download</button>
-
-    <div id="popup" class="popup">
-      <span class="close">&times;</span>
-      <p>Coming Soon</p>
-    </div>
+  <div class="room">
+    <div class="table"></div>
+    <div class="computer"></div>
+    <div class="chair"></div>
+    <img
+      src="A_2D_digital_illustration_features_an_anthropomorp.png"
+      alt="Coin Character"
+      class="coin-character"
+    />
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
