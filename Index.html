@@ -1,5 +1,7 @@
 <body>
-  <div class="background"></div>
+  <div class="background">
+    <img src="coin.png" class="coin" />
+  </div>
 </body>
 
 <style>
@@ -9,11 +11,15 @@ body, html {
 }
 
 .background {
-  background-color: #000;
-  background-image: url('coin.png'); /* Replace with image path */
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 200px; /* Adjust size */
+  background: radial-gradient(ellipse at center, #0f0 1%, #000 99%);
   height: 100vh;
+  position: relative;
+}
+
+.coin {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
 }
 </style>
