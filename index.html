@@ -88,14 +88,23 @@
     font-size: 0.9rem;
     cursor: pointer;     
     display: block;
-      
-   .footer-links {
-    margin-top: 1.5rem;
+    }
+    
+   .footer-fixed {
+    position: fixed;  
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2rem;
+    z-index: 1000;
     }
 
-    .footer-links .link {
+    .footer-fixed .link {
+      color: black;
+      font-size: 0.9rem;
       display: inline-block;
-      margin: 0 1rem;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -112,8 +121,9 @@
     <button class="btn">Login</button>
     <span class="link">Forgot Password</span>
     <span class="link">create account</span>
-
-     <div class="footer-links">
+  </div>
+  
+     <div class="footer-fixed">
       <span class="link">About</span>
       <span class="link">Contact</span>
     </div>
