@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PakCoin Main</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>PakCoin Dashboard</title>
   <style>
-    * { box-sizing: border-box; }
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #fff;
       color: #0a0;
@@ -24,13 +27,12 @@
       width: 100%;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid #ccc;
     }
 
     .balance {
       font-size: 18px;
       font-weight: bold;
-      color: #070;
     }
 
     .main-content {
@@ -40,108 +42,58 @@
       align-items: center;
     }
 
-    .section-heading {
-      font-size: 24px;
-      font-weight: bold;
-      color: #060;
-      margin: 20px 0 10px;
-      text-align: center;
-      border-bottom: 2px solid #0f0;
-      padding-bottom: 5px;
-    }
-
     .stats-section {
       display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 10px;
-      flex-wrap: wrap;
+      justify-content: space-around;
       width: 100%;
-      max-width: 800px;
-    }
-
-    .stat-box {
-      flex: 1 1 30%;
-      background-color: #e9ffe9;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 128, 0, 0.1);
+      max-width: 700px;
       text-align: center;
-      min-width: 100px;
-      transition: transform 0.2s ease;
+      margin-bottom: 40px;
     }
 
-    .stat-box:hover {
-      transform: scale(1.03);
-    }
-
-    .stat-icon {
-      font-size: 28px;
-      margin-bottom: 8px;
-      color: #080;
+    .stat-item {
+      flex: 1;
     }
 
     .stat-title {
       font-size: 14px;
-      margin-bottom: 5px;
-      color: #070;
+      margin-bottom: 4px;
+      color: #060;
     }
 
     .stat-value {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: bold;
     }
 
     .game-section {
-      margin-top: 40px;
       width: 100%;
       max-width: 600px;
       height: 250px;
-      border: 2px dashed #070;
-      border-radius: 15px;
+      border: 2px dashed #0a0;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #070;
       font-size: 16px;
+      background-color: #fefefe;
       text-align: center;
-      background-color: #f9fff9;
       padding: 10px;
     }
 
-    .buttons {
-      margin-top: 20px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      background-color: #0f0;
-      color: #000;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    @media (max-width: 500px) {
-      .balance {
-        font-size: 16px;
+    @media (max-width: 600px) {
+      .stat-title {
+        font-size: 12px;
       }
 
-      .stat-box {
-        flex: 1 1 100%;
+      .stat-value {
+        font-size: 18px;
       }
 
       .game-section {
-        height: 200px;
         font-size: 14px;
-      }
-
-      .section-heading {
-        font-size: 20px;
+        height: 200px;
       }
     }
   </style>
@@ -149,35 +101,24 @@
 <body>
 
   <div class="top-bar">
-    <div class="balance">Balance: 0.000</div>
+    <div class="balance">Balance: <span id="balance">0.000</span></div>
   </div>
 
   <div class="main-content">
 
-    <div class="section-heading">🎮 Player Stats Panel</div>
-
     <div class="stats-section">
-      <div class="stat-box">
-        <div class="stat-icon"><i class="fas fa-star"></i></div>
+      <div class="stat-item">
         <div class="stat-title">Level</div>
         <div class="stat-value" id="level">1</div>
       </div>
-      <div class="stat-box">
-        <div class="stat-icon"><i class="fas fa-bolt"></i></div>
+      <div class="stat-item">
         <div class="stat-title">Power</div>
         <div class="stat-value" id="power">50</div>
       </div>
-      <div class="stat-box">
-        <div class="stat-icon"><i class="fas fa-gauge-high"></i></div>
+      <div class="stat-item">
         <div class="stat-title">Speed</div>
-        <div class="stat-value" id="speed">2</div>
+        <div class="stat-value" id="speed">1x</div>
       </div>
-    </div>
-
-    <div class="buttons">
-      <button class="btn" onclick="levelUp()">Level +1</button>
-      <button class="btn" onclick="powerUp()">Power +10</button>
-      <button class="btn" onclick="speedUp()">Speed +1</button>
     </div>
 
     <div class="game-section">
@@ -187,39 +128,23 @@
   </div>
 
   <script>
-    // Initialize from Local Storage
-    let level = parseInt(localStorage.getItem("level")) || 1;
-    let power = parseInt(localStorage.getItem("power")) || 50;
-    let speed = parseInt(localStorage.getItem("speed")) || 2;
+    // Load saved stats
+    document.getElementById('level').textContent = localStorage.getItem('level') || '1';
+    document.getElementById('power').textContent = localStorage.getItem('power') || '50';
+    document.getElementById('speed').textContent = localStorage.getItem('speed') || '1x';
+    document.getElementById('balance').textContent = localStorage.getItem('balance') || '0.000';
 
-    // Update UI
-    function updateStats() {
-      document.getElementById("level").innerText = level;
-      document.getElementById("power").innerText = power;
-      document.getElementById("speed").innerText = speed;
+    // Function to update stat (use this when user plays or levels up)
+    function updateStat(stat, value) {
+      localStorage.setItem(stat, value);
+      document.getElementById(stat).textContent = value;
     }
 
-    // Functions
-    function levelUp() {
-      level++;
-      localStorage.setItem("level", level);
-      updateStats();
-    }
-
-    function powerUp() {
-      power += 10;
-      localStorage.setItem("power", power);
-      updateStats();
-    }
-
-    function speedUp() {
-      speed++;
-      localStorage.setItem("speed", speed);
-      updateStats();
-    }
-
-    // On load
-    updateStats();
+    // Example: Update level to 2
+    // updateStat('level', '2');
+    // updateStat('power', '60');
+    // updateStat('speed', '1.2x');
+    // updateStat('balance', '0.050');
   </script>
 
 </body>
