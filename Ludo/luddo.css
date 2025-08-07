@@ -1,11 +1,12 @@
-#wrap{
-    width: 70%;
-    height:100%;
-    max-width: 555px;
-    margin-left: auto;
-    margin-right:auto;
+#wrap {
+    width: 95vmin;
+    height: 95vmin;
+    max-width: 100vmin;
+    max-height: 100vmin;
+    margin: auto;
     background-image: url("background.png");
-    cursor: pointer;
+    background-size: cover;
+    background-position: center;
 }
 #innerwrap{
 height: 86%;
@@ -126,3 +127,4 @@ background:rgba(0, 0, 255,0.5);
     background-position: center;
     background-size: 100% 100%;
 }
+
