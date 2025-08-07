@@ -87,6 +87,7 @@ header {
   height: 100vmin;
   background-color: white;
   border: 5px solid lightblue;
+  border-radius: 20px;
   position: relative;
   overflow: hidden;
   max-width: 100%;
