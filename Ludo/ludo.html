@@ -1,57 +1,83 @@
-<script>
-  const board = document.getElementById("board");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ludo Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1 class="title">🎮 Ludo Game</h1>
 
-  for (let row = 0; row < 15; row++) {
-    for (let col = 0; col < 15; col++) {
-      const cell = document.createElement("div");
-      cell.classList.add("cell");
+  <div class="board" id="board"></div>
 
-      // Home Zones
-      if (row < 6 && col < 6) {
-        cell.classList.add("green");
+  <!-- Dice Buttons -->
+  <button class="dice top-left">🎲</button>
+  <button class="dice top-right">🎲</button>
+  <button class="dice bottom-left">🎲</button>
+  <button class="dice bottom-right">🎲</button>
 
-        // Add player tokens (4 cells only in green)
-        if ((row === 1 || row === 3) && (col === 1 || col === 3)) {
-          const tokenSpot = document.createElement("div");
-          tokenSpot.classList.add("token-spot", "green-token");
-          cell.appendChild(tokenSpot);
+  <script>
+    const board = document.getElementById("board");
+
+    for (let row = 0; row < 15; row++) {
+      for (let col = 0; col < 15; col++) {
+        const cell = document.createElement("div");
+        cell.classList.add("cell");
+
+        // Green Home
+        if (row < 6 && col < 6) {
+          cell.classList.add("green");
+          if ((row === 1 || row === 3) && (col === 1 || col === 3)) {
+            const token = document.createElement("div");
+            token.classList.add("token", "green-token");
+            cell.appendChild(token);
+          }
         }
 
-      } else if (row < 6 && col > 8) {
-        cell.classList.add("yellow");
-
-        if ((row === 1 || row === 3) && (col === 11 || col === 13)) {
-          const tokenSpot = document.createElement("div");
-          tokenSpot.classList.add("token-spot", "yellow-token");
-          cell.appendChild(tokenSpot);
+        // Yellow Home
+        else if (row < 6 && col > 8) {
+          cell.classList.add("yellow");
+          if ((row === 1 || row === 3) && (col === 11 || col === 13)) {
+            const token = document.createElement("div");
+            token.classList.add("token", "yellow-token");
+            cell.appendChild(token);
+          }
         }
 
-      } else if (row > 8 && col < 6) {
-        cell.classList.add("red");
-
-        if ((row === 11 || row === 13) && (col === 1 || col === 3)) {
-          const tokenSpot = document.createElement("div");
-          tokenSpot.classList.add("token-spot", "red-token");
-          cell.appendChild(tokenSpot);
+        // Red Home
+        else if (row > 8 && col < 6) {
+          cell.classList.add("red");
+          if ((row === 11 || row === 13) && (col === 1 || col === 3)) {
+            const token = document.createElement("div");
+            token.classList.add("token", "red-token");
+            cell.appendChild(token);
+          }
         }
 
-      } else if (row > 8 && col > 8) {
-        cell.classList.add("blue");
-
-        if ((row === 11 || row === 13) && (col === 11 || col === 13)) {
-          const tokenSpot = document.createElement("div");
-          tokenSpot.classList.add("token-spot", "blue-token");
-          cell.appendChild(tokenSpot);
+        // Blue Home
+        else if (row > 8 && col > 8) {
+          cell.classList.add("blue");
+          if ((row === 11 || row === 13) && (col === 11 || col === 13)) {
+            const token = document.createElement("div");
+            token.classList.add("token", "blue-token");
+            cell.appendChild(token);
+          }
         }
 
-      } else if (row >= 6 && row <= 8 && col >= 6 && col <= 8) {
-        cell.classList.add("center");
+        // Center Safe Zone
+        else if (row >= 6 && row <= 8 && col >= 6 && col <= 8) {
+          cell.classList.add("center");
+        }
 
-      } else if (row === 7 || col === 7) {
-        cell.classList.add("path");
+        // Paths
+        else if (row === 7 || col === 7) {
+          cell.classList.add("path");
+        }
+
+        board.appendChild(cell);
       }
-
-      board.appendChild(cell);
     }
-  }
-        </script>
+  </script>
+</body>
+</html>
