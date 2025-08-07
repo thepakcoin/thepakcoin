@@ -142,6 +142,26 @@ body {
   background-position: center;
   background-size: 100% 100%;
 }
+#shared-dice {
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 999;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 
 
 
