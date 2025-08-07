@@ -7,7 +7,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("IMG_20250807_131947.jpg") no-repeat center center fixed;
+  background: url("./IMG_20250807_131947.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -138,6 +138,7 @@ body {
     background-position: center;
     background-size: 100% 100%;
 }
+
 
 
 
