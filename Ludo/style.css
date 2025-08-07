@@ -1,44 +1,93 @@
-
+/* General Styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: sans-serif;
   text-align: center;
-  background-color: #f3f3f3;
+  background: #2f1f4f;
+  color: white;
+  margin: 0;
+  padding: 20px;
 }
 
-.title {
-  margin-top: 20px;
-  font-size: 32px;
-  color: #333;
+h1 {
+  margin-bottom: 20px;
 }
 
+/* Game Board */
 .board {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-areas:
+    "red red center center"
+    "red red center center"
+    "center center green green"
+    "center center green green";
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+/* Player Homes */
+.home {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid white;
+  border-radius: 20px;
+}
+
+.red { background: #c0392b; grid-area: red; }
+.green { background: #27ae60; grid-area: green; }
+.yellow { background: #f1c40f; grid-area: center; }
+.blue { background: #2980b9; grid-area: center; }
+
+/* Path (center playable area) */
+.path {
+  background: #f9f9f9;
+  grid-area: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 2px;
+  padding: 5px;
+}
+
+.path div {
+  background: #ddd;
+  border: 1px solid #aaa;
+  width: 100%;
+  height: 100%;
+}
+
+/* Dice Buttons */
+.dice-controls {
+  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 40px;
+  gap: 10px;
 }
 
-.home {
-  width: 120px;
-  height: 120px;
-  margin: 10px;
-  border-radius: 10px;
-  line-height: 120px;
-  font-weight: bold;
+.dice-controls button {
+  background-color: #8e44ad;
   color: white;
-}
-
-.red    { background-color: red; }
-.blue   { background-color: blue; }
-.green  { background-color: green; }
-.yellow { background-color: goldenrod; }
-
-.controls {
-  margin-top: 30px;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 18px;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dice-controls button:hover {
+  background-color: #9b59b6;
+}
+
+/* Dice Result Display */
+#diceResult {
+  margin-top: 15px;
+  font-size: 20px;
 }
