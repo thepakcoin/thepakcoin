@@ -137,17 +137,53 @@ body {
     font-weight: bold;
     font-family: cursive;
 }
-#dice{
-    color:red;
+.dice {
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 999;
+  position: absolute;
 }
-.hrgby:hover{
-    font-size:40px; 
+
+/* Red player - top left */
+#dice-red {
+  top: 10px;
+  left: 10px;
 }
-.backgroundimgsize{
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
+
+/* Green player - top right */
+#dice-green {
+  top: 10px;
+  right: 10px;
 }
+
+/* Yellow player - bottom left */
+#dice-yellow {
+  bottom: 10px;
+  left: 10px;
+}
+
+/* Blue player - bottom right */
+#dice-blue {
+  bottom: 10px;
+  right: 10px;
+}
+
+.backgroundimgsize {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
 
 
 
