@@ -1,29 +1,25 @@
-body {
-  background-color: #2e1a47;
-  color: white;
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0;
-  padding: 20px;
+.token-spot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: auto;
+  margin-top: 5px;
 }
 
-.title {
-  font-size: 2em;
-  margin-bottom: 20px;
+/* Optional: Give color to token spots */
+.green-token {
+  background-color: lightgreen;
+  border: 2px solid green;
 }
-
-.board {
-  display: grid;
-  grid-template-columns: repeat(15, 30px);
-  grid-template-rows: repeat(15, 30px);
-  gap: 1px;
-  background-color: #333;
+.red-token {
+  background-color: pink;
+  border: 2px solid darkred;
 }
-
-.board div {
-  width: 30px;
-  height: 30px;
-  background-color: white;
+.yellow-token {
+  background-color: lightyellow;
+  border: 2px solid goldenrod;
+}
+.blue-token {
+  background-color: lightblue;
+  border: 2px solid blue;
 }
