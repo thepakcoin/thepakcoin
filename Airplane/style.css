@@ -51,8 +51,8 @@ header {
 
 /* Game Board */
 #gameBoard {
-  width: 90vmin;
-  height: 90vmin;
+  width: 100vmin;
+  height: 100vmin;
   background-color: #001f3f;
   border: 5px solid #fff;
   position: relative;
