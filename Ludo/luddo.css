@@ -3,7 +3,7 @@ body {
   padding: 0;
   height: 100vh;                /* Full screen height */
   width: 100vw;                 /* Full screen width */
-  overflow: hidden;            /* Remove scrollbars */
+  overflow: auto;            /* Remove scrollbars */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,6 +148,7 @@ body {
     background-position: center;
     background-size: 100% 100%;
 }
+
 
 
 
