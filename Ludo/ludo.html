@@ -3,34 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ludo Game</title>
+  <title>Ludo Game Board</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Ludo Game</h1>
-  <div class="board" id="board">
-    <!-- Goti homes (for 4 players) -->
-    <div class="home red"></div>
-    <div class="home green"></div>
-    <div class="home yellow"></div>
-    <div class="home blue"></div>
-    <!-- Center board area (basic grid) -->
-    <div class="path" id="path">
-      <!-- Cells will be created by JS -->
-    </div>
+  <h1 class="title">Ludo Game</h1>
+  <div class="board">
+    <!-- 15x15 grid cells will be added by JS or pre-filled here -->
+    <!-- Example below for grid -->
+    <!-- You can expand this with more cells -->
+    <!-- We'll fill proper zones step-by-step -->
   </div>
 
-  <!-- Dice Buttons -->
-  <div class="dice-controls">
-    <button onclick="rollDice('red')">🎲 Player 1 (Red)</button>
-    <button onclick="rollDice('green')">🎲 Player 2 (Green)</button>
-    <button onclick="rollDice('yellow')">🎲 Player 3 (Yellow)</button>
-    <button onclick="rollDice('blue')">🎲 Player 4 (Blue)</button>
-  </div>
-
-  <!-- Dice Result Display -->
-  <div id="diceResult">Dice: -</div>
-
-  <script src="script.js"></script>
+  <!-- Dice and controls (we'll add later) -->
 </body>
 </html>
