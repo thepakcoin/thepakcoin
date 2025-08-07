@@ -75,14 +75,11 @@ header {
 
 /* Game Wrapper (below header) */
 #gameWrapper {
-  position: absolute;
-  top: 60px;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px 0;
 }
 
 /* Game Board */
@@ -95,6 +92,7 @@ header {
   overflow: hidden;
   max-width: 100%;
   max-height: 100%;
+  margin-bottom: 10px;
 }
 
 /* Player */
