@@ -3,18 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ludo Game Board</title>
+  <title>Ludo Game</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1 class="title">Ludo Game</h1>
+
   <div class="board">
-    <!-- 15x15 grid cells will be added by JS or pre-filled here -->
-    <!-- Example below for grid -->
-    <!-- You can expand this with more cells -->
-    <!-- We'll fill proper zones step-by-step -->
+    <!-- 15x15 = 225 cells -->
+    <!-- We'll generate them with JS -->
   </div>
 
-  <!-- Dice and controls (we'll add later) -->
+  <script>
+    // Generate 15x15 = 225 divs
+    const board = document.querySelector('.board');
+    for (let i = 0; i < 225; i++) {
+      const cell = document.createElement('div');
+      board.appendChild(cell);
+    }
+  </script>
 </body>
 </html>
