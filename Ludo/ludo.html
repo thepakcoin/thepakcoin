@@ -1,26 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ludo Game</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <h1 class="title">Ludo Game</h1>
+<script>
+  const board = document.getElementById("board");
 
-  <div class="board">
-    <!-- 15x15 = 225 cells -->
-    <!-- We'll generate them with JS -->
-  </div>
+  for (let row = 0; row < 15; row++) {
+    for (let col = 0; col < 15; col++) {
+      const cell = document.createElement("div");
+      cell.classList.add("cell");
 
-  <script>
-    // Generate 15x15 = 225 divs
-    const board = document.querySelector('.board');
-    for (let i = 0; i < 225; i++) {
-      const cell = document.createElement('div');
+      // Home Zones
+      if (row < 6 && col < 6) {
+        cell.classList.add("green");
+
+        // Add player tokens (4 cells only in green)
+        if ((row === 1 || row === 3) && (col === 1 || col === 3)) {
+          const tokenSpot = document.createElement("div");
+          tokenSpot.classList.add("token-spot", "green-token");
+          cell.appendChild(tokenSpot);
+        }
+
+      } else if (row < 6 && col > 8) {
+        cell.classList.add("yellow");
+
+        if ((row === 1 || row === 3) && (col === 11 || col === 13)) {
+          const tokenSpot = document.createElement("div");
+          tokenSpot.classList.add("token-spot", "yellow-token");
+          cell.appendChild(tokenSpot);
+        }
+
+      } else if (row > 8 && col < 6) {
+        cell.classList.add("red");
+
+        if ((row === 11 || row === 13) && (col === 1 || col === 3)) {
+          const tokenSpot = document.createElement("div");
+          tokenSpot.classList.add("token-spot", "red-token");
+          cell.appendChild(tokenSpot);
+        }
+
+      } else if (row > 8 && col > 8) {
+        cell.classList.add("blue");
+
+        if ((row === 11 || row === 13) && (col === 11 || col === 13)) {
+          const tokenSpot = document.createElement("div");
+          tokenSpot.classList.add("token-spot", "blue-token");
+          cell.appendChild(tokenSpot);
+        }
+
+      } else if (row >= 6 && row <= 8 && col >= 6 && col <= 8) {
+        cell.classList.add("center");
+
+      } else if (row === 7 || col === 7) {
+        cell.classList.add("path");
+      }
+
       board.appendChild(cell);
     }
-  </script>
-</body>
-</html>
+  }
+        </script>
