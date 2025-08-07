@@ -14,7 +14,7 @@ body {
     max-width: 100vmin;
     max-height: 100vmin;
     margin: auto;
-    background-image: url("background.png");
+    background-image: url("IMG_20250807_131947.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -137,6 +137,7 @@ background:rgba(0, 0, 255,0.5);
     background-position: center;
     background-size: 100% 100%;
 }
+
 
 
 
