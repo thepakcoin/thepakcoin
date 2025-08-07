@@ -9,7 +9,7 @@
 html, body {
   width: 100%;
   height: 100%;
-  overflow: hidden; /* No scroll */
+  overflow: auto; /* No scroll */
   background-image: url('IMG_20250807_222955.jpg'); /* Black background */
   font-family: Arial, sans-serif;
   touch-action: none;
