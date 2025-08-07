@@ -7,10 +7,20 @@ window.addEventListener("DOMContentLoaded", () => {
     const cell = document.createElement("div");
     cell.classList.add("cell");
     board.appendChild(cell);
+    cells.push(cell);
   }
 
-  const cells = document.querySelectorAll('.cell');
-  cells[0].classList.add('blue-home');
+  // 🔹 Blue Home = 2×2 square in top-right corner
+  // Top row indexes: 0-14, next row: 15-29
+  cells[13].classList.add("blue-home");
+  cells[14].classList.add("blue-home");
+  cells[28].classList.add("blue-home");
+  cells[29].classList.add("blue-home");
+
+  // Player movement code (optional)
+  let playerPos = 0
+
+  
 
   document.addEventListener("keydown", movePlayer);
 
