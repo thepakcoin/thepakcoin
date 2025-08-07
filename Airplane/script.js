@@ -5,12 +5,12 @@ window.addEventListener("DOMContentLoaded", () => {
   // ✅ Create 225 cells
   for (let i = 0; i < 225; i++) {
     const cell = document.createElement("div");
-    cells[0].classList.add('blue-home');
     cell.classList.add("cell");
     board.appendChild(cell);
   }
 
-  let playerPos = 0;
+  const cells = document.querySelectorAll('.cell');
+  cells[0].classList.add('blue-home');
 
   document.addEventListener("keydown", movePlayer);
 
