@@ -85,7 +85,7 @@ header {
 #gameBoard {
   width: 100vmin;
   height: 100vmin;
-  background-color: #001f3f;
+  background-color: white;
   border: 5px solid #fff;
   position: center;
   overflow: hidden;
