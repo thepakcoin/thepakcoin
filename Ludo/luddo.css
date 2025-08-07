@@ -32,10 +32,6 @@ body {
     #00ff00 12px
   );
   background-blend-mode: overlay;
-
-  box-shadow:
-    0 0 30px rgba(0, 255, 0, 0.4),
-    0 0 60px rgba(0, 255, 0, 0.3);
 }
 
 #innerwrap {
@@ -161,6 +157,7 @@ body {
     background-position: center;
     background-size: 100% 100%;
 }
+
 
 
 
