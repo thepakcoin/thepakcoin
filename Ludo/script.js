@@ -1,15 +1,47 @@
-// Get dice result div
-const diceResult = document.getElementById("diceResult");
+const board = document.getElementById("ludo-board");
 
-// Function to roll dice for a specific player
-function rollDice(playerColor) {
-  const dice = Math.floor(Math.random() * 6) + 1;
+for (let i = 0; i < 225; i++) {
+  const cell = document.createElement("div");
 
-  // Show dice result
-  diceResult.textContent = `🎲 ${playerColor.toUpperCase()} rolled: ${dice}`;
+  const row = Math.floor(i / 15);
+  const col = i % 15;
 
-  // You can log in console too
-  console.log(`Player ${playerColor.toUpperCase()} rolled: ${dice}`);
+  // Top-left red home
+  if (row < 6 && col < 6) cell.classList.add("red");
+  // Top-right green home
+  else if (row < 6 && col > 8) cell.classList.add("green");
+  // Bottom-left yellow home
+  else if (row > 8 && col < 6) cell.classList.add("yellow");
+  // Bottom-right blue home
+  else if (row > 8 && col > 8) cell.classList.add("blue");
 
-  // TODO: Move goti based on dice value (to be added)
+  // Vertical middle path
+  else if (col === 6 && row >= 0 && row < 15) cell.classList.add("path");
+  else if (col === 8 && row >= 0 && row < 15) cell.classList.add("path");
+
+  // Horizontal middle path
+  else if (row === 6 && col >= 0 && col < 15) cell.classList.add("path");
+  else if (row === 8 && col >= 0 && col < 15) cell.classList.add("path");
+
+  // Red token cells (top-left inside)
+  if ((row === 1 || row === 3) && (col === 1 || col === 3)) {
+    cell.classList.add("token-cell");
+  }
+
+  // Green token cells (top-right inside)
+  if ((row === 1 || row === 3) && (col === 11 || col === 13)) {
+    cell.classList.add("token-cell");
+  }
+
+  // Yellow token cells (bottom-left inside)
+  if ((row === 11 || row === 13) && (col === 1 || col === 3)) {
+    cell.classList.add("token-cell");
+  }
+
+  // Blue token cells (bottom-right inside)
+  if ((row === 11 || row === 13) && (col === 11 || col === 13)) {
+    cell.classList.add("token-cell");
+  }
+
+  board.appendChild(cell);
 }
