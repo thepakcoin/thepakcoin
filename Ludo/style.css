@@ -1,7 +1,7 @@
 body {
   background-color: #2e1a47;
   color: white;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,27 +19,11 @@ body {
   grid-template-columns: repeat(15, 30px);
   grid-template-rows: repeat(15, 30px);
   gap: 1px;
-  background-color: #222;
+  background-color: #333;
 }
 
-/* Default cell */
 .board div {
   width: 30px;
   height: 30px;
-  background-color: white;
-}
-
-/* Zones */
-.red-home { background-color: red; }
-.green-home { background-color: green; }
-.yellow-home { background-color: yellow; }
-.blue-home { background-color: blue; }
-
-/* Example of goti (token) circle */
-.token {
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  margin: 5px auto;
   background-color: white;
 }
