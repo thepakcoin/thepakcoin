@@ -22,7 +22,9 @@ body {
   height: 86%;
   width: 94%;
   padding: 7% 3%;
-  background: rgba(0, 0, 255, 0.2);
+  background: transparent;
+  border: 1px solid black; /* Thin black border */
+  box-sizing: border-box;
 }
 #main {
   height: 100%;
@@ -138,6 +140,7 @@ body {
     background-position: center;
     background-size: 100% 100%;
 }
+
 
 
 
