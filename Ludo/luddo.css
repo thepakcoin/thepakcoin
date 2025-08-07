@@ -22,16 +22,7 @@ body {
   padding: 2vmin;
   box-sizing: border-box;
   border-radius: 12px;
-
-  background-color: #000;  /* base black background */
-  background-image: repeating-linear-gradient(
-    45deg,
-    #004400,
-    #004400 10px,
-    #00ff00 10px,
-    #00ff00 12px
-  );
-  background-blend-mode: overlay;
+  background-color: #000;
 }
 
 #innerwrap {
@@ -157,6 +148,7 @@ body {
     background-position: center;
     background-size: 100% 100%;
 }
+
 
 
 
