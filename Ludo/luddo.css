@@ -12,17 +12,30 @@ body {
 }
 
 #wrap {
-  width: 100vmin; /* Slightly smaller to always fit in view */
+  width: 100vmin;
   height: 100vmin;
   max-width: 100vw;
   max-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #111; /* Black outer background */
-  padding: 2vmin;     /* Gives a neat black border */
+  padding: 2vmin;
   box-sizing: border-box;
   border-radius: 12px;
+
+  background-color: #000;  /* base black background */
+  background-image: repeating-linear-gradient(
+    45deg,
+    #004400,
+    #004400 10px,
+    #00ff00 10px,
+    #00ff00 12px
+  );
+  background-blend-mode: overlay;
+
+  box-shadow:
+    0 0 30px rgba(0, 255, 0, 0.4),
+    0 0 60px rgba(0, 255, 0, 0.3);
 }
 
 #innerwrap {
@@ -148,6 +161,7 @@ body {
     background-position: center;
     background-size: 100% 100%;
 }
+
 
 
 
