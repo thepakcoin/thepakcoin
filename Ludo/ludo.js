@@ -1,47 +1,39 @@
-let diceValue = 0;
-let gotiOnBoard = false; // red goti initially ghar ke andar
+// Players' order
+const players = ["red", "green", "yellow", "blue"];
+let currentPlayerIndex = 0;
 
-function play() {
-    diceValue = Math.floor(Math.random() * 6) + 1;
-    document.getElementById("dice").innerText = diceValue;
+// Get the dice element
+const dice = document.getElementById("shared-dice");
 
-    if (diceValue === 6 && !gotiOnBoard) {
-        moveRedGotiOut();
-        gotiOnBoard = true;
-    } else if (gotiOnBoard) {
-        moveRedGotiForward(diceValue);
-    }
-}
+// Roll dice on click
+dice.addEventListener("click", function () {
+    // Generate random number between 1 and 6
+    const roll = Math.floor(Math.random() * 6) + 1;
 
-// Move red goti from home to board position 505
-function moveRedGotiOut() {
-    const goti = document.getElementById("firstgit");
-    const startBox = document.getElementById("505");
+    // Show number on dice
+    dice.textContent = roll;
 
-    // Remove from home
-    const home = document.getElementById("rr1");
-    if (goti && home && startBox) {
-        home.innerHTML = "";
-        startBox.appendChild(goti);
-        goti.classList.remove("inhouse");
-    }
-}
+    // Optional: Animate roll (basic flash)
+    dice.classList.add("flash");
+    setTimeout(() => {
+        dice.classList.remove("flash");
+    }, 500);
 
-// Move goti ahead by dice value
-let currentPos = 505; // start box
-function moveRedGotiForward(steps) {
-    const goti = document.getElementById("firstgit");
+    // Show current player's turn (optional — change color)
+    const currentPlayer = players[currentPlayerIndex];
+    dice.style.backgroundColor = getPlayerColor(currentPlayer);
 
-    let nextPos = currentPos + steps;
-    if (nextPos > 51) nextPos -= 52; // loop back on board
+    // Move to next player's turn
+    currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+});
 
-    const nextBox = document.getElementById(nextPos);
-    if (nextBox) {
-        const prevBox = document.getElementById(currentPos);
-        if (prevBox.contains(goti)) {
-            prevBox.removeChild(goti);
-        }
-        nextBox.appendChild(goti);
-        currentPos = nextPos;
+// Helper to get player color
+function getPlayerColor(player) {
+    switch (player) {
+        case "red": return "#e74c3c";
+        case "green": return "#2ecc71";
+        case "yellow": return "#f1c40f";
+        case "blue": return "#3498db";
+        default: return "#ffffff";
     }
 }
