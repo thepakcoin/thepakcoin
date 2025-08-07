@@ -1,7 +1,8 @@
 window.addEventListener("DOMContentLoaded", () => {
   const player = document.getElementById("player");
   const board = document.getElementById("gameBoard");
-
+  const cells = []; // <-- yeh start me hona chahiye
+  
   // ✅ Create 225 cells
   for (let i = 0; i < 225; i++) {
     const cell = document.createElement("div");
