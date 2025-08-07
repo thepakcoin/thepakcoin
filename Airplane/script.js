@@ -1,5 +1,12 @@
 const player = document.getElementById("player");
 const board = document.getElementById("gameBoard");
+const board = document.getElementById("gameBoard");
+
+// 15 x 15 = 225 cells
+for (let i = 0; i < 225; i++) {
+  const cell = document.createElement("div");
+  cell.classList.add("cell");
+  board.appendChild(cell);
 
 let playerPos = 0;
 
