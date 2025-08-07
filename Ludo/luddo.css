@@ -19,7 +19,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: white; /* Black outer background */
+  background: black; /* Black outer background */
   padding: 2vmin;     /* Gives a neat black border */
   box-sizing: border-box;
   border-radius: 12px;
@@ -148,6 +148,7 @@ body {
     background-position: center;
     background-size: 100% 100%;
 }
+
 
 
 
