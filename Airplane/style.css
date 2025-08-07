@@ -75,12 +75,11 @@ header {
 
 /* Game Wrapper (below header) */
 #gameWrapper {
-  width: 100%;
-  max-width: 100vmin;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px 0;
+  width: 100%;
 }
 
 /* Game Board */
