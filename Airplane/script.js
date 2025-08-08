@@ -16,6 +16,9 @@ window.addEventListener("DOMContentLoaded", () => {
   // Function to shuffle colors
   function shuffle(arr) {
     return arr.sort(() => Math.random() - 0.5);
+     // ✅ Random color picker
+  function getRandomColor() {
+    return colors[Math.floor(Math.random() * colors.length)];
   
   }
 
