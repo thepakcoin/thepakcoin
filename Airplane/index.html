@@ -1,41 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Airplane Game</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Ludo Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <div class="game-title">✈️ Airplane Game</div>
-    <div class="menu-btn">&#9776;</div> <!-- Hamburger icon -->
+    <button id="menuBtn">&#9776;</button>
   </header>
-  <div class="game-container">
-    <!-- 🔼 Top Avatars -->
-    <div class="top-avatars">
-      <div class="avatar green">Player 3</div>
-      <div class="avatar yellow">Player 2</div>
-    </div>
 
-    <!-- 🟩 Game Board -->
-    <div class="board" id="gameWrapper">
-      <div id="gameBoard">
-        <div class="home top-left home-green"></div>
-        <div class="home top-right home-yellow"></div>
-        <div class="home bottom-left home-red"></div>
-        <div class="home bottom-right home-blue"></div>
+  <main>
+    <div id="ludoBoard"></div>
+  </main>
 
-      </div>
-    </div>
-
-    <!-- 🔽 Bottom Avatars -->
-    <div class="bottom-avatars">
-      <div class="avatar red">Player 1</div>
-      <div class="avatar blue">Player 4</div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>
