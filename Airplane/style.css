@@ -55,12 +55,22 @@ main {
 }
 
 .base {
+  background: transparent !important;
+  border: none;
+}
+
+#baseOverlay {
+  position: absolute;
+  top: calc((100vmin / 15) * 0);    /* Adjust these numbers */
+  left: calc((100vmin / 15) * 0);
+  width: calc((100vmin / 15) * 6);
+  height: calc((100vmin / 15) * 6);
   background-image: url('IMG_20250807_222955.jpg');
   background-repeat: no-repeat;
-  background-size: cover; 
-  background-position: top center;
-  background-color: transparent;
-  border: none;
+  background-size: cover;
+  background-position: center center;
+  pointer-events: none;
+  z-index: 5;
 }
 
 .path {
