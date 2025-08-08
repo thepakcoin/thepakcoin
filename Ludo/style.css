@@ -9,7 +9,6 @@ html, body {
   background-color: #f5f5f5;      
   user-select: none;          
   -ms-touch-action: none;
-  -webkit-user-drag: none;
   overscroll-behavior: none;
 }
 
@@ -50,6 +49,7 @@ body {
 .blue-base {
   background-color: #4da6ff;
 }
+
 
 
 
