@@ -23,3 +23,8 @@ for (let row = 0; row < 15; row++) {
 document.getElementById("menuBtn").addEventListener("click", () => {
   alert("Menu button clicked - future features here!");
 });
+// Add overlay div for base area background image
+const baseOverlay = document.createElement('div');
+baseOverlay.id = 'baseOverlay';
+board.appendChild(baseOverlay);
+
