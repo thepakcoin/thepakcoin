@@ -40,7 +40,7 @@ main {
 }
 
 #ludoBoard {
-  display: grid;
+  display: relative;
   grid-template-columns: repeat(15, 1fr);
   grid-template-rows: repeat(15, 1fr);
   width: 100vmin;
