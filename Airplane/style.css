@@ -93,8 +93,6 @@ header {
   max-height: 100%;
   margin-top: 50px;
   position: relative;
-  width: 400px; /* apne board ka size */
-  height: 400px;
   
   display: grid;
   grid-template-columns: repeat(17, 1fr);
