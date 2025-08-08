@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // Function to shuffle colors
   function shuffle(arr) {
     return arr.sort(() => Math.random() - 0.5);
-  }
+  
   }
 
   // 🏠 Function to color a home area
@@ -26,8 +26,7 @@ window.addEventListener("DOMContentLoaded", () => {
       for (let c = colStart; c < colStart + size; c++) {
         let index = r * 17 + c;
         cells[index].style.backgroundColor = homeColor;
-      }
-    }
+      
   }
 
   // 🏠 Color 4 homes (6x6 each)
