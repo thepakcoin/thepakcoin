@@ -10,6 +10,50 @@ window.addEventListener("DOMContentLoaded", () => {
     board.appendChild(cell);
     cells.push(cell);
   }
+  // 🎨 Random colors list
+  const colors = ["red", "green", "blue", "yellow", "orange", "purple", "pink", "cyan"];
+  
+  function getRandomColor() {
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
+
+  // 🏠 Function to color a home area
+  function colorHome(rowStart, colStart, size) {
+    const homeColor = getRandomColor();
+    for (let r = rowStart; r < rowStart + size; r++) {
+      for (let c = colStart; c < colStart + size; c++) {
+        let index = r * 17 + c;
+        cells[index].style.backgroundColor = homeColor;
+      }
+    }
+  }
+
+  // 🏠 Color 4 homes (6x6 each)
+  colorHome(0, 0, 6);      // Top-left
+  colorHome(0, 11, 6);     // Top-right
+  colorHome(11, 0, 6);     // Bottom-left
+  colorHome(11, 11, 6);    // Bottom-right
+
+  // 🎮 Player movement
+  let playerPos = 0;
+  document.addEventListener("keydown", movePlayer);
+
+  function movePlayer(e) {
+    const boardRect = board.getBoundingClientRect();
+    const playerWidth = player.offsetWidth;
+
+    if (e.key === "ArrowLeft") playerPos -= 20;
+    if (e.key === "ArrowRight") playerPos += 20;
+
+    if (playerPos < 0) playerPos = 0;
+    if (playerPos > boardRect.width - playerWidth) {
+      playerPos = boardRect.width - playerWidth;
+    }
+
+    player.style.left = `${playerPos}px`;
+  }
+});
+
 
   let playerPos = 0
 
