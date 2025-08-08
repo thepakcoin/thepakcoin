@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Ludo Board</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Ludo Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Hamburger Button -->
-    <div class="hamburger" onclick="toggleMenu()">
-        ☰
+  <div class="hamburger">&#9776;</div>
+  
+  <div class="ludo-container">
+    <div class="ludo-board">
+      <!-- You can expand this with more cells -->
+      <div class="cell red-base"></div>
+      <div class="cell"></div>
+      <div class="cell green-base"></div>
+      <div class="cell"></div>
+      <div class="cell yellow-base"></div>
+      <div class="cell"></div>
+      <div class="cell blue-base"></div>
     </div>
+  </div>
 
-    <!-- Ludo Board -->
-    <div class="board-container">
-        <div class="ludo-board">
-            
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
