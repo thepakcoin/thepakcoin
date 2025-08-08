@@ -32,3 +32,14 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js')
     .then(() => console.log('Service Worker Registered'));
 }
+
+const board = document.getElementById("board");
+
+for (let row = 0; row < 15; row++) {
+  for (let col = 0; col < 15; col++) {
+    const cell = document.createElement("div");
+    cell.classList.add("cell");
+    board.appendChild(cell);
+  }
+}
+
