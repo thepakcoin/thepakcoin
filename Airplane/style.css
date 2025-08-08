@@ -46,7 +46,7 @@ main {
   width: 100vmin;
   height: 100vmin;
   background-color: white;
-  border: 5px solid black;
+  border: 5px solid brown;
   border-radius: 10px;
 }
 
@@ -57,46 +57,6 @@ main {
 .base {
   background: transparent;
   border: none;
-}
-
-#baseOverlay {
-  position: absolute;
-  top: calc((100vmin / 15) * 0);    /* Adjust these numbers */
-  left: calc((100vmin / 15) * 0);
-  width: calc((100vmin / 15) * 6);
-  height: calc((100vmin / 15) * 6);
-  background-image: url('IMG_20250807_222955.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  pointer-events: none;
-  z-index: 5;
-}
-
-const board = document.getElementById("ludoBoard");
-
-for (let row = 0; row < 15; row++) {
-  for (let col = 0; col < 15; col++) {
-    const cell = document.createElement("div");
-    cell.classList.add("cell");
-
-    if ((row < 6 && col < 6) || (row > 8 && col > 8) ||
-        (row < 6 && col > 8) || (row > 8 && col < 6)) {
-      cell.classList.add("base");
-    } else if (row === 7 && col === 7) {
-      cell.classList.add("home");
-    } else {
-      cell.classList.add("path");
-    }
-
-    board.appendChild(cell);
-  }
-}
-
-// Add overlay div for base area background image
-const baseOverlay = document.createElement('div');
-baseOverlay.id = 'baseOverlay';
-board.appendChild(baseOverlay);
 
 }
 
