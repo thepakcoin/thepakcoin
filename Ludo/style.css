@@ -8,7 +8,7 @@
 /* Body styles */
 body, html {
     height: 100%;
-    overflow: hidden; /* Disable scroll */
+    overflow: auto; /* Disable scroll */
     font-family: sans-serif;
 }
 
@@ -29,20 +29,13 @@ html {
 
 /* Simple Ludo board placeholder */
 .ludo-board {
-    width: 400px;
-    height: 400px;
+    width: 100vinm;
+    height: 100vinm;
     background-color: #fff;
     border: 10px solid #000;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     position: relative;
-}
 
-/* Board text for now */
-.board-text {
-    text-align: center;
-    line-height: 400px;
-    font-size: 24px;
-    color: #333;
 }
 
 /* Hamburger button styles */
