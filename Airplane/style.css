@@ -83,8 +83,8 @@ header {
 
 /* Game Board */
 #gameBoard {
-  width: 100vmin;
-  height: 100vmin;
+  width: 110vmin;
+  height: 110vmin;
   background-color: white;
   border: 5px solid lightblue;
   border-radius: 20px;
