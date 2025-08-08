@@ -45,6 +45,9 @@ main {
   grid-template-rows: repeat(15, 1fr);
   width: 100vmin;
   height: 100vmin;
+  background-color: white;
+  border: 5px solid lightblue;
+  border-radius: 10px;
 }
 
 .cell {
