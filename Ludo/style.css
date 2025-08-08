@@ -42,14 +42,18 @@ body {
   border: none;
 }
 .green-base {
-  background-color: #4dff4d;
+  background-color: #4dff4d
+  border: none;
 }
 .yellow-base {
   background-color: #ffff66;
+  border: none;
 }
 .blue-base {
   background-color: #4da6ff;
+  border: none;
 }
+
 
 
 
