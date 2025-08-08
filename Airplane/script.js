@@ -130,6 +130,11 @@ const bluePath = [
   64, 65, 66 // center
 ];
 
+colorPath(redPath, "red");
+colorPath(greenPath, "green");
+colorPath(yellowPath, "gold");
+colorPath(bluePath, "blue");
+
   // 🎮 Player movement
   let playerPos = 0;
   document.addEventListener("keydown", movePlayer);
