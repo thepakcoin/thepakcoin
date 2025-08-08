@@ -36,6 +36,9 @@ html, body {
   grid-template-rows: repeat(3, 80px);
   border: 5px solid #000;
   background-color: #f8f8f8;
+  width: 100px;
+  height: 100px;
+  position: center;
 }
 
 /* Ludo Cells */
