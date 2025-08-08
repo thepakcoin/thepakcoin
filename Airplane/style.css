@@ -95,8 +95,7 @@ header {
   position: relative;
   width: 400px; /* apne board ka size */
   height: 400px;
-  border: 2px solid #000;
-
+  
   display: grid;
   grid-template-columns: repeat(17, 1fr);
   grid-template-rows: repeat(17, 1fr);
