@@ -4,9 +4,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 html, body {
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   font-family: sans-serif;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
@@ -22,24 +23,24 @@ html, body {
   z-index: 1000;
 }
 
-/* Ludo Board */
+/* Ludo Board Container - center aligned */
 .ludo-container {
   display: flex;
   align-items: center;
-  justify-content: flex;
+  justify-content: center;
   height: 100%;
   width: 100%;
 }
 
+/* Ludo Board */
 .ludo-board {
   display: grid;
   grid-template-columns: repeat(3, 80px);
   grid-template-rows: repeat(3, 80px);
   border: 5px solid brown;
   background-color: #f8f8f8;
-  width: 100px;
-  height: 100px;
-  position: center;
+  width: 240px;   /* 3 * 80px */
+  height: 240px;  /* 3 * 80px */
 }
 
 /* Ludo Cells */
@@ -63,9 +64,9 @@ html, body {
   background-color: #3399ff;
 }
 
-/* Responsive Fixed Size */
+/* Responsive - slight scale on small devices */
 @media (max-width: 600px) {
   .ludo-board {
-    transform: scale(0.8);
+    transform: scale(0.9);
   }
 }
