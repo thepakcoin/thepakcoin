@@ -4,45 +4,51 @@
   <meta charset="UTF-8" />
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Ludo Game</title>
+  <title>Ludo Board Only</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="hamburger">☰</div>
-  </header>
-
-  <main>
-    <!-- Top Player -->
-    <div class="player player-top">
-      <img src="https://i.pravatar.cc/60?img=32" alt="Red" />
-      <button class="dice" id="dice-red" onclick="rollDice('red')">🎲</button>
+  <div class="board">
+    <!-- Red Base -->
+    <div class="base red">
+      <div class="token red-token"></div>
+      <div class="token red-token"></div>
+      <div class="token red-token"></div>
+      <div class="token red-token"></div>
     </div>
 
-    <!-- Left Player -->
-    <div class="player player-left">
-      <img src="https://i.pravatar.cc/60?img=12" alt="Green" />
-      <button class="dice" id="dice-green" onclick="rollDice('green')">🎲</button>
+    <!-- Green Base -->
+    <div class="base green">
+      <div class="token green-token"></div>
+      <div class="token green-token"></div>
+      <div class="token green-token"></div>
+      <div class="token green-token"></div>
     </div>
 
-    <!-- Ludo Board -->
-    <div class="board-container">
-      <div id="ludo-board">LUDO BOARD</div>
+    <!-- Yellow Base -->
+    <div class="base yellow">
+      <div class="token yellow-token"></div>
+      <div class="token yellow-token"></div>
+      <div class="token yellow-token"></div>
+      <div class="token yellow-token"></div>
     </div>
 
-    <!-- Right Player -->
-    <div class="player player-right">
-      <img src="https://i.pravatar.cc/60?img=24" alt="Blue" />
-      <button class="dice" id="dice-blue" onclick="rollDice('blue')">🎲</button>
+    <!-- Blue Base -->
+    <div class="base blue">
+      <div class="token blue-token"></div>
+      <div class="token blue-token"></div>
+      <div class="token blue-token"></div>
+      <div class="token blue-token"></div>
     </div>
 
-    <!-- Bottom Player -->
-    <div class="player player-bottom">
-      <img src="https://i.pravatar.cc/60?img=44" alt="Yellow" />
-      <button class="dice" id="dice-yellow" onclick="rollDice('yellow')">🎲</button>
+    <!-- Paths -->
+    <div class="path-grid">
+      <!-- Generate 15x15 grid -->
+      <!-- You can add 'safe' or 'home' cells by class -->
+      <!-- This is placeholder, next version can use JS to generate -->
+      <div class="cell start"></div>
+      <!-- ... repeat 225 divs or generate via JS -->
     </div>
-  </main>
-
-  <script src="script.js"></script>
+  </div>
 </body>
 </html>
