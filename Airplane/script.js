@@ -1,50 +1,47 @@
 window.addEventListener("DOMContentLoaded", () => {
   const player = document.getElementById("player");
   const board = document.getElementById("gameBoard");
-  const cells = []; // <-- yeh start me hona chahiye
-  
-  // ✅ Create 225 cells
+  const cells = [];
+
+  // ✅ Create 289 cells (17x17)
   for (let i = 0; i < 289; i++) {
     const cell = document.createElement("div");
     cell.classList.add("cell");
     board.appendChild(cell);
     cells.push(cell);
-    
   }
 
-  // Fixed 4 colors
-  const colors = ["red", "green", "blue", "yellow"];
-
-  // shuffle helper
-  function shuffle(arr) {
-    return arr.sort(() => Math.random() - 0.5);
+  // 🎨 Random colors list
+  const colors = ["red", "green", "blue", "yellow", "orange", "purple", "pink", "cyan"];
+  
+  function getRandomColor() {
+    return colors[Math.floor(Math.random() * colors.length)];
   }
 
-  // colorHome function (works inside DOMContentLoaded so 'cells' is available)
-  function colorHome(rowStart, colStart, size, color) {
+  // 🏠 Function to color a home area
+  function colorHome(rowStart, colStart, size) {
+    const homeColor = getRandomColor();
     for (let r = rowStart; r < rowStart + size; r++) {
       for (let c = colStart; c < colStart + size; c++) {
-        const index = r * GRID + c;
-        // safety check
-        if (cells[index]) cells[index].style.backgroundColor = color;
+        let index = r * 17 + c;
+        cells[index].style.backgroundColor = homeColor;
       }
     }
   }
 
-  // Assign 4 unique colors (shuffled)
-  const homeColors = shuffle([...colors]);
-  colorHome(0, 0, HOME_SIZE, homeColors[0]);                    // top-left
-  colorHome(0, GRID - HOME_SIZE, HOME_SIZE, homeColors[1]);    // top-right (GRID-6 = 11)
-  colorHome(GRID - HOME_SIZE, 0, HOME_SIZE, homeColors[2]);    // bottom-left
-  colorHome(GRID - HOME_SIZE, GRID - HOME_SIZE, HOME_SIZE, homeColors[3]); // bottom-right
+  // 🏠 Color 4 homes (6x6 each)
+  colorHome(0, 0, 6);      // Top-left
+  colorHome(0, 11, 6);     // Top-right
+  colorHome(11, 0, 6);     // Bottom-left
+  colorHome(11, 11, 6);    // Bottom-right
 
-  // Player movement (left / right)
+  // 🎮 Player movement
   let playerPos = 0;
   document.addEventListener("keydown", movePlayer);
 
   function movePlayer(e) {
     const boardRect = board.getBoundingClientRect();
-    const playerWidth = player ? player.offsetWidth : 40; // fallback
+    const playerWidth = player.offsetWidth;
 
     if (e.key === "ArrowLeft") playerPos -= 20;
     if (e.key === "ArrowRight") playerPos += 20;
@@ -54,6 +51,6 @@ window.addEventListener("DOMContentLoaded", () => {
       playerPos = boardRect.width - playerWidth;
     }
 
-    if (player) player.style.left = `${playerPos}px`;
+    player.style.left = `${playerPos}px`;
   }
 });
