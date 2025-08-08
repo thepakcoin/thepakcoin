@@ -95,8 +95,8 @@ header {
   margin-top: 50px;
 
   display: grid;
-  grid-template-columns: repeat(15, 1fr);
-  grid-template-rows: repeat(15, 1fr);
+  grid-template-columns: repeat(17, 1fr);
+  grid-template-rows: repeat(17, 1fr);
   gap: 1px;
 }
 
