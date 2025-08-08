@@ -18,16 +18,25 @@ window.addEventListener("DOMContentLoaded", () => {
     return colors[Math.floor(Math.random() * colors.length)];
   }
 
-  // 🏠 Function to color a home area
-  function colorHome(rowStart, colStart, size) {
-    const homeColor = getRandomColor();
+   // 🏠 Function to create homes (blue one with image)
+  function colorHome(rowStart, colStart, size, homeType) {
     for (let r = rowStart; r < rowStart + size; r++) {
       for (let c = colStart; c < colStart + size; c++) {
         let index = r * 17 + c;
-        cells[index].style.backgroundColor = homeColor;
+
+        if (homeType === "blue") {
+          cells[index].style.backgroundImage = "url('IMG_20250807_222955.jpg')";
+          cells[index].style.backgroundSize = "cover";
+          cells[index].style.backgroundPosition = "center";
+          cells[index].style.pointerEvents = "none";
+        } else {
+          cells[index].style.backgroundColor = homeType;
+          cells[index].style.pointerEvents = "none";
+        }
       }
     }
   }
+
 
   // 🏠 Color 4 homes (6x6 each)
   colorHome(0, 0, 6);      // Top-left
