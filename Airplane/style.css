@@ -31,6 +31,16 @@ header {
   cursor: pointer;
 }
 
+#rollDiceBtn {
+  font-size: 18px;
+  cursor: pointer;
+  padding: 6px 12px;
+}
+
+#diceResult, #currentPlayer {
+  font-size: 18px;
+}
+
 main {
   width: 100%;
   height: 100%;
@@ -67,4 +77,58 @@ main {
 .home {
   background-color: green;
 
+}
+
+/* Player base colors */
+.base.red {
+  background-color: #f28b82; /* red */
+}
+
+.base.green {
+  background-color: #81c995; /* green */
+}
+
+.base.yellow {
+  background-color: #fdd663; /* yellow */
+}
+
+.base.blue {
+  background-color: #aecbfa; /* blue */
+}
+
+.token {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  margin: auto;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  z-index: 10;
+}
+
+/* Token colors by player */
+.token.red {
+  background-color: #d32f2f;
+}
+
+.token.green {
+  background-color: #388e3c;
+}
+
+.token.yellow {
+  background-color: #fbc02d;
+  color: black;
+}
+
+.token.blue {
+  background-color: #1976d2;
 }
