@@ -23,6 +23,12 @@ body {
   height: 100vh;
 }
 
+#board-container {
+  position: relative;
+  width: 90vmin;
+  height: 90vmin;
+}
+
 /* Board setup */
 #board {
   display: grid;
@@ -76,6 +82,7 @@ body {
   background-color: #1B03A3;
   border: none; 
 }
+
 
 
 
