@@ -39,14 +39,17 @@ body {
   background-color: #FF000F;
   border: none;
 }
+
 .green-base {
   background-color: #32FF7E;
   border: none;
 }
+
 .yellow-base {
   background-color: #ffff66;
   border: none;
 }
+
   .token-spot {
   width: 4vmin;
   height: 4vmin;
@@ -62,10 +65,12 @@ body {
   border-color: goldenrod;
 
 }
+
 .blue-base {
-  background-color: #4dff4d;
+  background-color: #1B03A3;
   border: none;
 }
+
 
 
 
