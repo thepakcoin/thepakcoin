@@ -2,53 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Ludo Board Only</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Ludo Board</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="board">
-    <!-- Red Base -->
-    <div class="base red">
-      <div class="token red-token"></div>
-      <div class="token red-token"></div>
-      <div class="token red-token"></div>
-      <div class="token red-token"></div>
-    </div>
+  <div class="ludo-board" id="board"></div>
 
-    <!-- Green Base -->
-    <div class="base green">
-      <div class="token green-token"></div>
-      <div class="token green-token"></div>
-      <div class="token green-token"></div>
-      <div class="token green-token"></div>
-    </div>
-
-    <!-- Yellow Base -->
-    <div class="base yellow">
-      <div class="token yellow-token"></div>
-      <div class="token yellow-token"></div>
-      <div class="token yellow-token"></div>
-      <div class="token yellow-token"></div>
-    </div>
-
-    <!-- Blue Base -->
-    <div class="base blue">
-      <div class="token blue-token"></div>
-      <div class="token blue-token"></div>
-      <div class="token blue-token"></div>
-      <div class="token blue-token"></div>
-    </div>
-
-    <!-- Paths -->
-    <div class="path-grid">
-      <!-- Generate 15x15 grid -->
-      <!-- You can add 'safe' or 'home' cells by class -->
-      <!-- This is placeholder, next version can use JS to generate -->
-      <div class="cell start"></div>
-      <!-- ... repeat 225 divs or generate via JS -->
-    </div>
-  </div>
+  <script src="script.js"></script>
 </body>
 </html>
