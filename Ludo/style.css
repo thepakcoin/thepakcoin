@@ -1,45 +1,38 @@
-body {
-  font-family: sans-serif;
-  text-align: center;
-  background: #f2f2f2;
+/* Prevent zooming and scrolling */
+html, body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+  background-color: #f5f5f5;
+}
+
+body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
 }
 
-h1 {
-  margin-top: 20px;
-}
-
+/* Board setup */
 #board {
-  width: 300px;
-  height: 300px;
-  background-color: #fff;
-  border: 3px solid #444;
-  margin: 20px auto;
-  position: relative;
   display: grid;
-  grid-template-columns: repeat(15, 40px);
-  grid-template-rows: repeat(15, 40px);
-  gap: 1px;
-  background: black;
-
-}
-
-.cell {
-  width: 40px;
-  height: 40px;
-  background-color: white;
-  border: 1px solid #ccc;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(15, 1fr);
+  width: 90vmin;
+  height: 90vmin;
+  border: 4px solid #000;
   box-sizing: border-box;
-  aspect-ratio: 1 / 1;
 }
 
-/* Base Colors */
+/* Each cell */
+.cell {
+  border: 0.5px solid #999;
+  background-color: white;
+}
+
+/* Base colors */
 .red-base {
   background-color: #ff4d4d;
 }
@@ -52,31 +45,3 @@ h1 {
 .blue-base {
   background-color: #4da6ff;
 }
-
-.token {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-
-.red {
-  background-color: red;
-}
-
-.blue {
-  background-color: blue;
-  top: 10px;
-  left: 50px;
-}
-
-.controls {
-  margin-top: 20px;
-}
-	
-
-
-
-
