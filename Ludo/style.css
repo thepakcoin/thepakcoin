@@ -6,7 +6,7 @@
 }
 html, body {
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
   font-family: sans-serif;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
