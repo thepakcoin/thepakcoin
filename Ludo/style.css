@@ -27,15 +27,14 @@ html {
     background: #f0f0f0;
 }
 
-/* Simple Ludo board placeholder */
 .ludo-board {
-    width: 1000px;
-    height: 1000px;
+    width: calc(100% - 20px); /* 20px = 10px left border + 10px right border */
+    height: 100px;
     background-color: #fff;
-    border: 10px solid brown;
+    border-left: 10px solid brown;
+    border-right: 10px solid brown;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     position: relative;
-
 }
 
 /* Hamburger button styles */
