@@ -1,1 +1,60 @@
+/* Remove default margins */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+/* Body styles */
+body, html {
+    height: 100%;
+    overflow: hidden; /* Disable scroll */
+    font-family: sans-serif;
+}
+
+/* Disable zooming (extra for mobile browsers) */
+html {
+    touch-action: manipulation;
+}
+
+/* Center the board container */
+.board-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+}
+
+/* Simple Ludo board placeholder */
+.ludo-board {
+    width: 400px;
+    height: 400px;
+    background-color: #fff;
+    border: 10px solid #000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+/* Board text for now */
+.board-text {
+    text-align: center;
+    line-height: 400px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Hamburger button styles */
+.hamburger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
