@@ -8,40 +8,38 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Top Header with Hamburger -->
   <header>
     <div class="hamburger">☰</div>
   </header>
 
-  <!-- Game UI -->
   <main>
     <!-- Top Player -->
     <div class="player player-top">
       <img src="https://i.pravatar.cc/60?img=32" alt="Red" />
-      <div class="dice" id="dice-red" onclick="rollDice('red')">🎲</div>
+      <button class="dice" id="dice-red" onclick="rollDice('red')">🎲</button>
     </div>
 
     <!-- Left Player -->
     <div class="player player-left">
       <img src="https://i.pravatar.cc/60?img=12" alt="Green" />
-      <div class="dice" id="dice-green" onclick="rollDice('green')">🎲</div>
+      <button class="dice" id="dice-green" onclick="rollDice('green')">🎲</button>
     </div>
 
-    <!-- Board Center -->
+    <!-- Ludo Board -->
     <div class="board-container">
-      <canvas id="ludo-board" width="600" height="600"></canvas>
+      <div id="ludo-board">LUDO BOARD</div>
     </div>
 
     <!-- Right Player -->
     <div class="player player-right">
       <img src="https://i.pravatar.cc/60?img=24" alt="Blue" />
-      <div class="dice" id="dice-blue" onclick="rollDice('blue')">🎲</div>
+      <button class="dice" id="dice-blue" onclick="rollDice('blue')">🎲</button>
     </div>
 
     <!-- Bottom Player -->
     <div class="player player-bottom">
       <img src="https://i.pravatar.cc/60?img=44" alt="Yellow" />
-      <div class="dice" id="dice-yellow" onclick="rollDice('yellow')">🎲</div>
+      <button class="dice" id="dice-yellow" onclick="rollDice('yellow')">🎲</button>
     </div>
   </main>
 
