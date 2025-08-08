@@ -55,7 +55,7 @@ main {
 }
 
 .base {
-  background: transparent !important;
+  background: transparent;
   border: none;
 }
 
