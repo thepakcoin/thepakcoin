@@ -105,16 +105,19 @@ header {
   border: 1px solid #999;      /* border taake clearly visible ho */
   width: 100%;                 /* grid cell ko fill kare */
   height: 100%;
+  background-size: cover;
+  background-position: center;
+
 }
 
 /* Player */
 #player {
   position: absolute;
   bottom: 10px;
+  top:0;
   left: 50%;
   width: 40px;
   height: 40px;
   background-color: red;
-  transform: translateX(-50%);
   z-index: 10;
 }
