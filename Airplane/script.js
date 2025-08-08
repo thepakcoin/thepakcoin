@@ -13,8 +13,10 @@ window.addEventListener("DOMContentLoaded", () => {
   // 🎨 Random colors list
   const colors = ["red", "green", "blue", "yellow"];
   
-  function getRandomColor() {
-    return colors[Math.floor(Math.random() * colors.length)];
+  // Function to shuffle colors
+  function shuffle(arr) {
+    return arr.sort(() => Math.random() - 0.5);
+  }
   }
 
   // 🏠 Function to color a home area
