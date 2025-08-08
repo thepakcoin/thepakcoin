@@ -5,24 +5,49 @@ for (let row = 0; row < 15; row++) {
     const cell = document.createElement("div");
     cell.classList.add("cell");
 
-    // 6x6 Top-Left: RED base
+    // RED base (top-left)
     if (row < 6 && col < 6) {
       cell.classList.add("red-base");
+
+      // Add token-spots at specific positions
+      if ((row === 1 && col === 1) || (row === 3 && col === 3)) {
+        const token = document.createElement("div");
+        token.classList.add("token-spot");
+        cell.appendChild(token);
+      }
     }
 
-    // 6x6 Top-Right: GREEN base
+    // GREEN base (top-right)
     else if (row < 6 && col > 8) {
       cell.classList.add("green-base");
+
+      if ((row === 1 && col === 13) || (row === 3 && col === 11)) {
+        const token = document.createElement("div");
+        token.classList.add("token-spot");
+        cell.appendChild(token);
+      }
     }
 
-    // 6x6 Bottom-Left: YELLOW base
+    // YELLOW base (bottom-left)
     else if (row > 8 && col < 6) {
       cell.classList.add("yellow-base");
+
+      if ((row === 11 && col === 1) || (row === 13 && col === 3)) {
+        const token = document.createElement("div");
+        token.classList.add("token-spot");
+        cell.appendChild(token);
+      }
     }
 
-    // 6x6 Bottom-Right: BLUE base
+    // BLUE base (bottom-right)
     else if (row > 8 && col > 8) {
       cell.classList.add("blue-base");
+
+      if ((row === 11 && col === 13) || (row === 13 && col === 11)) {
+        const token = document.createElement("div");
+        token.classList.add("token-spot");
+        cell.appendChild(token);
+      }
     }
 
     board.appendChild(cell);
