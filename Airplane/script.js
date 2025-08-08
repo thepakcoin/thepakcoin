@@ -43,6 +43,12 @@ window.addEventListener("DOMContentLoaded", () => {
   colorHome(0, 11, 6);     // Top-right
   colorHome(11, 0, 6);     // Bottom-left
   colorHome(11, 11, 6);    // Bottom-right
+  
+   function colorPath(pathArray, color) {
+    pathArray.forEach(index => {
+      cells[index].style.backgroundColor = color;
+    });
+   }
 
   function colorLudoPath(cells, GRID) {
   const pathColor = "#ccc";
