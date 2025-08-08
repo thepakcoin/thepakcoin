@@ -52,10 +52,6 @@ main {
 
 .cell {
   border: 1px solid #ccc;
-  background-image: url('IMG_20250807_222955.jpg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 .base {
