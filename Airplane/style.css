@@ -100,6 +100,13 @@ header {
   gap: 1px;
 }
 
+.cell {
+  background-color: white;     /* cell ka background */
+  border: 1px solid #999;      /* border taake clearly visible ho */
+  width: 100%;                 /* grid cell ko fill kare */
+  height: 100%;
+}
+
 /* Player */
 #player {
   position: absolute;
