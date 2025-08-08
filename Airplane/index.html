@@ -1,23 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Ludo Game</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Top Header with Hamburger -->
   <header>
-    <button id="menuBtn">&#9776;</button>
+    <div class="hamburger">☰</div>
   </header>
-</header>
-   <button id="rollDiceBtn">Roll Dice</button>
-  <div id="diceResult">Dice: -</div>
-  <div id="currentPlayer">Current Player: Red</div>
-</header>
 
+  <!-- Game UI -->
   <main>
-    <div id="ludoBoard"></div>
+    <!-- Top Player -->
+    <div class="player player-top">
+      <img src="https://i.pravatar.cc/60?img=32" alt="Red" />
+      <div class="dice" id="dice-red" onclick="rollDice('red')">🎲</div>
+    </div>
+
+    <!-- Left Player -->
+    <div class="player player-left">
+      <img src="https://i.pravatar.cc/60?img=12" alt="Green" />
+      <div class="dice" id="dice-green" onclick="rollDice('green')">🎲</div>
+    </div>
+
+    <!-- Board Center -->
+    <div class="board-container">
+      <canvas id="ludo-board" width="600" height="600"></canvas>
+    </div>
+
+    <!-- Right Player -->
+    <div class="player player-right">
+      <img src="https://i.pravatar.cc/60?img=24" alt="Blue" />
+      <div class="dice" id="dice-blue" onclick="rollDice('blue')">🎲</div>
+    </div>
+
+    <!-- Bottom Player -->
+    <div class="player player-bottom">
+      <img src="https://i.pravatar.cc/60?img=44" alt="Yellow" />
+      <div class="dice" id="dice-yellow" onclick="rollDice('yellow')">🎲</div>
+    </div>
   </main>
 
   <script src="script.js"></script>
