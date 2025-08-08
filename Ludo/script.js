@@ -1,4 +1,2 @@
-function toggleMenu() {
-    alert("Hamburger button clicked!");
-    // You can open a menu here if needed
-}
+// Placeholder for future interactivity
+console.log("Ludo Board Ready!");
