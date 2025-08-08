@@ -43,3 +43,28 @@ for (let row = 0; row < 15; row++) {
   }
 }
 
+
+    // RED BASE (Top-left 6x6)
+    if (row < 6 && col < 6) {
+      cell.classList.add("red-base");
+    }
+
+    // GREEN BASE (Top-right 6x6)
+    else if (row < 6 && col > 8) {
+      cell.classList.add("green-base");
+    }
+
+    // YELLOW BASE (Bottom-left 6x6)
+    else if (row > 8 && col < 6) {
+      cell.classList.add("yellow-base");
+    }
+
+    // BLUE BASE (Bottom-right 6x6)
+    else if (row > 8 && col > 8) {
+      cell.classList.add("blue-base");
+    }
+
+  }
+}
+
+
