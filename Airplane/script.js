@@ -87,6 +87,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
   }
+  colorLudoPath(cells, 17);
 
   // 🎮 Player movement
   let playerPos = 0;
