@@ -1,4 +1,7 @@
-/* Prevent zooming and scrolling */
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -70,6 +73,7 @@ body {
   background-color: #1B03A3;
   border: none; 
 }
+
 
 
 
