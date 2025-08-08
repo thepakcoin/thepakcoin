@@ -26,15 +26,16 @@ html, body {
 .ludo-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex;
   height: 100%;
+  width: 100%;
 }
 
 .ludo-board {
   display: grid;
   grid-template-columns: repeat(3, 80px);
   grid-template-rows: repeat(3, 80px);
-  border: 5px solid #000;
+  border: 5px solid brown;
   background-color: #f8f8f8;
   width: 100px;
   height: 100px;
