@@ -13,6 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // 🎨 Random colors list
   const colors = ["red", "green", "blue", "yellow"];
   
+  }
 
   // 🏠 Function to color a home area
   function colorHome(rowStart, colStart, size) {
