@@ -57,7 +57,7 @@ main {
 .base {
   background-image: url('IMG_20250807_222955.jpg');
   background-repeat: no-repeat;
-  background-size: contain; 
+  background-size: cover; 
   background-position: top center;
   background-color: transparent;
   border: none;
