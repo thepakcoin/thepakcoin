@@ -1,2 +1,2 @@
-// Placeholder for future interactivity
-console.log("Ludo Board Ready!");
+// No logic yet — placeholder
+console.log("Ludo board loaded.");
