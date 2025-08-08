@@ -9,7 +9,8 @@ window.addEventListener("DOMContentLoaded", () => {
     cell.classList.add("cell");
     board.appendChild(cell);
     cells.push(cell);
-      }
+    
+  }
 
   // Fixed 4 colors
   const colors = ["red", "green", "blue", "yellow"];
