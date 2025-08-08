@@ -35,6 +35,59 @@ window.addEventListener("DOMContentLoaded", () => {
   colorHome(11, 0, 6);     // Bottom-left
   colorHome(11, 11, 6);    // Bottom-right
 
+  function colorLudoPath(cells, GRID) {
+  const pathColor = "#ccc";
+  const center = Math.floor(GRID / 2);
+
+  // Upar se neeche vertical path
+  for (let r = 0; r < GRID; r++) {
+    if (r < 6 || r > 10) { // home ke andar na ho
+      const index = r * GRID + center;
+      cells[index].style.backgroundColor = pathColor;
+    }
+  }
+
+  // Baaye se daaye horizontal path
+  for (let c = 0; c < GRID; c++) {
+    if (c < 6 || c > 10) { // home ke andar na ho
+      const index = center * GRID + c;
+      cells[index].style.backgroundColor = pathColor;
+    }
+  }
+
+  // Upar ka vertical entry path
+  for (let r = 0; r < 6; r++) {
+    const index = r * GRID + center;
+    cells[index].style.backgroundColor = pathColor;
+  }
+
+  // Neeche ka vertical entry path
+  for (let r = GRID - 6; r < GRID; r++) {
+    const index = r * GRID + center;
+    cells[index].style.backgroundColor = pathColor;
+  }
+
+  // Left ka horizontal entry path
+  for (let c = 0; c < 6; c++) {
+    const index = center * GRID + c;
+    cells[index].style.backgroundColor = pathColor;
+  }
+
+  // Right ka horizontal entry path
+  for (let c = GRID - 6; c < GRID; c++) {
+    const index = center * GRID + c;
+    cells[index].style.backgroundColor = pathColor;
+  }
+
+  // Middle destination square (3x3)
+  for (let r = center - 1; r <= center + 1; r++) {
+    for (let c = center - 1; c <= center + 1; c++) {
+      const index = r * GRID + c;
+      cells[index].style.backgroundColor = "white";
+    }
+  }
+  }
+
   // 🎮 Player movement
   let playerPos = 0;
   document.addEventListener("keydown", movePlayer);
