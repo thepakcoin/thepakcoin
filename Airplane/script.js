@@ -4,7 +4,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const cells = []; // <-- yeh start me hona chahiye
   
   // ✅ Create 225 cells
-  for (let i = 0; i < 225; i++) {
+  for (let i = 0; i < 289; i++) {
     const cell = document.createElement("div");
     cell.classList.add("cell");
     board.appendChild(cell);
