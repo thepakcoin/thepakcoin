@@ -1,31 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Simple Ludo</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="hamburger">&#9776;</div>
+/* Reset and disable zooming */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: sans-serif;
+  touch-action: manipulation;
+  -ms-touch-action: manipulation;
+}
 
-  <div class="board-wrapper">
-    <div class="ludo-board">
-      <!-- Simple 3x3 board with base colors -->
-      <div class="cell red-base"></div>
-      <div class="cell"></div>
-      <div class="cell green-base"></div>
+/* Hamburger icon */
+.hamburger {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 1000;
+}
 
-      <div class="cell"></div>
-      <div class="cell center"></div>
-      <div class="cell"></div>
+/* Board wrapper - center content */
+.board-wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-      <div class="cell yellow-base"></div>
-      <div class="cell"></div>
-      <div class="cell blue-base"></div>
-    </div>
-  </div>
+/* Ludo Board */
+.ludo-board {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(3, 80px);
+  border: 5px solid #000;
+  background-color: #f0f0f0;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+/* Each cell */
+.cell {
+  width: 80px;
+  height: 80px;
+  border: 2px solid #000;
+}
+
+/* Base colors */
+.red-base {
+  background-color: #ff4d4d;
+}
+.green-base {
+  background-color: #33cc33;
+}
+.yellow-base {
+  background-color: #ffff66;
+}
+.blue-base {
+  background-color: #3399ff;
+}
+
+/* Center cell (optional) */
+.center {
+  background-color: #ccc;
+}
+
+/* Responsive scaling on small devices */
+@media (max-width: 500px) {
+  .ludo-board {
+    transform: scale(0.8);
+  }
+}
