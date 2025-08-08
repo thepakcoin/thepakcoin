@@ -1,52 +1,67 @@
-/* Remove default margins */
+/* Reset and lock zoom */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: sans-serif;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
 }
 
-/* Body styles */
-body, html {
-    height: 100%;
-    overflow: auto;
-    font-family: sans-serif;
-}
-
-/* Disable zooming (extra for mobile browsers) */
-html {
-    touch-action: manipulation;
-}
-
-/* Hamburger button styles */
+/* Hamburger */
 .hamburger {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    font-size: 30px;
-    cursor: pointer;
-    z-index: 1000;
-    background-color: #333;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 1000;
 }
 
-/* Center the board container */
-.board-container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f0f0f0;
+/* Ludo Board */
+.ludo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .ludo-board {
-    width: calc(100% - 20px);
-    height: 100px;
-    background-color: white 
-    border: 10px solid wood;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(3, 80px);
+  border: 5px solid #000;
+  background-color: #f8f8f8;
 }
 
+/* Ludo Cells */
+.cell {
+  border: 2px solid #000;
+  width: 80px;
+  height: 80px;
+}
+
+/* Base Colors */
+.red-base {
+  background-color: #ff4d4d;
+}
+.green-base {
+  background-color: #33cc33;
+}
+.yellow-base {
+  background-color: #ffff66;
+}
+.blue-base {
+  background-color: #3399ff;
+}
+
+/* Responsive Fixed Size */
+@media (max-width: 600px) {
+  .ludo-board {
+    transform: scale(0.8);
+  }
+}
