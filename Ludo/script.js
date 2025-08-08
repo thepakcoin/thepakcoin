@@ -8,7 +8,7 @@ const rollBtn = document.getElementById("rollBtn");
 const diceResult = document.getElementById("diceResult");
 const turnDisplay = document.getElementById("turnDisplay");
 
-  rollBtn.addEventListener("click", () => {
+rollBtn.addEventListener("click", () => {
   const dice = Math.floor(Math.random() * 6) + 1;
   diceResult.innerText = `Dice: ${dice}`;
 
