@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   // 🎨 Random colors list
-  const colors = ["red", "green", "blue", "yellow", "orange", "purple", "pink", "cyan"];
+  const colors = ["red", "green", "blue", "yellow"];
   
   function getRandomColor() {
     return colors[Math.floor(Math.random() * colors.length)];
