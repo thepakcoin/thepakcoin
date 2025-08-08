@@ -43,8 +43,8 @@ main {
   display: grid;
   grid-template-columns: repeat(15, 1fr);
   grid-template-rows: repeat(15, 1fr);
-  width: 90vmin;
-  height: 90vmin;
+  width: 100vmin;
+  height: 100vmin;
 }
 
 .cell {
