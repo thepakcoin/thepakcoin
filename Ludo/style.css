@@ -4,8 +4,11 @@ html, body {
   padding: 0;
   overflow: hidden;
   touch-action: none;
-  user-select: none;
-  background-color: #f5f5f5;
+  background-color: #f5f5f5;      
+  user-select: none;          
+  -ms-touch-action: none;
+  -webkit-user-drag: none;
+  overscroll-behavior: none;
 }
 
 body {
@@ -45,3 +48,4 @@ body {
 .blue-base {
   background-color: #4da6ff;
 }
+
