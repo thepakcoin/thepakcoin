@@ -28,7 +28,7 @@ function moveToken(player, steps) {
 }
 
 // PWA service worker register
-if ('serviceWorker' in navigator) {
+ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js')
     .then(() => console.log('Service Worker Registered'));
 }
