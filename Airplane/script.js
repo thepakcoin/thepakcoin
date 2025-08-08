@@ -19,8 +19,6 @@ window.addEventListener("DOMContentLoaded", () => {
      // ✅ Random color picker
   function getRandomColor() {
     return colors[Math.floor(Math.random() * colors.length)];
-  
-  }
 
   // 🏠 Function to color a home area
   function colorHome(rowStart, colStart, size) {
