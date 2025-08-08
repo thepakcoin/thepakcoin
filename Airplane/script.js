@@ -85,7 +85,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const index = r * GRID + c;
       cells[index].style.backgroundColor = "white";
     }
-  }
+   }
   }
   colorLudoPath(cells, 17);
 
