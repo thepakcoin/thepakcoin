@@ -1,76 +1,47 @@
-/* Reset the margin and padding of all elements */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Body styling */
 body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #333;
+    color: white;
 }
 
-/* Ludo Board styling */
-.ludo-board {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columns */
-  grid-template-rows: repeat(5, 1fr); /* 5 rows */
-  gap: 5px;
-  width: 600px;
-  height: 600px;
-  position: relative;
-  border: 4px solid #000;
-  background-color: #fff;
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Home areas at corners */
+#ludo-board {
+    display: grid;
+    grid-template-columns: repeat(15, 40px); /* 15x15 board */
+    grid-template-rows: repeat(15, 40px);
+    border: 2px solid #fff;
+    position: relative;
+    width: 600px;
+    height: 600px;
+}
+
+/* Home area aur path cells ko CSS se style karen */
 .home-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
-  border: 2px solid #000;
+    /* ...styling for home areas... */
 }
 
-.red { background-color: #f44336; }
-.blue { background-color: #2196f3; }
-.green { background-color: #4caf50; }
-.yellow { background-color: #ffeb3b; }
-
-/* Path for game */
-.game-path {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columns for cells */
-  grid-template-rows: repeat(5, 1fr); /* 5 rows for cells */
-  gap: 5px;
+.path-cell {
+    /* ...styling for game path... */
 }
 
-/* Path cell style */
-.path {
-  border: 1px solid #000;
-  width: 100%;
-  height: 100%;
-  background-color: #e0e0e0;
+/* Pawns (gotiyan) ka style */
+.pawn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    /* ...positioning and colors... */
 }
 
-/* Center path area */
-.center-area {
-  background-color: #ff9800;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  border: 2px solid #000;
-}
-
-/* Home area labels */
-.home {
-  font-size: 18px;
-  font-weight: bold;
+#roll-dice-btn {
+    /* ...button styling... */
 }
