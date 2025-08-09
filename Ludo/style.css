@@ -97,6 +97,8 @@ body {
   background-color: #eee;
   border: 2px solid #aaa;
   cursor: pointer;
+  justify-self: center;
+  align-self: center;
 }
 
 .token-spot.occupied {
@@ -111,6 +113,7 @@ body {
 
 
       
+
 
 
 
