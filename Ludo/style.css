@@ -18,38 +18,48 @@ body {
 /* Ludo Board styling */
 .ludo-board {
   display: grid;
-  grid-template-columns: repeat(3, 200px); /* For 3 columns */
-  grid-template-rows: repeat(3, 200px); /* For 3 rows */
+  grid-template-columns: 200px 200px 200px; /* 3 columns */
+  grid-template-rows: 200px 200px 200px; /* 3 rows */
   gap: 5px;
-  border: 4px solid #000;
-  background-color: #fff;
   width: 630px;
   height: 630px;
   position: relative;
+  border: 4px solid #000;
+  background-color: #fff;
 }
 
-/* Home area for each player (Red, Blue, Green, Yellow) */
+/* Home areas (Red, Blue, Green, Yellow) at corners */
 .home-area {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f1f1f1;
-  border: 2px solid #000;
+  border-radius: 10px;
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border: 2px solid #000;
 }
 
-.red { background-color: #f44336; }
-.blue { background-color: #2196f3; }
-.green { background-color: #4caf50; }
-.yellow { background-color: #ffeb3b; }
+.red {
+  background-color: #f44336;
+}
 
-/* Center area (middle of the board) */
+.blue {
+  background-color: #2196f3;
+}
+
+.green {
+  background-color: #4caf50;
+}
+
+.yellow {
+  background-color: #ffeb3b;
+}
+
+/* Center area (Middle of the board) */
 .center-area {
   background-color: #ff9800;
+  border-radius: 10px;
   width: 100%;
   height: 100%;
-  border-radius: 10px;
   border: 2px solid #000;
 }
