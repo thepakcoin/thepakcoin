@@ -2,67 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>PAKlUDO</title>
+</head>
+
   
   <style>
-    body {
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
     font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #ffffff;
   }
+
+  h1 {
+    font-size: 5vw;
+    margin-bottom: 2vh;
+  }
+
   #board {
     display: grid;
-    grid-template-columns: repeat(15, 40px);
-    grid-template-rows: repeat(15, 40px);
-    margin: 0 auto;
-    width: 600px;
-    height: 600px;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    width: 90vmin;
+    height: 90vmin;
+    max-width: 90vmin;
+    max-height: 90vmin;
     border: 2px solid black;
     position: relative;
   }
+
   .cell {
-    border: 1px solid #aaa;
-    width: 40px;
-    height: 40px;
-    box-sizing: border-box;
-    position: relative;
+    border: 0.1vmin solid #aaa;
+    width: 100%;
+    height: 100%;
   }
-  
-  /* Player Home Zones */
+
   .red-home { background: #ff6666; }
   .green-home { background: #66cc66; }
   .yellow-home { background: #ffff99; }
   .blue-home { background: #6699ff; }
 
-  /* Token styles */
   .token {
-    width: 30px;
-    height: 30px;
+    width: 60%;
+    height: 60%;
     border-radius: 50%;
-    margin: 5px auto;
+    border: 0.3vmin solid black;
     position: absolute;
-    top: 5px;
-    left: 5px;
-    border: 2px solid black;
-    box-sizing: border-box;
+    top: 20%;
+    left: 20%;
   }
+
   .token.red { background-color: #cc0000; }
   .token.green { background-color: #009900; }
   .token.yellow { background-color: #cccc00; }
   .token.blue { background-color: #000099; }
 
   button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
+    margin-top: 2vh;
+    padding: 1vh 2vh;
+    font-size: 2.5vw;
     cursor: pointer;
   }
 
   #diceResult {
-    font-size: 24px;
-    margin: 10px;
+    font-size: 3vw;
+    margin-top: 1vh;
   }
 </style>
+
+
 
 </head>
 <body>
@@ -74,5 +90,6 @@
 
   <script src="script.js"></script>
 </body>
+
 
 
