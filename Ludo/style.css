@@ -40,8 +40,10 @@ html, body {
   border-radius: 4px;
 }
 .home-base-cell {
-    background-color: transparent;
-    border: none;
+    visibility: hidden; /* Ye cell ko invisible kar dega lekin space ko barqarar rakhega */
+    /* Ya phir 'display: none;' use kar sakte ho, jisse cell poori tarah layout se hat jayega */
+    display: none;
+
 }
 
 
