@@ -1,4 +1,4 @@
-/* Reset default browser styles */
+/* Reset the margin and padding of all elements */
 * {
   margin: 0;
   padding: 0;
@@ -18,72 +18,38 @@ body {
 /* Ludo Board styling */
 .ludo-board {
   display: grid;
-  grid-template-columns: repeat(3, 200px);
-  grid-template-rows: repeat(3, 200px);
-  gap: 10px;
+  grid-template-columns: repeat(3, 200px); /* For 3 columns */
+  grid-template-rows: repeat(3, 200px); /* For 3 rows */
+  gap: 5px;
   border: 4px solid #000;
-  padding: 20px;
   background-color: #fff;
+  width: 630px;
+  height: 630px;
+  position: relative;
 }
 
-/* Player areas (Red, Blue, Green, Yellow) */
-.player-area {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border: 2px solid #000;
-  border-radius: 10px;
-}
-
-.red {
-  background-color: #f44336;
-  color: #fff;
-}
-
-.blue {
-  background-color: #2196f3;
-  color: #fff;
-}
-
-.green {
-  background-color: #4caf50;
-  color: #fff;
-}
-
-.yellow {
-  background-color: #ffeb3b;
-  color: #000;
-}
-
-/* Start and Home buttons for each player */
-.home {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.start {
-  background-color: #fff;
-  border: 2px solid #000;
-  padding: 5px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* Center area */
-.center-area {
+/* Home area for each player (Red, Blue, Green, Yellow) */
+.home-area {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ff9800;
+  background-color: #f1f1f1;
   border: 2px solid #000;
-  padding: 10px;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
 }
 
-.center-box {
-  font-size: 20px;
-  font-weight: bold;
+.red { background-color: #f44336; }
+.blue { background-color: #2196f3; }
+.green { background-color: #4caf50; }
+.yellow { background-color: #ffeb3b; }
+
+/* Center area (middle of the board) */
+.center-area {
+  background-color: #ff9800;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 2px solid #000;
 }
