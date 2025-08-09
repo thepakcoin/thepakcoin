@@ -3,45 +3,57 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #333;
     color: white;
+    margin: 0;
 }
 
 #game-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Desktop par side-by-side */
+    justify-content: center;
     align-items: center;
+    max-width: 1200px; /* Maximum width set karen */
+    width: 90%;
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 #ludo-board {
     display: grid;
-    grid-template-columns: repeat(15, 40px); /* 15x15 board */
-    grid-template-rows: repeat(15, 40px);
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    aspect-ratio: 1 / 1; /* Board hamesha square rahega */
     border: 2px solid #fff;
-    position: relative;
-    width: 600px;
-    height: 600px;
+    width: 100%;
+    max-width: 600px;
 }
 
-/* Home area aur path cells ko CSS se style karen */
-.home-area {
-    /* ...styling for home areas... */
+#game-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    min-width: 250px;
 }
 
-.path-cell {
-    /* ...styling for game path... */
+/* --- Media Queries for Mobile --- */
+@media (max-width: 768px) {
+    #game-container {
+        flex-direction: column; /* Mobile par upar-neeche */
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    #ludo-board {
+        width: 90%;
+    }
+    #game-info {
+        width: 90%;
+        margin-top: 20px;
+    }
 }
 
-/* Pawns (gotiyan) ka style */
-.pawn {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    position: absolute;
-    /* ...positioning and colors... */
-}
-
-#roll-dice-btn {
-    /* ...button styling... */
-}
+/* ...Baki CSS jaisa pichhle reply mein tha... */
