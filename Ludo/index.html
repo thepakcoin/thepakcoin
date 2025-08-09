@@ -1,40 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Full Ludo Game</title>
+  <meta charset="UTF-8" />
+  <title>Colored Full Ludo Game</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; }
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
     #board {
       display: grid;
       grid-template-columns: repeat(15, 40px);
       grid-template-rows: repeat(15, 40px);
-      margin: 20px auto;
+      margin: 0 auto;
       width: 600px;
       height: 600px;
       border: 2px solid black;
       position: relative;
     }
     .cell {
-      border: 1px solid #ccc;
-      width: 40px; height: 40px;
+      border: 1px solid #aaa;
+      width: 40px;
+      height: 40px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* Player Home Zones */
+    .red-home { background: #ff6666; }
+    .green-home { background: #66cc66; }
+    .yellow-home { background: #ffeb66; }
+    .blue-home { background: #6699ff; }
+
+    /* Safe zones (star positions) */
+    .safe { border: 2px solid gold; }
+
+    /* Main path colors for home rows */
+    .red-path { background: #ff9999; }
+    .green-path { background: #99ff99; }
+    .yellow-path { background: #ffff99; }
+    .blue-path { background: #9999ff; }
+
+    /* Token styles */
+    .token {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin: 5px auto;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      border: 2px solid black;
       box-sizing: border-box;
     }
-    .red { background-color: #ff9999; }
-    .green { background-color: #99ff99; }
-    .yellow { background-color: #ffff99; }
-    .blue { background-color: #9999ff; }
-    .safe { border: 2px solid gold; }
-    .home { border-radius: 50%; width: 30px; height: 30px; margin: 5px auto; }
-    #diceResult { font-size: 24px; margin: 20px; }
-    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    .token.red { background-color: #cc0000; }
+    .token.green { background-color: #009900; }
+    .token.yellow { background-color: #cccc00; }
+    .token.blue { background-color: #000099; }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #diceResult {
+      font-size: 24px;
+      margin: 10px;
+    }
   </style>
 </head>
 <body>
 
-  <h1>Full Ludo Game</h1>
+  <h1>🎲 Colored Full Ludo Game</h1>
   <div id="board"></div>
 
-  <button onclick="rollDice()">Roll Dice 🎲</button>
+  <button onclick="rollDice()">Roll Dice</button>
   <div id="diceResult"></div>
 
   <script src="script.js"></script>
