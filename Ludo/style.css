@@ -31,19 +31,13 @@ html, body {
   padding: 6px;
   box-sizing: border-box;
   border-radius: 12px;
-  border: 4px solid black;
+  border: 4px solid brown;
   box-shadow: 0 12px 30px rgba(20,30,60,0.15);
 }
 
 .cell {
   background: #ffffff;
   border-radius: 4px;
-}
-.home-base-cell {
-    visibility: hidden; /* Ye cell ko invisible kar dega lekin space ko barqarar rakhega */
-    /* Ya phir 'display: none;' use kar sakte ho, jisse cell poori tarah layout se hat jayega */
-    display: none;
-
 }
 
 
