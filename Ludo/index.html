@@ -1,53 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ludo Board</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Full Ludo Game</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; }
+    #board {
+      display: grid;
+      grid-template-columns: repeat(15, 40px);
+      grid-template-rows: repeat(15, 40px);
+      margin: 20px auto;
+      width: 600px;
+      height: 600px;
+      border: 2px solid black;
+      position: relative;
+    }
+    .cell {
+      border: 1px solid #ccc;
+      width: 40px; height: 40px;
+      box-sizing: border-box;
+    }
+    .red { background-color: #ff9999; }
+    .green { background-color: #99ff99; }
+    .yellow { background-color: #ffff99; }
+    .blue { background-color: #9999ff; }
+    .safe { border: 2px solid gold; }
+    .home { border-radius: 50%; width: 30px; height: 30px; margin: 5px auto; }
+    #diceResult { font-size: 24px; margin: 20px; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+  </style>
 </head>
 <body>
 
-    <div id="board-container">
-    <div id="board">
-      
-    </div>
-  
-    <div class="base red-base">
-      <div class="token-spot" data-index="0"></div>
-      <div class="token-spot" data-index="1"></div>
-      <div class="token-spot" data-index="2"></div>
-      <div class="token-spot" data-index="3"></div>
-    </div>
+  <h1>Full Ludo Game</h1>
+  <div id="board"></div>
 
-    <div class="base green-base">
-      <div class="token-spot" data-index="0"></div>
-      <div class="token-spot" data-index="1"></div>
-      <div class="token-spot" data-index="2"></div>
-      <div class="token-spot" data-index="3"></div>
-    </div>
-
-    <div class="base yellow-base">
-      <div class="token-spot" data-index="0"></div>
-      <div class="token-spot" data-index="1"></div>
-      <div class="token-spot" data-index="2"></div>
-      <div class="token-spot" data-index="3"></div>
-    </div>
-
-    <div class="base blue-base">
-      <div class="token-spot" data-index="0"></div>
-      <div class="token-spot" data-index="1"></div>
-      <div class="token-spot" data-index="2"></div>
-      <div class="token-spot" data-index="3"></div>
-    </div>
-      
-  </div>
+  <button onclick="rollDice()">Roll Dice 🎲</button>
+  <div id="diceResult"></div>
 
   <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
