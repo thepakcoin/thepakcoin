@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Online Ludo</title>
+    <title>Ludo Board</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="game-container">
         <div id="ludo-board">
-            </div>
+            <script>
+                const board = document.getElementById('ludo-board');
+                for (let i = 0; i < 225; i++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    cell.id = `cell-${i}`;
+                    board.appendChild(cell);
+                }
+            </script>
+        </div>
         <div id="game-info">
             <h2 id="current-player-name">Player 1 Turn</h2>
             <div id="dice-container">
@@ -22,7 +31,6 @@
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
     <script src="game.js"></script>
 </body>
 </html>
