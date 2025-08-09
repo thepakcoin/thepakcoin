@@ -18,11 +18,11 @@ body {
 /* Ludo Board styling */
 .ludo-board {
   display: grid;
-  grid-template-columns: 200px 200px 200px; /* 3 columns */
-  grid-template-rows: 200px 200px 200px; /* 3 rows */
+  grid-template-columns: repeat(5, 1fr); /* 5 columns for game path */
+  grid-template-rows: repeat(5, 1fr); /* 5 rows for game path */
   gap: 5px;
-  width: 630px;
-  height: 630px;
+  width: 500px;
+  height: 500px;
   position: relative;
   border: 4px solid #000;
   background-color: #fff;
@@ -39,21 +39,10 @@ body {
   border: 2px solid #000;
 }
 
-.red {
-  background-color: #f44336;
-}
-
-.blue {
-  background-color: #2196f3;
-}
-
-.green {
-  background-color: #4caf50;
-}
-
-.yellow {
-  background-color: #ffeb3b;
-}
+.red { background-color: #f44336; }
+.blue { background-color: #2196f3; }
+.green { background-color: #4caf50; }
+.yellow { background-color: #ffeb3b; }
 
 /* Center area (Middle of the board) */
 .center-area {
@@ -62,4 +51,34 @@ body {
   width: 100%;
   height: 100%;
   border: 2px solid #000;
+}
+
+/* Game path cells */
+.game-cells {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns */
+  grid-template-rows: repeat(5, 1fr); /* 5 rows */
+  gap: 5px;
+  grid-column: span 3; /* Spans over the center cells */
+  grid-row: span 3; /* Adjusts for the row span */
+}
+
+/* Styling for each cell (board squares) */
+.cell {
+  border: 1px solid #000;
+  width: 100%;
+  height: 100%;
+  background-color: #e0e0e0;
+}
+
+/* Center cell (main center square) */
+.center-cell {
+  background-color: #ff9800;
+  border: 2px solid #000;
+}
+
+/* Home labels */
+.home {
+  font-size: 18px;
+  font-weight: bold;
 }
