@@ -1,63 +1,73 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --board-size: min(92vmin, 800px);
+  --cells: 15;
+  --gap: 2px;
+  --bg: #0f172a;
+  --cell-bg: #f3f4f6;
+  --safe-bg: #e5e7eb;
+  --red: #ef4444;
+  --green: #10b981;
+  --yellow: #f59e0b;
+  --blue: #3b82f6;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, var(--bg), #071124);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.ludo-board {
-    position: relative;
-    width: 300px; /* Board width */
-    height: 300px; /* Board height */
-    display: grid;
-    grid-template-columns: repeat(15, 1fr); /* 15 cells in each row */
-    grid-template-rows: repeat(15, 1fr); /* 15 cells in each column */
-    gap: 2px;
-    background-color: #fff;
-    border: 2px solid #000;
+.board-wrap {
+  width: var(--board-size);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+.board {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(var(--cells), 1fr);
+  grid-template-rows: repeat(var(--cells), 1fr);
+  gap: var(--gap);
+  background: #061226;
+  padding: 6px;
+  border-radius: 20px;
 }
 
 .cell {
-    width: 100%;
-    height: 100%;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
+  background: var(--cell-bg);
 }
 
-.home-area {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0.1);
+.path {
+  background: var(--safe-bg);
 }
 
-.red {
-    top: 0;
-    left: 0;
-    background-color: red;
+.safe {
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.02);
 }
 
-.green {
-    top: 0;
-    right: 0;
-    background-color: green;
-}
+.home-red { background: var(--red); }
+.home-yellow { background: var(--yellow); }
+.home-green { background: var(--green); }
+.home-blue { background: var(--blue); }
 
-.yellow {
-    bottom: 0;
-    left: 0;
-    background-color: yellow;
+.token {
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
 }
-
-.blue {
-    bottom: 0;
-    right: 0;
-    background-color: blue;
-}
+.token.red { background: var(--red); }
+.token.green { background: var(--green); }
+.token.yellow { background: var(--yellow); }
+.token.blue { background: var(--blue); }
