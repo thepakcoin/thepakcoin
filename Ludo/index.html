@@ -3,19 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Ludo Game</title>
+    <title>Modern Ludo Board</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="ludo-container">
     <div class="ludo-board">
-        <!-- Board grid cells -->
-        <div class="cell home red"></div>
-        <div class="cell home green"></div>
-        <div class="cell home yellow"></div>
-        <div class="cell home blue"></div>
-        <!-- Board grid ka design hum CSS se karenge -->
+        <!-- Top Row -->
+        <div class="home red-home">
+            <div class="token red"></div>
+            <div class="token red"></div>
+            <div class="token red"></div>
+            <div class="token red"></div>
+        </div>
+        <div class="path"></div>
+        <div class="home green-home">
+            <div class="token green"></div>
+            <div class="token green"></div>
+            <div class="token green"></div>
+            <div class="token green"></div>
+        </div>
+
+        <!-- Middle Row -->
+        <div class="path"></div>
+        <div class="center">
+            <div class="finish">
+                <span>🏆</span>
+            </div>
+        </div>
+        <div class="path"></div>
+
+        <!-- Bottom Row -->
+        <div class="home yellow-home">
+            <div class="token yellow"></div>
+            <div class="token yellow"></div>
+            <div class="token yellow"></div>
+            <div class="token yellow"></div>
+        </div>
+        <div class="path"></div>
+        <div class="home blue-home">
+            <div class="token blue"></div>
+            <div class="token blue"></div>
+            <div class="token blue"></div>
+            <div class="token blue"></div>
+        </div>
     </div>
 
     <div class="dice-container">
