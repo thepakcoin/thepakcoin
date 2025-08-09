@@ -14,6 +14,14 @@ function inCenter(r, c) {
   return r >= start && r < start + 3 && c >= start && c < start + 3;
 }
 
+function isTokenSpot(r, c, corner) {
+  if (corner === 'tl') return ( (r===1 && c===1) || (r===1 && c===4) || (r===4 && c===1) || (r===4 && c===4) );
+  if (corner === 'tr') return ( (r===1 && c===CELLS-2) || (r===1 && c===CELLS-5) || (r===4 && c===CELLS-2) || (r===4 && c===CELLS-5) );
+  if (corner === 'br') return ( (r===CELLS-2 && c===CELLS-2) || (r===CELLS-2 && c===CELLS-5) || (r===CELLS-5 && c===CELLS-2) || (r===CELLS-5 && c===CELLS-5) );
+  if (corner === 'bl') return ( (r===CELLS-2 && c===1) || (r===CELLS-2 && c===4) || (r===CELLS-5 && c===1) || (r===CELLS-5 && c===4) );
+  return false;
+}
+
 for (let r = 0; r < CELLS; r++) {
   for (let c = 0; c < CELLS; c++) {
     const cell = document.createElement('div');
@@ -24,6 +32,13 @@ for (let r = 0; r < CELLS; r++) {
     else if (inCorner(r, c, 'br')) cell.classList.add('c-green');
     else if (inCorner(r, c, 'bl')) cell.classList.add('c-blue');
     else if (inCenter(r, c)) cell.classList.add('center');
+
+    // Token spots insert
+    if (isTokenSpot(r, c, 'tl') || isTokenSpot(r, c, 'tr') || isTokenSpot(r, c, 'br') || isTokenSpot(r, c, 'bl')) {
+      const spot = document.createElement('div');
+      spot.classList.add('token-spot');
+      cell.appendChild(spot);
+    }
 
     board.appendChild(cell);
   }
