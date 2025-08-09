@@ -51,6 +51,6 @@ html, body {
   border-radius: 50%;
   background-color: transparent;
   border: 3px solid rgba(0,0,0,0.2);
-  background-size: cover;
+  background-size: 150%;
   background-position: center;
 }
