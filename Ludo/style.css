@@ -27,7 +27,6 @@ body {
   position: relative;
   width: 90vmin;
   height: 90vmin;
-  border: 4px solid brown;
 }
 
 /* Board setup */
@@ -113,6 +112,7 @@ body {
 
 
       
+
 
 
 
