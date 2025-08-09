@@ -1,0 +1,89 @@
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+/* Ludo Board styling */
+.ludo-board {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  grid-template-rows: repeat(3, 200px);
+  gap: 10px;
+  border: 4px solid #000;
+  padding: 20px;
+  background-color: #fff;
+}
+
+/* Player areas (Red, Blue, Green, Yellow) */
+.player-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 10px;
+}
+
+.red {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.blue {
+  background-color: #2196f3;
+  color: #fff;
+}
+
+.green {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.yellow {
+  background-color: #ffeb3b;
+  color: #000;
+}
+
+/* Start and Home buttons for each player */
+.home {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.start {
+  background-color: #fff;
+  border: 2px solid #000;
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Center area */
+.center-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff9800;
+  border: 2px solid #000;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.center-box {
+  font-size: 20px;
+  font-weight: bold;
+}
