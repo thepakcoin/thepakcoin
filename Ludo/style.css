@@ -31,7 +31,7 @@ html, body {
   padding: 6px;
   box-sizing: border-box;
   border-radius: 12px;
-  border: 4px solid black;
+  border: 4px solid brown;
   box-shadow: 0 12px 30px rgba(20,30,60,0.15);
 }
 
@@ -39,6 +39,20 @@ html, body {
   background: #ffffff;
   border-radius: 4px;
 }
+.home-base-cell {
+    background-color: transparent;
+    border: none; 
+    width: 25px; 
+    height: 25px; 
+}
+
+.home-base {
+    background-color: #f0f0f0;
+    display: grid; 
+    grid-template-columns: repeat(4, 25px); 
+    grid-template-rows: repeat(4, 25px)
+}
+
 
 .c-red { background: #d64545; }
 .c-yellow { background: #f1c40f; }
