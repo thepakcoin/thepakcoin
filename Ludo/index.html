@@ -1,39 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ludo Game</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Ludo</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="ludo-board">
-    <!-- 4 Home Areas at corners -->
-    <div class="home-area red">
-      <div class="home">Red</div>
-    </div>
-    <div class="home-area blue">
-      <div class="home">Blue</div>
-    </div>
-    <div class="home-area green">
-      <div class="home">Green</div>
-    </div>
-    <div class="home-area yellow">
-      <div class="home">Yellow</div>
+    <div id="game-container">
+        <div id="ludo-board">
+            <div class="home-area red"></div>
+            <div class="path-cell"></div>
+            </div>
+
+        <div id="controls">
+            <h2 id="current-player-name">Player 1 Turn</h2>
+            <div id="dice-container">
+                <button id="roll-dice-btn">Roll Dice</button>
+                <div id="dice-value">?</div>
+            </div>
+        </div>
+
+        <div id="log-panel">
+            <h3>Game Log</h3>
+            <ul id="game-log-list"></ul>
+        </div>
     </div>
 
-    <!-- Center Path and Game Area -->
-    <div class="game-path">
-      <!-- These are the squares along the paths of the game -->
-      <div class="path"></div>
-      <div class="path"></div>
-      <div class="path"></div>
-      <div class="path"></div>
-      <div class="path"></div>
-      <!-- Additional path cells can go here -->
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
+    <script src="game.js"></script>
 </body>
 </html>
