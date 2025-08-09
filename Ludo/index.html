@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>PAKlUDO</title>
-</head>
-
+  
   
   <style>
     html, body {
@@ -20,12 +19,13 @@
     justify-content: center;
     overflow: hidden;
     background-color: #ffffff;
-  }
-
-  h1 {
-    font-size: 5vw;
-    margin-bottom: 2vh;
-  }
+    }
+    
+    h1 {
+      font-size: 5vw;
+      margin-bottom: 2vh;
+    }
+    
     #board {
       display: grid;
       grid-template-columns: repeat(3, 1fr);  /* Only 3 columns for equal home areas */
@@ -37,12 +37,14 @@
       border: 2px solid black;
       position: relative;
       margin: 0 auto;
- }
+    
+    }
+    
     .cell {
       border: 0.1vmin solid #aaa;
       width: 100%;
       height: 100%;
- }
+    }
     .cell.red-home,
     .cell.green-home,
     .cell.blue-home,
@@ -50,7 +52,7 @@
       border: none !important;
       outline: none !important;
       box-shadow: none !important;
- }
+    }
     .red-home,
     .green-home,
     .yellow-home,
@@ -59,12 +61,12 @@
       height: 100%;
       border: none !important;
       box-shadow: none !important;
-}
+    }
+    
     .red-home { background: #ff6666; }
     .green-home { background: #66cc66; }
     .yellow-home { background: #ffff99; }
     .blue-home { background: #6699ff; }
-    
     .token {
       width: 60%;
       height: 60%;
@@ -73,37 +75,33 @@
       position: absolute;
       top: 20%;
       left: 20%;
- }
+    }
     .token.red { background-color: #cc0000; }
     .token.green { background-color: #009900; }
     .token.yellow { background-color: #cccc00; }
     .token.blue { background-color: #000099; }
-    
-    button {
+    .button {
       margin-top: 2vh;
       padding: 1vh 2vh;
       font-size: 2.5vw;
       cursor: pointer;
- }
+    }
     #diceResult {
       font-size: 3vw;
       margin-top: 1vh;
- }
-
-</style>
-
-
-
+    }
+  
+  </style>
 </head>
-<body>
-  <h1>🎲 Colored Full Ludo Game</h1>
-  <div id="board"></div>
+  
+  <body>
+    <h1>🎲 Colored Full Ludo Game</h1>
+    <div id="board"></div>
+    <button onclick="rollDice()">Roll Dice</button>
+    <div id="diceResult"></div>
+    <script src="script.js"></script>
+  </body>
 
-  <button onclick="rollDice()">Roll Dice</button>
-  <div id="diceResult"></div>
-
-  <script src="script.js"></script>
-</body>
 
 
 
