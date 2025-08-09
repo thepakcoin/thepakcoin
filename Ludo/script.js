@@ -29,6 +29,35 @@ for (let r = 0; r < CELLS; r++) {
   for (let c = 0; c < CELLS; c++) {
     const cell = document.createElement('div');
     cell.classList.add('cell');
+    
+    if (inCorner(r, c, 'tl')) {
+      cell.classList.add('c-red' 'home-base');
+    }
+    else if (inCorner(r, c, 'tr')) {
+      cell.classList.add('c-yellow', 'home-base');
+    }
+    else if (inCorner(r, c, 'br')) {
+      cell.classList.add('c-green', 'home-base');
+    }
+    else if (inCorner(r, c, 'bl')) {
+      cell.classList.add('c-blue', 'home-base');
+    }
+    else if (inCenter(r, c)) {
+      cell.classList.add('center');
+    }', 'home-base');
+    }
+    else if (inCorner(r, c, 'tr')) {
+      cell.classList.add('c-yellow', 'home-base');
+    }
+    else if (inCorner(r, c, 'br')) {
+      cell.classList.add('c-green', 'home-base');
+    }
+    else if (inCorner(r, c, 'bl')) {
+      cell.classList.add('c-blue', 'home-base');
+    }
+    else if (inCenter(r, c)) {
+      cell.classList.add('center');
+    }
 
     if (inCorner(r, c, 'tl')) cell.classList.add('c-red');
     else if (inCorner(r, c, 'tr')) cell.classList.add('c-yellow');
