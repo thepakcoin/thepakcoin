@@ -45,8 +45,7 @@ for (let r = 0; r < CELLS; r++) {
       spot.style.backgroundImage = 'url("blockchain_8404561.png")'; // Token image
       spot.style.backgroundColor = tokenColors[tokenIndex]; // Set color for current player's token
       spot.setAttribute('data-player', playersTokens[tokenIndex]); // Assign token to the player
-      spot.classList.add('home-base'); 
-      
+         
       cell.appendChild(spot);
 
       // Rotate through players
