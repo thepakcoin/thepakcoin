@@ -1,41 +1,63 @@
-/* Reset/Normalize */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html, body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #f4f4f4;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
 }
 
-/* Layout */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+.ludo-board {
+    position: relative;
+    width: 300px; /* Board width */
+    height: 300px; /* Board height */
+    display: grid;
+    grid-template-columns: repeat(15, 1fr); /* 15 cells in each row */
+    grid-template-rows: repeat(15, 1fr); /* 15 cells in each column */
+    gap: 2px;
+    background-color: #fff;
+    border: 2px solid #000;
 }
 
-/* Typography */
-h1 {
-  font-size: 36px;
+.cell {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
 }
 
-p {
-  font-size: 16px;
-  line-height: 1.5;
+.home-area {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
+.red {
+    top: 0;
+    left: 0;
+    background-color: red;
 }
 
-/* Utility Classes */
-.text-center {
-  text-align: center;
+.green {
+    top: 0;
+    right: 0;
+    background-color: green;
+}
+
+.yellow {
+    bottom: 0;
+    left: 0;
+    background-color: yellow;
+}
+
+.blue {
+    bottom: 0;
+    right: 0;
+    background-color: blue;
 }
