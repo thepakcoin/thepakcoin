@@ -3,30 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Ludo</title>
+    <title>Responsive Online Ludo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="game-container">
         <div id="ludo-board">
-            <div class="home-area red"></div>
-            <div class="path-cell"></div>
             </div>
-
-        <div id="controls">
+        <div id="game-info">
             <h2 id="current-player-name">Player 1 Turn</h2>
             <div id="dice-container">
                 <button id="roll-dice-btn">Roll Dice</button>
                 <div id="dice-value">?</div>
             </div>
-        </div>
-
-        <div id="log-panel">
-            <h3>Game Log</h3>
-            <ul id="game-log-list"></ul>
+            <div id="log-panel">
+                <h3>Game Log</h3>
+                <ul id="game-log-list"></ul>
+            </div>
         </div>
     </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
     <script src="game.js"></script>
 </body>
