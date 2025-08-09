@@ -1,128 +1,60 @@
-const board = document.getElementById("board");
-const diceResult = document.getElementById("diceResult");
+const boardEl = document.getElementById('board');
+const N = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--cells')) || 15;
 
-const BOARD_SIZE = 15;
-const PLAYERS = ["red", "green", "yellow", "blue"];
-let currentPlayerIndex = 0;
-let diceValue = 0;
+// helper to create cell
+function makeCell(r, c) {
+  const d = document.createElement('div');
+  d.className = 'cell';
+  d.dataset.r = r;
+  d.dataset.c = c;
+  return d;
+}
 
-// Tokens positions: -1 = home yard, else index on path array
-let playersTokens = {
-  red:    [-1, -1, -1, -1],
-  green:  [-1, -1, -1, -1],
-  yellow: [-1, -1, -1, -1],
-  blue:   [-1, -1, -1, -1],
-};
-
-// Full 15x15 board color map based on classic Ludo board
-// Each element corresponds to a cell and contains a class name string for styling
-// This is simplified but covers all 225 cells
-const boardColors = [
-  "red-home","red-home","red-home","red-home","red-home","red-home","","","","","green-home","green-home","green-home","green-home","green-home",
-  "red-home","red-home","red-home","red-home","red-home","red-home","","","","","green-home","green-home","green-home","green-home","green-home",
-  "red-home","red-home","red-home","red-home","red-home","red-home","","","","","green-home","green-home","green-home","green-home","green-home",
-  "red-home","red-home","red-home","red-home","red-home","red-home","","","","","green-home","green-home","green-home","green-home","green-home",
-  "red-home","red-home","red-home","red-home","red-home","red-home","","","","","green-home","green-home","green-home","green-home","green-home",
-  "red-home","red-home","red-home","red-home","red-home","red-home","","","","","green-home","green-home","green-home","green-home","green-home",
-  "","","","","","","","","","","","","","","",
-  "","","","","","","","","","","","","","","",
-  "","","","","","","","","","","","","","","",
-  "","","","","","","","","","","","","","","",
-  "blue-home","blue-home","blue-home","blue-home","blue-home","blue-home","","","","","yellow-home","yellow-home","yellow-home","yellow-home","yellow-home",
-  "blue-home","blue-home","blue-home","blue-home","blue-home","blue-home","","","","","yellow-home","yellow-home","yellow-home","yellow-home","yellow-home",
-  "blue-home","blue-home","blue-home","blue-home","blue-home","blue-home","","","","","yellow-home","yellow-home","yellow-home","yellow-home","yellow-home",
-  "blue-home","blue-home","blue-home","blue-home","blue-home","blue-home","","","","","yellow-home","yellow-home","yellow-home","yellow-home","yellow-home",
-  "blue-home","blue-home","blue-home","blue-home","blue-home","blue-home","","","","","yellow-home","yellow-home","yellow-home","yellow-home","yellow-home",
-  "blue-home","blue-home","blue-home","blue-home","blue-home","blue-home","","","","","yellow-home","yellow-home","yellow-home","yellow-home","yellow-home",
-];
-
-// For demo, map path to some central cells (simplified)
-const path = [
-  104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,
-  134,149,164,179,194,209,224,223,222,221,220,219,218,217,216,215,
-];
-
-// Create the board with colors
-function createBoard() {
-  board.innerHTML = "";
-  for (let i = 0; i < BOARD_SIZE * BOARD_SIZE; i++) {
-    const cell = document.createElement("div");
-    cell.classList.add("cell");
-
-    // Add color class if exists
-    if (boardColors[i]) {
-      cell.classList.add(boardColors[i]);
-    }
-
-    board.appendChild(cell);
+// Build empty grid
+for (let r = 0; r < N; r++) {
+  for (let c = 0; c < N; c++) {
+    boardEl.appendChild(makeCell(r, c));
   }
 }
 
-// Render tokens on board cells based on their path position
-function renderTokens() {
-  // Clear tokens first
-  [...board.children].forEach((cell) => (cell.innerHTML = ""));
-
-  PLAYERS.forEach((player) => {
-    playersTokens[player].forEach((pos, i) => {
-      if (pos >= 0 && path[pos] !== undefined) {
-        const cellIndex = path[pos];
-        const token = document.createElement("div");
-        token.classList.add("token", player);
-        token.title = `${player.toUpperCase()} Token ${i + 1}`;
-        board.children[cellIndex].appendChild(token);
-      }
-    });
-  });
+// Lookup cell by coordinates
+function cellAt(r, c) {
+  return boardEl.querySelector(`.cell[data-r='${r}'][data-c='${c}']`);
 }
 
-// Roll dice and move tokens
-function rollDice() {
-  diceValue = Math.floor(Math.random() * 6) + 1;
-  diceResult.innerText = `${PLAYERS[currentPlayerIndex].toUpperCase()} rolled ${diceValue}`;
+// Apply Ludo layout for 15x15
+if (N === 15) {
+  // Homes
+  for (let r = 0; r <= 5; r++) for (let c = 0; c <= 5; c++) cellAt(r, c).classList.add('home-red');
+  for (let r = 0; r <= 5; r++) for (let c = 9; c <= 14; c++) cellAt(r, c).classList.add('home-yellow');
+  for (let r = 9; r <= 14; r++) for (let c = 0; c <= 5; c++) cellAt(r, c).classList.add('home-green');
+  for (let r = 9; r <= 14; r++) for (let c = 9; c <= 14; c++) cellAt(r, c).classList.add('home-blue');
 
-  moveFirstMovableToken();
+  // Paths
+  for (let c = 1; c <= 13; c++) cellAt(6, c).classList.add('path');
+  for (let r = 1; r <= 13; r++) cellAt(r, 6).classList.add('path');
+  for (let c = 1; c <= 13; c++) cellAt(8, c).classList.add('path');
+  for (let r = 1; r <= 13; r++) cellAt(r, 8).classList.add('path');
 
-  renderTokens();
-}
+  // Safe lanes
+  for (let r = 1; r <= 6; r++) cellAt(r, 7).classList.add('path', 'safe');
+  for (let c = 8; c <= 13; c++) cellAt(7, c).classList.add('path', 'safe');
+  for (let r = 8; r <= 13; r++) cellAt(r, 7).classList.add('path', 'safe');
+  for (let c = 1; c <= 6; c++) cellAt(7, c).classList.add('path', 'safe');
 
-// Move the first movable token of current player
-function moveFirstMovableToken() {
-  const player = PLAYERS[currentPlayerIndex];
-  let moved = false;
-
-  for (let i = 0; i < 4; i++) {
-    if (playersTokens[player][i] === -1 && diceValue === 6) {
-      playersTokens[player][i] = 0;
-      moved = true;
-      break;
-    } else if (playersTokens[player][i] >= 0) {
-      if (playersTokens[player][i] + diceValue < path.length) {
-        playersTokens[player][i] += diceValue;
-        moved = true;
-        break;
-      }
-    }
+  // Sample tokens
+  function placeToken(r, c, color, label) {
+    const t = document.createElement('div');
+    t.className = `token ${color}`;
+    t.textContent = label || '';
+    cellAt(r, c).appendChild(t);
   }
-
-  if (!moved) {
-    diceResult.innerText += " - No moves available, turn skipped!";
-  } else {
-    if (diceValue !== 6) {
-      nextTurn();
-    } else {
-      diceResult.innerText += " - You rolled 6! Play again.";
-    }
-  }
+  placeToken(2, 2, 'red', '1');
+  placeToken(3, 3, 'red', '2');
+  placeToken(2, 12, 'yellow', '1');
+  placeToken(3, 11, 'yellow', '2');
+  placeToken(12, 2, 'green', '1');
+  placeToken(11, 3, 'green', '2');
+  placeToken(12, 12, 'blue', '1');
+  placeToken(11, 11, 'blue', '2');
 }
-
-// Next player turn
-function nextTurn() {
-  currentPlayerIndex = (currentPlayerIndex + 1) % PLAYERS.length;
-  diceResult.innerText += ` Next: ${PLAYERS[currentPlayerIndex].toUpperCase()}`;
-}
-
-// Initialize
-createBoard();
-renderTokens();
-diceResult.innerText = `${PLAYERS[currentPlayerIndex].toUpperCase()} starts the game!`;
