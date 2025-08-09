@@ -72,23 +72,26 @@ body {
 /* Base colors */
 .red-base {
   background-color: #FF000F;
-  border: none;
+  top: 0;
+  left: 0; 
 }
 
 .green-base {
   background-color: #32FF7E;
-  border: none;
-}
+  top: 0;
+  left: 50%; 
 
 .yellow-base {
   background-color: #ffff66;
-  border: none;
-
+  bottom: 0;
+  left: 0; 
 }
 
-.blue-base { 
+.blue-base {
   background-color: #1B03A3;
-  border: none; 
+  bottom: 0;
+  left: 50%; 
+
 }
 
 /* Token spot inside a cell */
@@ -115,6 +118,7 @@ body {
 
 
       
+
 
 
 
