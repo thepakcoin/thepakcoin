@@ -41,16 +41,7 @@ html, body {
 }
 .home-base-cell {
     background-color: transparent;
-    border: none; 
-    width: 25px; 
-    height: 25px; 
-}
-
-.home-base {
-    background-color: #f0f0f0;
-    display: grid; 
-    grid-template-columns: repeat(4, 25px); 
-    grid-template-rows: repeat(4, 25px)
+    border: none;
 }
 
 
