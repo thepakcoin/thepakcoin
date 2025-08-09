@@ -96,7 +96,6 @@ body {
   border-radius: 50%;
   background-color: #eee;
   border: 2px solid #aaa;
-  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -115,6 +114,7 @@ body {
 
 
       
+
 
 
 
