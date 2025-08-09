@@ -3,34 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ludo Board</title>
+    <title>Responsive Ludo Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="game-container">
-        <div id="ludo-board">
-            <script>
-                const board = document.getElementById('ludo-board');
-                for (let i = 0; i < 225; i++) {
-                    const cell = document.createElement('div');
-                    cell.className = 'cell';
-                    cell.id = `cell-${i}`;
-                    board.appendChild(cell);
-                }
-            </script>
-        </div>
-        <div id="game-info">
-            <h2 id="current-player-name">Player 1 Turn</h2>
-            <div id="dice-container">
-                <button id="roll-dice-btn">Roll Dice</button>
-                <div id="dice-value">?</div>
-            </div>
-            <div id="log-panel">
-                <h3>Game Log</h3>
-                <ul id="game-log-list"></ul>
-            </div>
-        </div>
+
+<div class="ludo-container">
+    <div class="ludo-board">
+        <!-- Board grid cells -->
+        <div class="cell home red"></div>
+        <div class="cell home green"></div>
+        <div class="cell home yellow"></div>
+        <div class="cell home blue"></div>
+        <!-- Board grid ka design hum CSS se karenge -->
     </div>
-    <script src="game.js"></script>
+
+    <div class="dice-container">
+        <div id="dice">🎲</div>
+        <button onclick="rollDice()">Roll Dice</button>
+        <p id="dice-result"></p>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
