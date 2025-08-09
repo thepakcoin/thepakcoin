@@ -1,5 +1,8 @@
 const CELLS = 15;
 const board = document.getElementById('board');
+const tokenColors = ['#d64545', '#f1c40f', '#2ecc71', '#3498db']; 
+const playersTokens = ['player1', 'player2', 'player3', 'player4'];
+let tokenIndex = 0; 
 
 function inCorner(r, c, corner, size = 6) {
   if (corner === 'tl') return r < size && c < size;
@@ -37,9 +40,20 @@ for (let r = 0; r < CELLS; r++) {
     if (isTokenSpot(r, c, 'tl') || isTokenSpot(r, c, 'tr') || isTokenSpot(r, c, 'br') || isTokenSpot(r, c, 'bl')) {
       const spot = document.createElement('div');
       spot.classList.add('token-spot');
+      
+      // Set token image and color dynamically
+      spot.style.backgroundImage = 'url("blockchain_8404561.png")'; // Token image
+      spot.style.backgroundColor = tokenColors[tokenIndex]; // Set color for current player's token
+      spot.setAttribute('data-player', playersTokens[tokenIndex]); // Assign token to the player
+      
+      // Append the spot to the cell
       cell.appendChild(spot);
+
+      // Rotate through players
+      tokenIndex = (tokenIndex + 1) % 4; 
     }
 
+    // Add the cell to the board
     board.appendChild(cell);
   }
 }
