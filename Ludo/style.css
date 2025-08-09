@@ -1,12 +1,12 @@
 body {
     margin: 0;
     padding: 0;
+    background: #f8f8f8;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #fafafa;
-    font-family: Arial, sans-serif;
 }
 
 .ludo-container {
@@ -17,22 +17,64 @@ body {
 
 .ludo-board {
     display: grid;
-    grid-template-columns: repeat(15, 1fr);
-    grid-template-rows: repeat(15, 1fr);
-    width: 90vmin; /* Responsive square */
+    grid-template-columns: 1fr 0.3fr 1fr;
+    grid-template-rows: 1fr 0.3fr 1fr;
+    width: 90vmin;
     height: 90vmin;
-    border: 3px solid #333;
-    box-sizing: border-box;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.cell {
-    border: 1px solid #ccc;
+.home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
 }
 
-.home.red { background: #ff4d4d; }
-.home.green { background: #4dff4d; }
-.home.yellow { background: #ffff4d; }
-.home.blue { background: #4d4dff; }
+.red-home { background: linear-gradient(135deg, #ff4d4d, #ff9999); }
+.green-home { background: linear-gradient(135deg, #4dff4d, #99ff99); }
+.yellow-home { background: linear-gradient(135deg, #ffff4d, #ffff99); }
+.blue-home { background: linear-gradient(135deg, #4d4dff, #9999ff); }
+
+.token {
+    width: 25%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.red { background: #cc0000; }
+.green { background: #009900; }
+.yellow { background: #cccc00; }
+.blue { background: #0000cc; }
+
+.path {
+    background: #f0f0f0;
+    border: 2px dashed #ccc;
+}
+
+.center {
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.finish {
+    width: 70%;
+    height: 70%;
+    background: linear-gradient(45deg, #ff4d4d, #4dff4d, #ffff4d, #4d4dff);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
 
 .dice-container {
     margin-top: 20px;
@@ -47,5 +89,13 @@ body {
 button {
     padding: 10px 20px;
     font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    background: #333;
+    color: white;
     cursor: pointer;
+}
+
+button:hover {
+    background: #555;
 }
