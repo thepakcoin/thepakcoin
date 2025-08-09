@@ -1,89 +1,51 @@
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #333;
-    color: white;
     margin: 0;
-}
-
-#game-container {
+    padding: 0;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    max-width: 1200px;
-    width: 90%;
-    gap: 20px;
-    padding: 20px;
-    box-sizing: border-box;
+    height: 100vh;
+    background: #fafafa;
+    font-family: Arial, sans-serif;
 }
 
-#ludo-board {
+.ludo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ludo-board {
     display: grid;
     grid-template-columns: repeat(15, 1fr);
     grid-template-rows: repeat(15, 1fr);
-    aspect-ratio: 1 / 1;
-    border: 2px solid #fff;
-    width: 100%;
-    max-width: 600px;
+    width: 90vmin; /* Responsive square */
+    height: 90vmin;
+    border: 3px solid #333;
+    box-sizing: border-box;
 }
 
 .cell {
-    border: 1px solid #ddd;
-    box-sizing: border-box;
-    position: relative;
+    border: 1px solid #ccc;
 }
 
-/* Home areas ke liye khaas cells */
-/* Red Home Area */
-.cell[id^="cell-"] {
-    background-color: #444;
+.home.red { background: #ff4d4d; }
+.home.green { background: #4dff4d; }
+.home.yellow { background: #ffff4d; }
+.home.blue { background: #4d4dff; }
+
+.dice-container {
+    margin-top: 20px;
+    text-align: center;
 }
 
-.cell[id*="cell-0"], .cell[id*="cell-1"], .cell[id*="cell-2"], .cell[id*="cell-15"], .cell[id*="cell-16"], .cell[id*="cell-17"] {
-    background-color: #ff5555; /* Red */
+#dice {
+    font-size: 50px;
+    margin-bottom: 10px;
 }
 
-/* Yellow Home Area */
-.cell[id*="cell-12"], .cell[id*="cell-13"], .cell[id*="cell-14"], .cell[id*="cell-27"], .cell[id*="cell-28"], .cell[id*="cell-29"] {
-    background-color: #ffff55; /* Yellow */
-}
-
-/* Green Home Area */
-/*... similarly, Green home area ko CSS se define karen... */
-/* Blue Home Area */
-/*... similarly, Blue home area ko CSS se define karen... */
-
-
-/* Path cells ko CSS se define karen */
-.cell[id*="cell-71"], .cell[id*="cell-72"], .cell[id*="cell-73"] {
-    background-color: #666;
-}
-/* Aur baaki path cells ko bhi CSS se define karen */
-
-
-/* Center Ludo board finish area */
-.cell[id*="cell-112"], .cell[id*="cell-113"], .cell[id*="cell-114"], .cell[id*="cell-127"], .cell[id*="cell-128"], .cell[id*="cell-129"] {
-    background-color: #ccc;
-    z-index: 1; /* Taake yeh sab se upar dikhe */
-}
-
-
-/* --- Media Queries for Mobile --- */
-@media (max-width: 768px) {
-    #game-container {
-        flex-direction: column;
-        width: 100%;
-        padding: 10px;
-    }
-    #ludo-board {
-        width: 90%;
-    }
-    #game-info {
-        width: 90%;
-        margin-top: 20px;
-    }
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
 }
