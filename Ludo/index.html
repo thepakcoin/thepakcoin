@@ -26,79 +26,69 @@
     font-size: 5vw;
     margin-bottom: 2vh;
   }
-
-  #board {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);  /* Only 3 columns for equal home areas */
-  grid-template-rows: repeat(3, 1fr);     /* Only 3 rows for equal home areas */
-  width: 90vmin;
-  height: 90vmin;
-  max-width: 90vmin;
-  max-height: 90vmin;
-  border: 2px solid black;
-  position: relative;
-  margin: 0 auto;
+    #board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);  /* Only 3 columns for equal home areas */
+      grid-template-rows: repeat(3, 1fr);     /* Only 3 rows for equal home areas */
+      width: 90vmin;
+      height: 90vmin;
+      max-width: 90vmin;
+      max-height: 90vmin;
+      border: 2px solid black;
+      position: relative;
+      margin: 0 auto;
+ }
+    .cell {
+      border: 0.1vmin solid #aaa;
+      width: 100%;
+      height: 100%;
+ }
+    .cell.red-home,
+    .cell.green-home,
+    .cell.blue-home,
+    .cell.yellow-home {
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+ }
+    .red-home,
+    .green-home,
+    .yellow-home,
+    .blue-home {
+      width: 100%;
+      height: 100%;
+      border: none !important;
+      box-shadow: none !important;
 }
-
-.cell {
-  border: 0.1vmin solid #aaa;
-  width: 100%;
-  height: 100%;
-}
-
-/* Remove border from home cells */
-.cell.red-home,
-.cell.green-home,
-.cell.blue-home,
-.cell.yellow-home {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* Ensure all home areas (red, green, blue, yellow) are equal in size */
-.red-home,
-.green-home,
-.yellow-home,
-.blue-home {
-  width: 100%;
-  height: 100%;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* Home area colors */
-.red-home { background: #ff6666; }
-.green-home { background: #66cc66; }
-.yellow-home { background: #ffff99; }
-.blue-home { background: #6699ff; }
-
-.token {
-  width: 60%;
-  height: 60%;
-  border-radius: 50%;
-  border: 0.3vmin solid black;
-  position: absolute;
-  top: 20%;
-  left: 20%;
-}
-
-.token.red { background-color: #cc0000; }
-.token.green { background-color: #009900; }
-.token.yellow { background-color: #cccc00; }
-.token.blue { background-color: #000099; }
-
-button {
-  margin-top: 2vh;
-  padding: 1vh 2vh;
-  font-size: 2.5vw;
-  cursor: pointer;
-}
-
-#diceResult {
-  font-size: 3vw;
-  margin-top: 1vh;
-}
+    .red-home { background: #ff6666; }
+    .green-home { background: #66cc66; }
+    .yellow-home { background: #ffff99; }
+    .blue-home { background: #6699ff; }
+    
+    .token {
+      width: 60%;
+      height: 60%;
+      border-radius: 50%;
+      border: 0.3vmin solid black;
+      position: absolute;
+      top: 20%;
+      left: 20%;
+ }
+    .token.red { background-color: #cc0000; }
+    .token.green { background-color: #009900; }
+    .token.yellow { background-color: #cccc00; }
+    .token.blue { background-color: #000099; }
+    
+    button {
+      margin-top: 2vh;
+      padding: 1vh 2vh;
+      font-size: 2.5vw;
+      cursor: pointer;
+ }
+    #diceResult {
+      font-size: 3vw;
+      margin-top: 1vh;
+ }
 
 </style>
 
@@ -114,6 +104,7 @@ button {
 
   <script src="script.js"></script>
 </body>
+
 
 
 
