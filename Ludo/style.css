@@ -46,6 +46,21 @@ body {
   background-color: white;
 }
 
+.base {
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10%;
+  justify-content: center;
+  align-items: center;
+  padding: 10%;
+  z-index: 2;
+  border: 2px solid #999;
+}
+
 /* Base colors */
 .red-base {
   background-color: #FF000F;
@@ -94,6 +109,7 @@ body {
 
 
       
+
 
 
 
