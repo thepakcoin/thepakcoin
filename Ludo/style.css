@@ -31,7 +31,7 @@ html, body {
   padding: 6px;
   box-sizing: border-box;
   border-radius: 12px;
-  border: 4px solid brown;
+  border: 4px solid black;
   box-shadow: 0 12px 30px rgba(20,30,60,0.15);
 }
 
@@ -46,12 +46,12 @@ html, body {
 .c-blue { background: #3498db; }
 .center { background: #ffeaa7; }
 .token-spot {
-  width: 100%;
-  height: 100%;
+  width: 150%;
+  height: 150%;
   margin: auto;
   border-radius: 50%;
   background-color: transparent;
   border: 3px solid rgba(0,0,0,0.2);
-  background-size: 250%;
+  background-size: 400%;
   background-position: center;
 }
