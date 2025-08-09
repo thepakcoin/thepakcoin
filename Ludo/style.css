@@ -27,7 +27,7 @@ html, body {
   grid-template-columns: repeat(var(--cells), 1fr);
   grid-template-rows: repeat(var(--cells), 1fr);
   gap: 2px;
-  background: #2b2b2b;
+  background: white;
   padding: 6px;
   box-sizing: border-box;
   border-radius: 12px;
