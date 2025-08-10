@@ -37,6 +37,7 @@ html, body {
 .cell {
   background: #ffffff;
   border-radius: 4px;
+  border: 1px solid black;
 }
 
 .c-red { background: #d64545; }
