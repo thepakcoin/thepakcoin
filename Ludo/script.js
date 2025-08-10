@@ -22,6 +22,22 @@ function isTokenSpot(r, c, corner) {
   return false;
 }
 
+function isEntryPoint(r, c) {
+  if (r === 6 && c === 1) return 'red';        // Red entry point
+  if (r === 1 && c === 8) return 'yellow';    // Yellow entry point
+  if (r === 8 && c === 13) return 'green';    // Green entry point
+  if (r === 13 && c === 6) return 'blue';     // Blue entry point
+  return false;
+}
+
+function createToken(color) {
+  const token = document.createElement('img');
+  token.src = 'blockchain_8404561.png';
+  token.alt = color + ' token';
+  token.classList.add('token-img');
+  return token;
+}
+
 for (let r = 0; r < CELLS; r++) {
   for (let c = 0; c < CELLS; c++) {
     const cell = document.createElement('div');
@@ -33,11 +49,30 @@ for (let r = 0; r < CELLS; r++) {
     else if (inCorner(r, c, 'bl')) cell.classList.add('c-blue');
     else if (inCenter(r, c)) cell.classList.add('center');
 
-    // Token spots insert
     if (isTokenSpot(r, c, 'tl') || isTokenSpot(r, c, 'tr') || isTokenSpot(r, c, 'br') || isTokenSpot(r, c, 'bl')) {
       const spot = document.createElement('div');
       spot.classList.add('token-spot');
+
+      if (isTokenSpot(r, c, 'tl')) {
+        const token = createToken('red');
+        spot.appendChild(token);
+      } else if (isTokenSpot(r, c, 'tr')) {
+        const token = createToken('yellow');
+        spot.appendChild(token);
+      } else if (isTokenSpot(r, c, 'br')) {
+        const token = createToken('green');
+        spot.appendChild(token);
+      } else if (isTokenSpot(r, c, 'bl')) {
+        const token = createToken('blue');
+        spot.appendChild(token);
+      }
+
       cell.appendChild(spot);
+    }
+
+    const entryColor = isEntryPoint(r, c);
+    if (entryColor) {
+      cell.classList.add('entry-' + entryColor);
     }
 
     board.appendChild(cell);
