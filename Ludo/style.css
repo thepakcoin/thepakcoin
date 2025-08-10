@@ -1,7 +1,6 @@
 :root {
   --cells: 15;
-  --board-max: 90vmin;
-  --board-size: min(var(--board-max), 720px);
+  --board-max: 90vmin; /* board screen ka max 90% hoga */
 }
 
 html, body {
@@ -24,29 +23,26 @@ html, body {
 }
 
 .board {
-  width: 640px;
-  height: 640px;
+  width: var(--board-max);
+  height: var(--board-max);
   display: grid;
-  grid-template-columns: repeat(15, 1fr);
-  grid-template-rows: repeat(15, 1fr);
+  grid-template-columns: repeat(var(--cells), 1fr);
+  grid-template-rows: repeat(var(--cells), 1fr);
   border: 3px solid #333;
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
   background-color: white;
-  max-width: 90vw;     
-  max-height: 90vw;      
-  aspect-ratio: 1 / 1;   
+  aspect-ratio: 1 / 1;
 }
 
+/* ✅ media query fix kiya (class selector sahi kiya) */
 @media (max-width: 700px) {
-  #board {
-    width: 90vw;
-    height: 90vw;
+  .board {
+    width: 90vmin;
+    height: 90vmin;
   }
 }
 
 .cell {
-  width: 40px;    
-  height: 40px;   
   box-sizing: border-box;  
   border: 1px solid #ccc;  
   display: flex;   
@@ -78,17 +74,14 @@ html, body {
   border: 3px solid darkred;
   background-color: #ffcccc;
 }
-
 .entry-yellow {
   border: 3px solid goldenrod;
   background-color: #fff4cc;
 }
-
 .entry-green {
   border: 3px solid darkgreen;
   background-color: #ccffcc;
 }
-
 .entry-blue {
   border: 3px solid darkblue;
   background-color: #ccccff;
