@@ -1,50 +1,62 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.ludo-board {
-  display: grid;
-  grid-template-columns: repeat(15, 50px);
-  grid-template-rows: repeat(15, 50px);
-  gap: 5px;
-  background-color: #fff;
-  padding: 10px;
-  border: 5px solid black;
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(15, 50px);  /* 15 columns */
+    grid-template-rows: repeat(15, 50px);     /* 15 rows */
+    gap: 1px;                                 /* Small gap between cells */
+    background-color: #333;                   /* Darker background around the board */
+    padding: 5px;
+    border: 5px solid #000;                   /* Thick black border around the board */
+    position: relative;
 }
 
 .cell {
-  width: 50px;
-  height: 50px;
-  background-color: #c8c8c8;
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;                   /* White background for cells */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;                   /* Light gray border for each cell */
 }
 
+/* Special colored cells (Start/Finish) */
 .start {
-  background-color: green;
-  color: white;
+    background-color: red;
 }
 
-.home {
-  background-color: red;
-  color: white;
+.finish {
+    background-color: green;
 }
 
-.end {
-  background-color: blue;
-  color: white;
+.red {
+    background-color: #f44336;
 }
 
-.cell:hover {
-  cursor: pointer;
-  background-color: #ddd;
+.blue {
+    background-color: #2196F3;
 }
+
+.green {
+    background-color: #4CAF50;
+}
+
+.yellow {
+    background-color: #FFEB3B;
+}
+
+/* You can add additional colors or styles as needed */
