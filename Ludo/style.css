@@ -34,11 +34,26 @@ html, body {
   aspect-ratio: 1 / 1;
 }
 
-/* ✅ media query fix kiya (class selector sahi kiya) */
-@media (max-width: 700px) {
+/* Mobile ke liye fix */
+@media (max-width: 768px) {
   .board {
     width: 90vmin;
     height: 90vmin;
+  }
+
+  .cell {
+    width: auto; /* grid ke according size le */
+    height: auto;
+  }
+
+  .token-spot {
+    width: 50%;  /* mobile me thoda chhota */
+    height: 50%;
+  }
+
+  .token-img {
+    width: 20px;  /* token size adjust */
+    height: 20px;
   }
 }
 
@@ -65,11 +80,13 @@ html, body {
   background-color: white;
   border: 3px solid rgba(0,0,0,0.2);
 }
+
 .token-img {
   width: 30px;
   height: 30px;
   object-fit: contain;
 }
+
 .entry-red {
   border: 3px solid darkred;
   background-color: #ffcccc;
