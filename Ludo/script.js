@@ -53,6 +53,9 @@ for (let r = 0; r < CELLS; r++) {
       const spot = document.createElement('div');
       spot.classList.add('token-spot');
 
+      if (inCorner(r, c, 'tl') || inCorner(r, c, 'tr') || inCorner(r, c, 'bl') || inCorner(r, c, 'br')) {
+       cell.classList.add('home-base');
+    }
       if (isTokenSpot(r, c, 'tl')) {
         const token = createToken('red');
         spot.appendChild(token);
@@ -66,6 +69,7 @@ for (let r = 0; r < CELLS; r++) {
         const token = createToken('blue');
         spot.appendChild(token);
       }
+       
 
       cell.appendChild(spot);
     }
@@ -78,3 +82,52 @@ for (let r = 0; r < CELLS; r++) {
     board.appendChild(cell);
   }
 }
+
+const dice = document.getElementById('dice');
+
+const dotsConfig = {
+  1: ['center'],
+  2: ['tl', 'br'],
+  3: ['tl', 'center', 'br'],
+  4: ['tl', 'tr', 'bl', 'br'],
+  5: ['tl', 'tr', 'center', 'bl', 'br'],
+  6: ['tl', 'tr', 'ml', 'mr', 'bl', 'br']
+};
+
+function clearDots() {
+  while(dice.firstChild) {
+    dice.removeChild(dice.firstChild);
+  }
+}
+
+function showDiceNumber(num) {
+  clearDots();
+  const positions = dotsConfig[num];
+  positions.forEach(pos => {
+    const dot = document.createElement('div');
+    dot.classList.add('dot', pos);
+    dice.appendChild(dot);
+  });
+}
+
+function rollDice() {
+  const number = Math.floor(Math.random() * 6) + 1;
+  showDiceNumber(number);
+  // yahan dice ka number use karne ke liye aage code likh sakte ho
+  console.log("Dice rolled: ", number);
+}
+
+// Initial dice display 1
+showDiceNumber(1);
+
+// Dice roll on click
+dice.addEventListener('click', rollDice);
+
+// Dice roll on keyboard Enter or Space for accessibility
+dice.addEventListener('keydown', (e) => {
+  if(e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    rollDice();
+  }
+});
+

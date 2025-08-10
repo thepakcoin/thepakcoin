@@ -1,6 +1,6 @@
 :root {
   --cells: 15;
-  --board-max: 90vmin; /* board screen ka max 90% hoga */
+  --board-max: 90vmin; 
 }
 
 html, body {
@@ -32,6 +32,7 @@ html, body {
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
   background-color: white;
   aspect-ratio: 1 / 1;
+  border-spacing: 0;
 }
 
 @media (max-width: 700px) {
@@ -50,6 +51,15 @@ html, body {
   position: relative; 
 }
 
+.home-base {
+  border: none;
+  background-color: transparent;
+  pointer-events: none
+
+}
+.home-base:nth-child(n) {
+    grid-gap: 0;
+}
 .c-red { background: #d64545; }
 .c-yellow { background: #f1c40f; }
 .c-green { background: #2ecc71; }
@@ -57,7 +67,7 @@ html, body {
 .center { background: #ffeaa7; }
 
 .token-spot {
-  width: 65%; /* thoda bada */
+  width: 65%; 
   height: 65%;
   margin: auto;
   border-radius: 50%;
@@ -71,14 +81,14 @@ html, body {
 .token-img {
   width: 90%;
   height: 90%;
-  max-width: 35px; /* desktop limit */
+  max-width: 35px; 
   max-height: 35px;
   object-fit: contain;
 }
 
 @media (max-width: 700px) {
   .token-img {
-    max-width: 22px; /* mobile limit */
+    max-width: 22px; 
     max-height: 22px;
   }
 }
@@ -98,4 +108,97 @@ html, body {
 .entry-blue {
   border: 3px solid darkblue;
   background-color: #ccccff;
+}
+
+#diceContainer {
+  margin-top: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+
+
+#dice {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  border-radius: 20px;
+  box-shadow: 5px 5px 15px #bebebe,
+              -5px -5px 15px #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+
+}
+
+.wrap {
+  display: flex;
+  flex-direction: row;   /* Desktop: board aur dice side by side */
+  align-items: center;
+  gap: 20px;            /* dono ke darmiyan gap */
+  padding: 20px;
+}
+
+/* Mobile pe wrap ka flex direction column kar do */
+@media (max-width: 700px) {
+  .wrap {
+    flex-direction: column; /* Mobile: dice board ke neeche */
+    gap: 30px;
+  }
+}
+
+
+
+.dot {
+  width: 15px;
+  height: 15px;
+  background: #2c3e50;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.dot.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.dot.tl {
+  top: 25%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+.dot.tr {
+  top: 25%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+}
+.dot.ml {
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+.dot.mr {
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+}
+.dot.bl {
+  top: 75%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+.dot.br {
+  top: 75%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+}
+
+#instruction {
+  margin-top: 15px;
+  color: #555;
+  font-size: 16px;
+  user-select: none;
 }
