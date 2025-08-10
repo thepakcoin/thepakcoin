@@ -46,6 +46,9 @@ html, body {
 .c-green { background: #2ecc71; }
 .c-blue { background: #3498db; }
 .center { background: #ffeaa7; }
+.home-base {
+  background: transparent;
+  border: 3px transparent;
 .token-spot {
   width: 60%;
   height: 60%;
