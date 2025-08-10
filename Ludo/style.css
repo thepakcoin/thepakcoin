@@ -66,6 +66,28 @@ html, body {
 .c-blue { background: #3498db; }
 .center { background: #ffeaa7; }
 
+.safe-red {
+  background-color: #ff9999;  /* light red */
+  border: 2px solid darkred;
+}
+
+.safe-yellow {
+  background-color: #fff2b3;  /* light yellow */
+  border: 2px solid goldenrod;
+}
+
+.safe-green {
+  background-color: #b3ffb3;  /* light green */
+  border: 2px solid darkgreen;
+}
+
+.safe-blue {
+  background-color: #b3b3ff;  /* light blue */
+  border: 2px solid darkblue;
+}
+
+
+
 .token-spot {
   width: 65%; 
   height: 65%;

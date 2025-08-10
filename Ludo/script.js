@@ -1,6 +1,7 @@
 const CELLS = 15;
 const board = document.getElementById('board');
 
+
 function inCorner(r, c, corner, size = 6) {
   if (corner === 'tl') return r < size && c < size;
   if (corner === 'tr') return r < size && c >= CELLS - size;
@@ -49,6 +50,7 @@ for (let r = 0; r < CELLS; r++) {
     else if (inCorner(r, c, 'bl')) cell.classList.add('c-blue');
     else if (inCenter(r, c)) cell.classList.add('center');
 
+
     if (isTokenSpot(r, c, 'tl') || isTokenSpot(r, c, 'tr') || isTokenSpot(r, c, 'br') || isTokenSpot(r, c, 'bl')) {
       const spot = document.createElement('div');
       spot.classList.add('token-spot');
@@ -69,16 +71,14 @@ for (let r = 0; r < CELLS; r++) {
         const token = createToken('blue');
         spot.appendChild(token);
       }
-       
 
       cell.appendChild(spot);
     }
 
-    const entryColor = isEntryPoint(r, c);
-    if (entryColor) {
+       const entryColor = isEntryPoint(r, c);
+     if (entryColor) {
       cell.classList.add('entry-' + entryColor);
     }
-
     board.appendChild(cell);
   }
 }
@@ -131,3 +131,71 @@ dice.addEventListener('keydown', (e) => {
   }
 });
 
+// Current player - 4 players example
+let currentPlayer = 'red';
+
+// Player tokens on board (example: token position, -1 means home)
+let playerTokens = {
+  red: -1,
+  yellow: -1,
+  green: -1,
+  blue: -1
+};
+
+// Entry points coordinates for each player (same as isEntryPoint)
+const entryPoints = {
+  red: { r: 6, c: 1 },
+  yellow: { r: 1, c: 8 },
+  green: { r: 8, c: 13 },
+  blue: { r: 13, c: 6 }
+};
+
+// Function to move token to entry if dice roll is 6
+function tryEnterToken(player, diceNumber) {
+  if(diceNumber === 6 && playerTokens[player] === -1) {
+    // Token enters the board
+    playerTokens[player] = 0;  // For example position 0 means entry point
+    const entry = entryPoints[player];
+    // Add token image to entry cell
+    const cells = board.children;
+    for(let i=0; i<cells.length; i++) {
+      // cells[i] corresponds to row,col
+      // Calculate row and col from i:
+      let row = Math.floor(i / CELLS);
+      let col = i % CELLS;
+      if(row === entry.r && col === entry.c) {
+        const spot = document.createElement('div');
+        spot.classList.add('token-spot');
+        const token = createToken(player);
+        spot.appendChild(token);
+        cells[i].appendChild(spot);
+        break;
+      }
+    }
+    console.log(player + " token entered on board");
+    return true;
+  }
+  return false;
+}
+
+// Modify rollDice function to include token enter logic and turn switch
+function rollDice() {
+  const number = Math.floor(Math.random() * 6) + 1;
+  showDiceNumber(number);
+  console.log("Dice rolled: ", number);
+
+  if(tryEnterToken(currentPlayer, number)) {
+    // If token entered, player gets another turn (standard ludo rule)
+    console.log(currentPlayer + " gets another turn");
+  } else {
+    // TODO: Add token movement logic here
+
+    // Switch turn to next player
+    if(currentPlayer === 'red') currentPlayer = 'yellow';
+    else if(currentPlayer === 'yellow') currentPlayer = 'green';
+    else if(currentPlayer === 'green') currentPlayer = 'blue';
+    else currentPlayer = 'red';
+
+    console.log("Turn changed to: ", currentPlayer);
+  }
+}
