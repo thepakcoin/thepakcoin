@@ -34,26 +34,10 @@ html, body {
   aspect-ratio: 1 / 1;
 }
 
-/* Mobile ke liye fix */
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   .board {
     width: 90vmin;
     height: 90vmin;
-  }
-
-  .cell {
-    width: auto; /* grid ke according size le */
-    height: auto;
-  }
-
-  .token-spot {
-    width: 50%;  /* mobile me thoda chhota */
-    height: 50%;
-  }
-
-  .token-img {
-    width: 20px;  /* token size adjust */
-    height: 20px;
   }
 }
 
@@ -73,18 +57,30 @@ html, body {
 .center { background: #ffeaa7; }
 
 .token-spot {
-  width: 60%;
-  height: 60%;
+  width: 65%; /* thoda bada */
+  height: 65%;
   margin: auto;
   border-radius: 50%;
   background-color: white;
   border: 3px solid rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .token-img {
-  width: 30px;
-  height: 30px;
+  width: 90%;
+  height: 90%;
+  max-width: 35px; /* desktop limit */
+  max-height: 35px;
   object-fit: contain;
+}
+
+@media (max-width: 700px) {
+  .token-img {
+    max-width: 22px; /* mobile limit */
+    max-height: 22px;
+  }
 }
 
 .entry-red {
