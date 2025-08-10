@@ -1,6 +1,41 @@
 const CELLS = 15;
 const board = document.getElementById('board');
 
+// Define movement paths for each player (rough shape, adjust as per your board)
+const paths = {
+  red: [
+    {r:6,c:1}, {r:6,c:2}, {r:6,c:3}, {r:6,c:4}, {r:6,c:5}, {r:5,c:5}, {r:4,c:5}, {r:3,c:5}, {r:2,c:5}, {r:1,c:5},
+    {r:1,c:6}, {r:1,c:7}, {r:1,c:8}, {r:2,c:8}, {r:3,c:8}, {r:4,c:8}, {r:5,c:8}, {r:6,c:8},
+    {r:7,c:8}, {r:8,c:8}, {r:8,c:9}, {r:8,c:10}, {r:8,c:11}, {r:8,c:12}, {r:8,c:13}, {r:9,c:13}, {r:10,c:13}, {r:11,c:13},
+    {r:12,c:13}, {r:13,c:13}, {r:13,c:12}, {r:13,c:11}, {r:13,c:10}, {r:13,c:9}, {r:13,c:8}, {r:12,c:8}, {r:11,c:8},
+    {r:10,c:8}, {r:9,c:8}, {r:8,c:7}, {r:8,c:6}, {r:8,c:5}, {r:8,c:4}, {r:8,c:3}, {r:8,c:2}, {r:8,c:1}, {r:7,c:1},
+    {r:6,c:1} // loop completes
+  ],
+  yellow: [
+    {r:1,c:8}, {r:2,c:8}, {r:3,c:8}, {r:4,c:8}, {r:5,c:8}, {r:5,c:9}, {r:5,c:10}, {r:5,c:11}, {r:5,c:12}, {r:5,c:13},
+    {r:6,c:13}, {r:7,c:13}, {r:8,c:13}, {r:8,c:12}, {r:8,c:11}, {r:8,c:10}, {r:8,c:9}, {r:8,c:8},
+    {r:9,c:8}, {r:10,c:8}, {r:11,c:8}, {r:12,c:8}, {r:13,c:8}, {r:13,c:7}, {r:13,c:6}, {r:12,c:6}, {r:11,c:6},
+    {r:10,c:6}, {r:9,c:6}, {r:8,c:6}, {r:7,c:6}, {r:6,c:6}, {r:6,c:5}, {r:6,c:4}, {r:6,c:3}, {r:6,c:2}, {r:6,c:1},
+    {r:5,c:1}, {r:5,c:2}, {r:5,c:3}, {r:5,c:4}, {r:5,c:5}, {r:5,c:6}, {r:5,c:7}, {r:5,c:8}, {r:4,c:8}, {r:3,c:8},
+    {r:2,c:8}, {r:1,c:8} // loop complete
+  ],
+  green: [
+    {r:8,c:13}, {r:8,c:12}, {r:8,c:11}, {r:8,c:10}, {r:8,c:9}, {r:9,c:9}, {r:10,c:9}, {r:11,c:9}, {r:12,c:9}, {r:13,c:9},
+    {r:13,c:8}, {r:13,c:7}, {r:13,c:6}, {r:12,c:6}, {r:11,c:6}, {r:10,c:6}, {r:9,c:6}, {r:8,c:6},
+    {r:7,c:6}, {r:6,c:6}, {r:6,c:5}, {r:6,c:4}, {r:6,c:3}, {r:6,c:2}, {r:6,c:1}, {r:7,c:1}, {r:8,c:1},
+    {r:8,c:2}, {r:8,c:3}, {r:8,c:4}, {r:8,c:5}, {r:8,c:6}, {r:9,c:6}, {r:10,c:6}, {r:11,c:6}, {r:12,c:6},
+    {r:13,c:6}, {r:13,c:7}, {r:13,c:8}, {r:12,c:8}, {r:11,c:8}, {r:10,c:8}, {r:9,c:8}, {r:8,c:8}, {r:7,c:8},
+    {r:6,c:8}, {r:6,c:9}, {r:6,c:10}, {r:6,c:11}, {r:6,c:12}, {r:6,c:13}, {r:6,c:14} // loop complete
+  ],
+  blue: [
+    {r:13,c:6}, {r:12,c:6}, {r:11,c:6}, {r:10,c:6}, {r:9,c:6}, {r:8,c:6}, {r:7,c:6}, {r:6,c:6}, {r:6,c:7}, {r:6,c:8},
+    {r:6,c:9}, {r:6,c:10}, {r:6,c:11}, {r:6,c:12}, {r:6,c:13}, {r:6,c:14}, {r:7,c:14}, {r:8,c:14}, {r:9,c:14}, {r:10,c:14},
+    {r:11,c:14}, {r:12,c:14}, {r:13,c:14}, {r:13,c:13}, {r:13,c:12}, {r:13,c:11}, {r:13,c:10}, {r:13,c:9}, {r:13,c:8},
+    {r:12,c:8}, {r:11,c:8}, {r:10,c:8}, {r:9,c:8}, {r:8,c:8}, {r:7,c:8}, {r:6,c:8}, {r:6,c:7}, {r:6,c:6}, {r:5,c:6},
+    {r:4,c:6}, {r:3,c:6}, {r:2,c:6}, {r:1,c:6}, {r:0,c:6}, {r:0,c:5}, {r:1,c:5}, {r:2,c:5}, {r:3,c:5}, {r:4,c:5},
+    {r:5,c:5}, {r:6,c:5}, {r:7,c:5}, {r:8,c:5} // loop complete
+  ],
+};
 
 function inCorner(r, c, corner, size = 6) {
   if (corner === 'tl') return r < size && c < size;
@@ -33,12 +68,13 @@ function isEntryPoint(r, c) {
 
 function createToken(color) {
   const token = document.createElement('img');
-  token.src = 'blockchain_8404561.png';
+  token.src = 'blockchain_8404561.png'; // aap apna image yahan set kar sakte hain
   token.alt = color + ' token';
   token.classList.add('token-img');
   return token;
 }
 
+// Create board cells and add colors and tokens
 for (let r = 0; r < CELLS; r++) {
   for (let c = 0; c < CELLS; c++) {
     const cell = document.createElement('div');
@@ -50,14 +86,13 @@ for (let r = 0; r < CELLS; r++) {
     else if (inCorner(r, c, 'bl')) cell.classList.add('c-blue');
     else if (inCenter(r, c)) cell.classList.add('center');
 
-
     if (isTokenSpot(r, c, 'tl') || isTokenSpot(r, c, 'tr') || isTokenSpot(r, c, 'br') || isTokenSpot(r, c, 'bl')) {
       const spot = document.createElement('div');
       spot.classList.add('token-spot');
 
       if (inCorner(r, c, 'tl') || inCorner(r, c, 'tr') || inCorner(r, c, 'bl') || inCorner(r, c, 'br')) {
-       cell.classList.add('home-base');
-    }
+        cell.classList.add('home-base');
+      }
       if (isTokenSpot(r, c, 'tl')) {
         const token = createToken('red');
         spot.appendChild(token);
@@ -75,8 +110,8 @@ for (let r = 0; r < CELLS; r++) {
       cell.appendChild(spot);
     }
 
-       const entryColor = isEntryPoint(r, c);
-     if (entryColor) {
+    const entryColor = isEntryPoint(r, c);
+    if (entryColor) {
       cell.classList.add('entry-' + entryColor);
     }
     board.appendChild(cell);
@@ -110,31 +145,7 @@ function showDiceNumber(num) {
   });
 }
 
-function rollDice() {
-  const number = Math.floor(Math.random() * 6) + 1;
-  showDiceNumber(number);
-  // yahan dice ka number use karne ke liye aage code likh sakte ho
-  console.log("Dice rolled: ", number);
-}
-
-// Initial dice display 1
-showDiceNumber(1);
-
-// Dice roll on click
-dice.addEventListener('click', rollDice);
-
-// Dice roll on keyboard Enter or Space for accessibility
-dice.addEventListener('keydown', (e) => {
-  if(e.key === 'Enter' || e.key === ' ') {
-    e.preventDefault();
-    rollDice();
-  }
-});
-
-// Current player - 4 players example
-let currentPlayer = 'red';
-
-// Player tokens on board (example: token position, -1 means home)
+// Player tokens position: -1 means home (board par nahi)
 let playerTokens = {
   red: -1,
   yellow: -1,
@@ -142,55 +153,91 @@ let playerTokens = {
   blue: -1
 };
 
-// Entry points coordinates for each player (same as isEntryPoint)
-const entryPoints = {
-  red: { r: 6, c: 1 },
-  yellow: { r: 1, c: 8 },
-  green: { r: 8, c: 13 },
-  blue: { r: 13, c: 6 }
-};
+let currentPlayer = 'red';
 
-// Function to move token to entry if dice roll is 6
 function tryEnterToken(player, diceNumber) {
   if(diceNumber === 6 && playerTokens[player] === -1) {
-    // Token enters the board
-    playerTokens[player] = 0;  // For example position 0 means entry point
-    const entry = entryPoints[player];
-    // Add token image to entry cell
+    playerTokens[player] = 0;  // token enters the board at position 0 of path
+    const entry = paths[player][0];
     const cells = board.children;
-    for(let i=0; i<cells.length; i++) {
-      // cells[i] corresponds to row,col
-      // Calculate row and col from i:
-      let row = Math.floor(i / CELLS);
-      let col = i % CELLS;
-      if(row === entry.r && col === entry.c) {
-        const spot = document.createElement('div');
-        spot.classList.add('token-spot');
-        const token = createToken(player);
-        spot.appendChild(token);
-        cells[i].appendChild(spot);
-        break;
-      }
-    }
+    const index = entry.r * CELLS + entry.c;
+    const cell = cells[index];
+
+    // Clear home tokens of that player first (remove old token spots from home)
+    // For simplicity, here just removing from entry point if any
+    const oldSpots = cell.querySelectorAll('.token-spot');
+    oldSpots.forEach(spot => cell.removeChild(spot));
+
+    const spot = document.createElement('div');
+    spot.classList.add('token-spot');
+    const token = createToken(player);
+    spot.appendChild(token);
+    cell.appendChild(spot);
+
     console.log(player + " token entered on board");
     return true;
   }
   return false;
 }
 
-// Modify rollDice function to include token enter logic and turn switch
+function updateTokenPositionOnBoard(player, oldPos, newPos) {
+  const cells = board.children;
+
+  // Remove token from old cell
+  if(oldPos >= 0) {
+    const oldCellCoords = paths[player][oldPos];
+    const oldIndex = oldCellCoords.r * CELLS + oldCellCoords.c;
+    const oldCell = cells[oldIndex];
+    const oldSpot = oldCell.querySelector('.token-spot');
+    if(oldSpot) oldCell.removeChild(oldSpot);
+  }
+
+  // Add token to new cell
+  if(newPos >= 0) {
+    const newCellCoords = paths[player][newPos];
+    const newIndex = newCellCoords.r * CELLS + newCellCoords.c;
+    const newCell = cells[newIndex];
+    const spot = document.createElement('div');
+    spot.classList.add('token-spot');
+    const token = createToken(player);
+    spot.appendChild(token);
+    newCell.appendChild(spot);
+  }
+}
+
+function moveToken(player, steps) {
+  if(playerTokens[player] === -1) {
+    console.log(player + " token is still at home");
+    return false;
+  }
+  const path = paths[player];
+  let currentPos = playerTokens[player];
+  let newPos = currentPos + steps;
+
+  if(newPos >= path.length) {
+    console.log(player + " cannot move beyond path end");
+    return false;
+  }
+
+  updateTokenPositionOnBoard(player, currentPos, newPos);
+  playerTokens[player] = newPos;
+  return true;
+}
+
 function rollDice() {
   const number = Math.floor(Math.random() * 6) + 1;
   showDiceNumber(number);
   console.log("Dice rolled: ", number);
 
   if(tryEnterToken(currentPlayer, number)) {
-    // If token entered, player gets another turn (standard ludo rule)
     console.log(currentPlayer + " gets another turn");
   } else {
-    // TODO: Add token movement logic here
+    const moved = moveToken(currentPlayer, number);
+    if(!moved) {
+      console.log(currentPlayer + " can't move token");
+    }
 
-    // Switch turn to next player
+    // Switch turn
     if(currentPlayer === 'red') currentPlayer = 'yellow';
     else if(currentPlayer === 'yellow') currentPlayer = 'green';
     else if(currentPlayer === 'green') currentPlayer = 'blue';
@@ -199,3 +246,12 @@ function rollDice() {
     console.log("Turn changed to: ", currentPlayer);
   }
 }
+
+showDiceNumber(1);
+dice.addEventListener('click', rollDice);
+dice.addEventListener('keydown', (e) => {
+  if(e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    rollDice();
+  }
+});
