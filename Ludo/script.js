@@ -1,10 +1,9 @@
 const cells = document.querySelectorAll('.cell');
 
-// Add click event listener for each cell
+// Har cell pe click hone par position print hoga
 cells.forEach(cell => {
     cell.addEventListener('click', () => {
-        // Log cell position when clicked
+        // Cell ki position console mein print ho jayegi
         console.log(`Cell clicked at position: ${cell}`);
-        // Add more game logic here as per your requirement
     });
 });
