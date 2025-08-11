@@ -7,6 +7,13 @@ const board = document.getElementById('board');
     { row: 13, col: 6, color: 'yellow' },
     { row: 8, col: 13, color: 'blue' }
    ];
+    
+    const extraSafeSpots = [
+    { row: 8, col: 2 },
+    { row: 2, col: 6 },
+    { row: 6, col: 12 },
+    { row: 12, col: 8 },
+   ];   
 
 for (let row = 0; row < 15; row++) {
   for (let col = 0; col < 15; col++) {
@@ -28,7 +35,7 @@ for (let row = 0; row < 15; row++) {
     }
 
            
-    // Mark entry points
+     // Mark entry points
     const isEntry = entryPoints.some(
       (ep) => ep.row === row && ep.col === col
     );
@@ -37,12 +44,21 @@ for (let row = 0; row < 15; row++) {
         (ep) => ep.row === row && ep.col === col
       ).color;
       cell.classList.add('entry-point', epColor);
+      cell.classList.add('safe-spot'); 
     }
 
+      const isExtraSafe = extraSafeSpots.some(
+      (spot) => spot.row === row && spot.col === col
+    );
+    if (isExtraSafe) {
+      cell.classList.add('safe-spot');
+    }
 
+      
     board.appendChild(cell);
   }
 }
+
 window.addEventListener('load', function () {
   const boardWidth = board.getBoundingClientRect().width;
   const totalCells = 15;
