@@ -65,11 +65,31 @@ window.addEventListener('load', function () {
   const cellSize = boardWidth / totalCells;
 
   const tokens = {
-    'red-token-1': { row: 2.5, col: 2.5 },
-    'green-token-1': { row: 2.5, col:  11.5 },
-    'yellow-token-1': { row: 11.5, col: 2.5 },
-    'blue-token-1': { row: 11.5, col: 11.5 }
-  };
+  // 🔴 Red Tokens (All on center of red base)
+  'red-token-1': { row: 2.5, col: 2.5 },
+  'red-token-2': { row: 2.5, col: 2.5 },
+  'red-token-3': { row: 2.5, col: 2.5 },
+  'red-token-4': { row: 2.5, col: 2.5 },
+
+  // 🟢 Green Tokens (All on center of green base)
+  'green-token-1': { row: 2.5, col: 11.5 },
+  'green-token-2': { row: 2.5, col: 11.5 },
+  'green-token-3': { row: 2.5, col: 11.5 },
+  'green-token-4': { row: 2.5, col: 11.5 },
+
+  // 🟡 Yellow Tokens (All on center of yellow base)
+  'yellow-token-1': { row: 11.5, col: 2.5 },
+  'yellow-token-2': { row: 11.5, col: 2.5 },
+  'yellow-token-3': { row: 11.5, col: 2.5 },
+  'yellow-token-4': { row: 11.5, col: 2.5 },
+
+  // 🔵 Blue Tokens (All on center of blue base)
+  'blue-token-1': { row: 11.5, col: 11.5 },
+  'blue-token-2': { row: 11.5, col: 11.5 },
+  'blue-token-3': { row: 11.5, col: 11.5 },
+  'blue-token-4': { row: 11.5, col: 11.5 }
+};
+
 
   for (const id in tokens) {
     const token = document.getElementById(id);
@@ -87,3 +107,13 @@ window.addEventListener('load', function () {
     token.style.top = `${top}px`;
   }
 });
+
+// 👇 YAHAN DICE KA CODE SHURU HOTA HAI
+const dice = document.getElementById('dice');
+
+function rollDice() {
+  const randomNumber = Math.floor(Math.random() * 6) + 1;
+  dice.textContent = randomNumber;
+}
+
+dice.addEventListener('click', rollDice);
