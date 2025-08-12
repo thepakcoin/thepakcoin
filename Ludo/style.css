@@ -35,45 +35,60 @@ body {
   width: 95vw;
   max-width: 600px;
   aspect-ratio: 1 / 1;
-  background: #fff;
+  background: linear-gradient(135deg, #f0e68c, #fffacd);
   margin-top: 20px;
   border-radius: 8px;
   overflow: hidden;
   position: relative;
-  border: #333 4px solid;
+  border: goldenrod 4px solid;
   image-rendering: pixelated;
 }
 
-/* Each cell (block) */
+
 .cell {
-  border: 1px solid #333;
+  border: 1px solid black;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
   aspect-ratio: 1 / 1;
   min-width: 10px;
   min-height: 10px;
 }
 
 .home {
-  border: none; 
+  border: 2px white;
+  background-color: #f0e68c; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+
 }
 
-/* Player colors */
+
 .red {
   background-color: red;
-  border: none;
+  border: black 2px solid;
+  background-color: black;
 
 }
 .green {
   background-color: green;
-  border: none;
+  border: black 2px solid;
+  background-color: black;
 }
 .blue {
   background-color: blue;
-  border: none;
+  border: black 2px solid;
+  background-color: black;
 }
 .yellow {
   background-color: yellow;
-  border: none;
+  border: black 2px solid;
+  background-color: black;
 }
 
 .final-cell {
@@ -100,7 +115,7 @@ body {
 .token {
   width: 40px;
   height: 40px;
-  background-color: black; /* Coin color */
+  background-color: white; /* Coin color */
   border-radius: 50%; /* Circular shape */
   border: 3px solid goldenrod; /* Gold border */
   position: absolute;
