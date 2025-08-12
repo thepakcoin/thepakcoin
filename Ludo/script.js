@@ -1,4 +1,73 @@
-const board = document.getElementById('board');
+    const board = document.getElementById('board');
+
+
+    const paths = {
+  red: [
+    { row: 6, col: 1 }, { row: 6, col: 2 }, { row: 6, col: 3 }, { row: 6, col: 4 }, { row: 6, col: 5 },
+    { row: 6, col: 6 }, { row: 5, col: 6 }, { row: 4, col: 6 }, { row: 3, col: 6 }, { row: 2, col: 6 },
+    { row: 1, col: 6 }, { row: 0, col: 6 }, { row: 0, col: 7 }, { row: 0, col: 8 }, { row: 1, col: 8 },
+    { row: 2, col: 8 }, { row: 3, col: 8 }, { row: 4, col: 8 }, { row: 5, col: 8 }, { row: 6, col: 8 },
+    { row: 6, col: 9 }, { row: 6, col: 10 }, { row: 6, col: 11 }, { row: 6, col: 12 }, { row: 6, col: 13 },
+    { row: 6, col: 14 }, { row: 7, col: 14 }, { row: 8, col: 14 }, { row: 8, col: 13 }, { row: 8, col: 12 },
+    { row: 8, col: 11 }, { row: 8, col: 10 }, { row: 8, col: 9 }, { row: 8, col: 8 }, { row: 9, col: 8 },
+    { row: 10, col: 8 }, { row: 11, col: 8 }, { row: 12, col: 8 }, { row: 13, col: 8 }, { row: 14, col: 8 },
+    { row: 14, col: 7 }, { row: 14, col: 6 }, { row: 13, col: 6 }, { row: 12, col: 6 }, { row: 11, col: 6 },
+    { row: 10, col: 6 }, { row: 9, col: 6 }, { row: 8, col: 6 }, { row: 8, col: 5 }, { row: 8, col: 4 },
+    { row: 8, col: 3 }, { row: 8, col: 2 }, { row: 8, col: 1 }, { row: 8, col: 0 }, { row: 7, col: 0 },
+    { row: 6, col: 0 }, { row: 6, col: 1 } // back to start (loop)
+  ],
+  green: [
+    { row: 1, col: 8 }, { row: 2, col: 8 }, { row: 3, col: 8 }, { row: 4, col: 8 }, { row: 5, col: 8 },
+    { row: 6, col: 8 }, { row: 6, col: 9 }, { row: 6, col: 10 }, { row: 6, col: 11 }, { row: 6, col: 12 },
+    { row: 6, col: 13 }, { row: 6, col: 14 }, { row: 7, col: 14 }, { row: 8, col: 14 }, { row: 8, col: 13 },
+    { row: 8, col: 12 }, { row: 8, col: 11 }, { row: 8, col: 10 }, { row: 8, col: 9 }, { row: 8, col: 8 },
+    { row: 9, col: 8 }, { row: 10, col: 8 }, { row: 11, col: 8 }, { row: 12, col: 8 }, { row: 13, col: 8 },
+    { row: 14, col: 8 }, { row: 14, col: 7 }, { row: 14, col: 6 }, { row: 13, col: 6 }, { row: 12, col: 6 },
+    { row: 11, col: 6 }, { row: 10, col: 6 }, { row: 9, col: 6 }, { row: 8, col: 6 }, { row: 8, col: 5 },
+    { row: 8, col: 4 }, { row: 8, col: 3 }, { row: 8, col: 2 }, { row: 8, col: 1 }, { row: 8, col: 0 },
+    { row: 7, col: 0 }, { row: 6, col: 0 }, { row: 6, col: 1 }, { row: 6, col: 2 }, { row: 6, col: 3 },
+    { row: 6, col: 4 }, { row: 6, col: 5 }, { row: 6, col: 6 }, { row: 5, col: 6 }, { row: 4, col: 6 },
+    { row: 3, col: 6 }, { row: 2, col: 6 }, { row: 1, col: 6 }, { row: 0, col: 6 }, { row: 0, col: 7 },
+    { row: 0, col: 8 }, { row: 1, col: 8 }
+  ],
+  yellow: [
+    { row: 8, col: 13 }, { row: 8, col: 12 }, { row: 8, col: 11 }, { row: 8, col: 10 }, { row: 8, col: 9 },
+    { row: 8, col: 8 }, { row: 9, col: 8 }, { row: 10, col: 8 }, { row: 11, col: 8 }, { row: 12, col: 8 },
+    { row: 13, col: 8 }, { row: 14, col: 8 }, { row: 14, col: 7 }, { row: 14, col: 6 }, { row: 13, col: 6 },
+    { row: 12, col: 6 }, { row: 11, col: 6 }, { row: 10, col: 6 }, { row: 9, col: 6 }, { row: 8, col: 6 },
+    { row: 8, col: 5 }, { row: 8, col: 4 }, { row: 8, col: 3 }, { row: 8, col: 2 }, { row: 8, col: 1 },
+    { row: 8, col: 0 }, { row: 7, col: 0 }, { row: 6, col: 0 }, { row: 6, col: 1 }, { row: 6, col: 2 },
+    { row: 6, col: 3 }, { row: 6, col: 4 }, { row: 6, col: 5 }, { row: 6, col: 6 }, { row: 5, col: 6 },
+    { row: 4, col: 6 }, { row: 3, col: 6 }, { row: 2, col: 6 }, { row: 1, col: 6 }, { row: 0, col: 6 },
+    { row: 0, col: 7 }, { row: 0, col: 8 }, { row: 1, col: 8 }, { row: 2, col: 8 }, { row: 3, col: 8 },
+    { row: 4, col: 8 }, { row: 5, col: 8 }, { row: 6, col: 8 }, { row: 6, col: 9 }, { row: 6, col: 10 },
+    { row: 6, col: 11 }, { row: 6, col: 12 }, { row: 6, col: 13 }
+  ],
+  blue: [
+    { row: 13, col: 6 }, { row: 12, col: 6 }, { row: 11, col: 6 }, { row: 10, col: 6 }, { row: 9, col: 6 },
+    { row: 8, col: 6 }, { row: 8, col: 5 }, { row: 8, col: 4 }, { row: 8, col: 3 }, { row: 8, col: 2 },
+    { row: 8, col: 1 }, { row: 8, col: 0 }, { row: 7, col: 0 }, { row: 6, col: 0 }, { row: 6, col: 1 },
+    { row: 6, col: 2 }, { row: 6, col: 3 }, { row: 6, col: 4 }, { row: 6, col: 5 }, { row: 6, col: 6 },
+    { row: 5, col: 6 }, { row: 4, col: 6 }, { row: 3, col: 6 }, { row: 2, col: 6 }, { row: 1, col: 6 },
+    { row: 0, col: 6 }, { row: 0, col: 7 }, { row: 0, col: 8 }, { row: 1, col: 8 }, { row: 2, col: 8 },
+    { row: 3, col: 8 }, { row: 4, col: 8 }, { row: 5, col: 8 }, { row: 6, col: 8 }, { row: 6, col: 9 },
+    { row: 6, col: 10 }, { row: 6, col: 11 }, { row: 6, col: 12 }, { row: 6, col: 13 }, { row: 6, col: 14 },
+    { row: 7, col: 14 }, { row: 8, col: 14 }, { row: 8, col: 13 }, { row: 8, col: 12 }, { row: 8, col: 11 },
+    { row: 8, col: 10 }, { row: 8, col: 9 }, { row: 8, col: 8 }
+  ]
+  };
+
+    let positions = {
+  red: [0, 0, 0, 0],
+  green: [0, 0, 0, 0],
+  yellow: [0, 0, 0, 0],
+  blue: [0, 0, 0, 0]
+};
+
+let players = ['red', 'green', 'yellow', 'blue'];
+let currentPlayerIndex = 0;
+let currentPlayer = players[currentPlayerIndex];
+
 
     // Define entry points for each player
     const entryPoints = [
@@ -39,7 +108,7 @@ for (let row = 0; row < 15; row++) {
     const isEntry = entryPoints.some(
       (ep) => ep.row === row && ep.col === col
     );
-    if (isEntry) {
+     if (isEntry) {
       const epColor = entryPoints.find(
         (ep) => ep.row === row && ep.col === col
       ).color;
@@ -58,6 +127,66 @@ for (let row = 0; row < 15; row++) {
     board.appendChild(cell);
   }
 }
+
+function moveToken(player, tokenIndex, steps) {
+  let path = paths[player];
+  let currentPos = positions[player][tokenIndex];
+  let tokenId = `${player}-token-${tokenIndex + 1}`;
+  let token = document.getElementById(tokenId);
+
+  const boardWidth = board.getBoundingClientRect().width;
+  const cellSize = boardWidth / 15;
+
+  // Move to entry point
+  if (currentPos === 0 && steps === 6) {
+    positions[player][tokenIndex] = 0;
+    let { row, col } = path[0];
+
+    token.style.left = `${col * cellSize + (cellSize - token.offsetWidth) / 2}px`;
+    token.style.top = `${row * cellSize + (cellSize - token.offsetHeight) / 2}px`;
+
+    setTimeout(() => {
+      let targetPos = 0 + (steps - 1);
+      if (targetPos >= path.length) targetPos = path.length - 1;
+
+      let step = 0;
+      const interval = setInterval(() => {
+        if (step < targetPos) {
+          step++;
+          positions[player][tokenIndex] = step;
+          let { row, col } = path[step];
+          token.style.left = `${col * cellSize + (cellSize - token.offsetWidth) / 2}px`;
+          token.style.top = `${row * cellSize + (cellSize - token.offsetHeight) / 2}px`;
+        } else {
+          clearInterval(interval);
+        }
+      }, 300);
+    }, 2000);
+  }
+
+  // Already out or rolled 6 again
+  else if (currentPos !== 0 || steps === 6) {
+    let targetPos = currentPos + steps;
+    if (targetPos >= path.length) targetPos = path.length - 1;
+
+    let step = currentPos;
+    const interval = setInterval(() => {
+      if (step < targetPos) {
+        step++;
+        positions[player][tokenIndex] = step;
+        let { row, col } = path[step];
+        token.style.left = `${col * cellSize + (cellSize - token.offsetWidth) / 2}px`;
+        token.style.top = `${row * cellSize + (cellSize - token.offsetHeight) / 2}px`;
+      } else {
+        clearInterval(interval);
+      }
+    }, 300);
+  } else {
+    console.log(`${player} token ${tokenIndex + 1} can't move without a 6`);
+  }
+}
+
+
 
 window.addEventListener('load', function () {
   const boardWidth = board.getBoundingClientRect().width;
@@ -108,12 +237,16 @@ window.addEventListener('load', function () {
   }
 });
 
-// 👇 YAHAN DICE KA CODE SHURU HOTA HAI
-const dice = document.getElementById('dice');
 
-function rollDice() {
-  const randomNumber = Math.floor(Math.random() * 6) + 1;
-  dice.textContent = randomNumber;
-}
+dice.addEventListener('click', () => {
+  let diceRoll = Math.floor(Math.random() * 6) + 1;
+  dice.textContent = diceRoll;
 
-dice.addEventListener('click', rollDice);
+  // For demo, hum hamesha token 1 move karenge
+  moveToken(currentPlayer, 0, diceRoll);
+
+  if (diceRoll !== 6) {
+    currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+    currentPlayer = players[currentPlayerIndex];
+  }
+});
