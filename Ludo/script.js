@@ -1,6 +1,4 @@
     const board = document.getElementById('board');
-
-
     const paths = {
   red: [
     { row: 6, col: 1 }, { row: 6, col: 2 }, { row: 6, col: 3 }, { row: 6, col: 4 }, { row: 6, col: 5 },
