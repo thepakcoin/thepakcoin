@@ -3,10 +3,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background: #f0f0f0;
+  background-color: bisque;
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 
 #dice-container {
@@ -40,14 +41,16 @@ body {
   overflow: hidden;
   position: relative;
   border: #333 4px solid;
+  image-rendering: pixelated;
 }
 
 /* Each cell (block) */
 .cell {
-  width: 40px;
-  height: 40px;
   border: 1px solid #333;
   box-sizing: border-box;
+  aspect-ratio: 1 / 1;
+  min-width: 10px;
+  min-height: 10px;
 }
 
 .home {
@@ -73,20 +76,70 @@ body {
   border: none;
 }
 
-.token {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  position: absolute;
-  z-index: 5;
-  border: 2px solid white;
+.final-cell {
+    width: 50px;
+    height: 50px;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%); /* triangle shape */
+    margin: 2px;
+    border: 2px solid black;
 }
 
-/* Player Colors */
-.red-token { background-color: red; }
-.green-token { background-color: green; }
-.blue-token { background-color: blue; }
-.yellow-token { background-color: yellow; }
+#red-final {
+    background-color: red;
+}
+#green-final {
+    background-color: green;
+}
+#blue-final {
+    background-color: blue;
+}
+#yellow-final {
+    background-color: yellow;
+}
+
+.token {
+  width: 40px;
+  height: 40px;
+  background-color: black; /* Coin color */
+  border-radius: 50%; /* Circular shape */
+  border: 3px solid goldenrod; /* Gold border */
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+ 
+}
+
+
+.token::before {
+  content: "₿"; /* Currency symbol */
+  font-size: 22px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* To ensure it is centered */
+  color: goldenrod;
+}
+
+.red-token {
+  background-color: red;
+}
+
+.green-token {
+  background-color: green;
+}
+
+.blue-token {
+  background-color: blue;
+}
+
+.yellow-token {
+  background-color: yellow;
+}
 
 
 #dice {
@@ -159,6 +212,41 @@ body {
   height: 100%;
   
 }
+
+.audio-buttons {
+  position: fixed;
+  right: 20px;
+  top: 100px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .audio-buttons {
+    flex-direction: column;
+    top: auto;
+    bottom: 20px;
+  }
+}
+
+.audio-button {
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.audio-button:hover {
+  background-color: #45a049;
+}
+
+
 
 @media (min-width: 768px) {
   #dice-container {
