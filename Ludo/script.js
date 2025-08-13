@@ -27,6 +27,17 @@ const paths = {
     { row: 6, col: 4 }, { row: 6, col: 5 }, { row: 6, col: 6 }
   ],
   yellow: [
+    { row: 13, col: 6 }, { row: 12, col: 6 }, { row: 11, col: 6 }, { row: 10, col: 6 }, { row: 9, col: 6 },
+    { row: 8, col: 6 }, { row: 8, col: 5 }, { row: 8, col: 4 }, { row: 8, col: 3 }, { row: 8, col: 2 },
+    { row: 8, col: 1 }, { row: 8, col: 0 }, { row: 7, col: 0 }, { row: 6, col: 0 }, { row: 6, col: 1 },
+    { row: 6, col: 2 }, { row: 6, col: 3 }, { row: 6, col: 4 }, { row: 6, col: 5 }, { row: 6, col: 6 },
+    { row: 5, col: 6 }, { row: 4, col: 6 }, { row: 3, col: 6 }, { row: 2, col: 6 }, { row: 1, col: 6 },
+    { row: 0, col: 6 }, { row: 0, col: 7 }, { row: 0, col: 8 }, { row: 1, col: 8 }, { row: 2, col: 8 },
+    { row: 3, col: 8 }, { row: 4, col: 8 }, { row: 5, col: 8 }, { row: 6, col: 8 }, { row: 6, col: 9 },
+    { row: 6, col: 10 }, { row: 6, col: 11 }, { row: 6, col: 12 }, { row: 6, col: 13 }, { row: 6, col: 14 },
+    { row: 7, col: 14 }
+  ],
+  blue: [
     { row: 8, col: 13 }, { row: 8, col: 12 }, { row: 8, col: 11 }, { row: 8, col: 10 }, { row: 8, col: 9 },
     { row: 8, col: 8 }, { row: 9, col: 8 }, { row: 10, col: 8 }, { row: 11, col: 8 }, { row: 12, col: 8 },
     { row: 13, col: 8 }, { row: 14, col: 8 }, { row: 14, col: 7 }, { row: 14, col: 6 }, { row: 13, col: 6 },
@@ -37,17 +48,6 @@ const paths = {
     { row: 4, col: 6 }, { row: 3, col: 6 }, { row: 2, col: 6 }, { row: 1, col: 6 }, { row: 0, col: 6 },
     { row: 0, col: 7 }, { row: 0, col: 8 }, { row: 1, col: 8 }, { row: 2, col: 8 }, { row: 3, col: 8 },
     { row: 4, col: 8 }, { row: 5, col: 8 }
-  ],
-  blue: [
-    { row: 13, col: 6 }, { row: 12, col: 6 }, { row: 11, col: 6 }, { row: 10, col: 6 }, { row: 9, col: 6 },
-    { row: 8, col: 6 }, { row: 8, col: 5 }, { row: 8, col: 4 }, { row: 8, col: 3 }, { row: 8, col: 2 },
-    { row: 8, col: 1 }, { row: 8, col: 0 }, { row: 7, col: 0 }, { row: 6, col: 0 }, { row: 6, col: 1 },
-    { row: 6, col: 2 }, { row: 6, col: 3 }, { row: 6, col: 4 }, { row: 6, col: 5 }, { row: 6, col: 6 },
-    { row: 5, col: 6 }, { row: 4, col: 6 }, { row: 3, col: 6 }, { row: 2, col: 6 }, { row: 1, col: 6 },
-    { row: 0, col: 6 }, { row: 0, col: 7 }, { row: 0, col: 8 }, { row: 1, col: 8 }, { row: 2, col: 8 },
-    { row: 3, col: 8 }, { row: 4, col: 8 }, { row: 5, col: 8 }, { row: 6, col: 8 }, { row: 6, col: 9 },
-    { row: 6, col: 10 }, { row: 6, col: 11 }, { row: 6, col: 12 }, { row: 6, col: 13 }, { row: 6, col: 14 },
-    { row: 7, col: 14 }
   ]
 };
 
@@ -82,8 +82,8 @@ let currentDiceRoll = 0;
 const entryPoints = [
   { row: 6, col: 1, color: 'red' },
   { row: 1, col: 8, color: 'green' },
-  { row: 13, col: 6, color: 'yellow' },
-  { row: 8, col: 13, color: 'blue' }
+  { row: 8, col: 13, color: 'yellow' },
+  { row: 13, col: 6, color: 'blue' }
 ];
 
 const extraSafeSpots = [
@@ -112,7 +112,7 @@ for (let row = 0; row < 15; row++) {
       }
     }
 
-    
+
     const isEntry = entryPoints.some(
       (ep) => ep.row === row && ep.col === col
     );
@@ -158,7 +158,10 @@ function moveToken(player, tokenIndex, steps, callback) {
     if (callback) callback();
     return;
   }
-
+  if (currentPos + steps >= mainPathLength + homePath.length) {
+    if (callback) callback();
+    return;
+  }
   let targetPos = currentPos + steps;
   let step = currentPos;
 
@@ -194,8 +197,14 @@ function moveToken(player, tokenIndex, steps, callback) {
 }
 
 function nextPlayer() {
+  const oldPlayerTokens = document.querySelectorAll(`.token.${currentPlayer}`);
+  oldPlayerTokens.forEach(token => token.classList.remove('highlight-token'));
+
   currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
   currentPlayer = players[currentPlayerIndex];
+
+  const newPlayerTokens = document.querySelectorAll(`.token.${currentPlayer}`);
+  newPlayerTokens.forEach(token => token.classList.add('highlight-token'));
 }
 
 function removeTokenClickListeners() {
@@ -204,8 +213,8 @@ function removeTokenClickListeners() {
     token.classList.remove('highlight-token');
     const old_element = document.getElementById(token.id);
     if (old_element) {
-        const new_element = old_element.cloneNode(true);
-        old_element.parentNode.replaceChild(new_element, old_element);
+      const new_element = old_element.cloneNode(true);
+      old_element.parentNode.replaceChild(new_element, old_element);
     }
   });
 }
@@ -252,6 +261,10 @@ window.addEventListener('load', function () {
     token.style.left = `${left}px`;
     token.style.top = `${top}px`;
   }
+
+  const firstPlayerTokens = document.querySelectorAll(`.token.red`);
+  firstPlayerTokens.forEach(token => token.classList.add('highlight-token'));
+
 });
 
 const dice = document.getElementById('dice');
@@ -260,50 +273,61 @@ dice.addEventListener('click', () => {
     return;
   }
 
+  isAnimating = true;
+  removeTokenClickListeners();
+
   currentDiceRoll = Math.floor(Math.random() * 6) + 1;
   dice.textContent = currentDiceRoll;
 
   const currentPositions = positions[currentPlayer];
-  const tokensOnBoard = currentPositions.filter(pos => pos !== -1 && pos !== 999);
-  const tokensAtHome = currentPositions.filter(pos => pos === -1);
-  const tokenOnBoardIndex = currentPositions.findIndex(pos => pos !== -1 && pos !== 999);
+  const currentPlayerTokens = document.querySelectorAll(`.token.${currentPlayer}`);
 
-  if (currentDiceRoll === 6) {
-    if (tokensAtHome.length > 0) {
-      const homeTokens = document.querySelectorAll(`.token.${currentPlayer}`);
-      homeTokens.forEach(token => {
-        const tokenIndex = parseInt(token.dataset.index);
-        if (positions[currentPlayer][tokenIndex] === -1) {
-          token.classList.add('highlight-token');
-          const moveOnSix = (event) => {
-            isAnimating = true;
-            moveToken(currentPlayer, tokenIndex, currentDiceRoll, () => {
-              isAnimating = false;
-              removeTokenClickListeners();
-            });
-            event.target.removeEventListener('click', moveOnSix);
-          };
-          token.addEventListener('click', moveOnSix);
-        }
-      });
-    } else if (tokensOnBoard.length > 0) {
-      isAnimating = true;
-      moveToken(currentPlayer, tokenOnBoardIndex, currentDiceRoll, () => {
-        isAnimating = false;
-      });
-    } else {
-      isAnimating = false;
+  const movableTokens = [];
+  currentPlayerTokens.forEach((token, index) => {
+    const currentPos = currentPositions[index];
+    const mainPathLength = paths[currentPlayer].length;
+    const homePathLength = homePaths[currentPlayer].length;
+
+    // Condition 1: Token is in base and dice is 6
+    if (currentPos === -1 && currentDiceRoll === 6) {
+      movableTokens.push({ token, index });
     }
+    // Condition 2: Token is on main path or home path
+    else if (currentPos >= 0 && currentPos < mainPathLength + homePathLength - 1) {
+      if (currentPos + currentDiceRoll <= mainPathLength + homePathLength - 1) {
+        movableTokens.push({ token, index });
+      }
+    }
+  });
+
+
+  if (movableTokens.length > 0) {
+    movableTokens.forEach(item => {
+      item.token.classList.add('highlight-token');
+      const moveHandler = () => {
+        isAnimating = true;
+        movableTokens.forEach(t => {
+          t.token.removeEventListener('click', moveHandler);
+          t.token.classList.remove('highlight-token');
+        });
+        moveToken(currentPlayer, item.index, currentDiceRoll, () => {
+          isAnimating = false;
+          if (currentDiceRoll !== 6) {
+            nextPlayer();
+          }
+          // Agar 6 aaya hai to bari same player ki rahegi, sirf dice ko dobara roll hone denge
+          // Agar 6 nahi aaya, to next player ki bari
+        });
+      };
+      item.token.addEventListener('click', moveHandler);
+    });
   } else {
-    if (tokensOnBoard.length > 0) {
-      isAnimating = true;
-      moveToken(currentPlayer, tokenOnBoardIndex, currentDiceRoll, () => {
-        nextPlayer();
-        isAnimating = false;
-      });
-    } else {
-      nextPlayer();
+    // Agar koi valid move nahi hai
+    setTimeout(() => {
       isAnimating = false;
-    }
+      if (currentDiceRoll !== 6) {
+        nextPlayer();
+      }
+    }, 1000); // 1 second baad bari next player ko dega
   }
 });
