@@ -8,6 +8,7 @@
    align-items: center;
    justify-content: center;
    min-height: 100vh;
+   box-sizing: border-box;
 
  }
 
@@ -18,7 +19,6 @@
    grid-template-rows: repeat(15, 1fr);
    gap: 0px;
    width: 90vw;
-   /* Thoda adjust kiya */
    max-width: 600px;
    aspect-ratio: 1 / 1;
    background: linear-gradient(135deg, #f0e68c, #fffacd);
@@ -79,7 +79,6 @@
    width: 50px;
    height: 50px;
    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-   /* triangle shape */
    margin: 2px;
    border: 2px solid black;
  }
@@ -168,12 +167,12 @@
  }
 
 
- 
+
  .entry-point {
    border: 1px solid black;
  }
 
- 
+
  .entry-point.red {
    background-color: #ff9999;
  }
@@ -232,93 +231,166 @@
    background-color: #45a049;
  }
 
+ /* Responsive Media Queries */
+
+ /* Small screens (phones, portrait) */
+
+ @media (max-width: 400px) {
+   body {
+     padding: 10px;
+   }
+
+   .board {
+     width: 95vw;
+   }
+ }
 
  @media (max-width: 767px) {
-  body {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .board {
-    width: 100vw;
-    height: 100vw;
-    margin-top: 0;
-    border-radius: 10;
-    box-sizing: border-box;
-  }
-  
-  .token {
-    width: 5vw;
-    height: 5vw;
-  }
+   body {
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+   }
 
-  .token::before {
-    font-size: 14px; 
-  }
-  
-  #dice-container {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    flex-direction: row;
-    padding: 10px;
-    background: transparent;
-    box-shadow: none;
-  }
-  
-  #dice {
-    width: 60px;
-    height: 60px;
-    font-size: 30px;
-  }
-  
-  .audio-buttons {
-    flex-direction: row;
-    top: auto;
-    bottom: 20px;
-    right: 20px;
-  }
-}
+   .board {
+     width: 100vw;
+     height: 100vw;
+     margin-top: 0;
+     border-radius: 10px;
+     box-sizing: border-box;
+     position: relative;
+     top: 0;
+     left: 0;
+   }
 
+   .token {
+     width: 5vw;
+     height: 5vw;
+     font-size: 1.6vw;
+   }
 
-@media (min-width: 768px) {
-  body {
-    position: relative;     /* So that board and dice position relative to body */
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+   .token::before {
+     font-size: 14px;
+   }
 
-  .board {
-    position: absolute;
-    top: 20px;  
-    left: 150px;  
-    width: 600px;
-    height: 600px;
-    margin-top: 0;
-  }
+   #dice-container {
+     position: fixed;
+     bottom: 20px;
+     left: 50%;
+     transform: translateX(-50%);
+     flex-direction: row;
+     padding: 10px;
+     background: transparent;
+     box-shadow: none;
+     z-index: 1001;
+   }
 
-  #dice-container {
-    position: absolute;
-    top: 500px;  
-    left: 900px;
-    flex-direction: column;
-    background: transparent;
-    box-shadow: none;
-  }
+   #dice {
+     width: 60px;
+     height: 60px;
+     font-size: 30px;
+   }
 
-  .token {
-    width: 32px;
-    height: 32px;
-  }
+   .audio-buttons {
+     flex-direction: row;
+     top: auto;
+     bottom: 20px;
+     right: 20px;
+   }
+ }
 
-  .audio-buttons {
-    flex-direction: column;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-  }
-}
+ /* Medium and up (tablets, small desktops) */
+ @media (min-width: 768px) and (max-width: 1024px) {
+   body {
+     position: relative;
+     min-height: 100vh;
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+   }
+
+   .board {
+     position: absolute;
+     top: 20px;
+     left: 120px;
+     width: 600px;
+     height: 600px;
+     margin-top: 0;
+   }
+
+   .token {
+     width: 32px;
+     height: 32px;
+     font-size: 16px;
+   }
+
+   #dice-container {
+     position: absolute;
+     top: 500px;
+     left: 850px;
+     flex-direction: column;
+     background: transparent;
+     box-shadow: none;
+   }
+
+   #dice {
+     width: 70px;
+     height: 70px;
+     font-size: 40px;
+   }
+
+   .audio-buttons {
+     flex-direction: column;
+     top: 50%;
+     right: 20px;
+     transform: translateY(-50%);
+   }
+ }
+
+ /* Large desktops and wider */
+ @media (min-width: 1025px) {
+   body {
+     position: relative;
+     min-height: 100vh;
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+   }
+
+   .board {
+     position: absolute;
+     top: 20px;
+     left: 150px;
+     width: 600px;
+     height: 600px;
+     margin-top: 0;
+   }
+
+   .token {
+     width: 32px;
+     height: 32px;
+     font-size: 16px;
+   }
+
+   #dice-container {
+     position: absolute;
+     top: 500px;
+     left: 900px;
+     flex-direction: column;
+     background: transparent;
+     box-shadow: none;
+   }
+
+   #dice {
+     width: 80px;
+     height: 80px;
+     font-size: 48px;
+   }
+
+   .audio-buttons {
+     flex-direction: column;
+     top: 50%;
+     right: 20px;
+     transform: translateY(-50%);
+   }
+ }
