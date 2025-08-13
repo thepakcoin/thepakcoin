@@ -1,8 +1,5 @@
 const board = document.getElementById('board');
 
-// Paths and Home Paths arrays are the same as before, no need to change them.
-// ... (paths and homePaths arrays are here) ...
-
 const paths = {
   red: [
     { row: 6, col: 1 }, { row: 6, col: 2 }, { row: 6, col: 3 }, { row: 6, col: 4 }, { row: 6, col: 5 },
@@ -80,6 +77,7 @@ let players = ['red', 'green', 'yellow', 'blue'];
 let currentPlayerIndex = 0;
 let currentPlayer = players[currentPlayerIndex];
 let isAnimating = false;
+let currentDiceRoll = 0;
 
 const entryPoints = [
   { row: 6, col: 1, color: 'red' },
@@ -101,12 +99,10 @@ for (let row = 0; row < 15; row++) {
     cell.classList.add('cell');
 
 
-
     if (row < 6 && col < 6) cell.classList.add('red');
     else if (row < 6 && col > 8) cell.classList.add('green');
     else if (row > 8 && col < 6) cell.classList.add('yellow');
     else if (row > 8 && col > 8) cell.classList.add('blue');
-
 
 
     if (row >= 6 && row <= 8 && col >= 6 && col <= 8) {
@@ -116,8 +112,7 @@ for (let row = 0; row < 15; row++) {
       }
     }
 
-
-
+    
     const isEntry = entryPoints.some(
       (ep) => ep.row === row && ep.col === col
     );
@@ -140,7 +135,6 @@ for (let row = 0; row < 15; row++) {
   }
 }
 
-
 function updateTokenPosition(token, newCoords) {
   const boardWidth = board.getBoundingClientRect().width;
   const cellSize = boardWidth / 15;
@@ -161,7 +155,7 @@ function moveToken(player, tokenIndex, steps, callback) {
     positions[player][tokenIndex] = 0;
     let newCoords = mainPath[0];
     updateTokenPosition(token, newCoords);
-    if (callback) callback(true);
+    if (callback) callback();
     return;
   }
 
@@ -183,7 +177,7 @@ function moveToken(player, tokenIndex, steps, callback) {
         clearInterval(interval);
         positions[player][tokenIndex] = 999;
         token.style.display = 'none';
-        if (callback) callback(true);
+        if (callback) callback();
         return;
       }
       updateTokenPosition(token, newCoords);
@@ -194,7 +188,7 @@ function moveToken(player, tokenIndex, steps, callback) {
         positions[player][tokenIndex] = 999;
         token.style.display = 'none';
       }
-      if (callback) callback(true);
+      if (callback) callback();
     }
   }, 300);
 }
@@ -204,31 +198,43 @@ function nextPlayer() {
   currentPlayer = players[currentPlayerIndex];
 }
 
+function removeTokenClickListeners() {
+  const allTokens = document.querySelectorAll('.token');
+  allTokens.forEach(token => {
+    token.classList.remove('highlight-token');
+    const old_element = document.getElementById(token.id);
+    if (old_element) {
+        const new_element = old_element.cloneNode(true);
+        old_element.parentNode.replaceChild(new_element, old_element);
+    }
+  });
+}
+
 window.addEventListener('load', function () {
   const boardWidth = board.getBoundingClientRect().width;
   const totalCells = 15;
   const cellSize = boardWidth / totalCells;
 
   const tokens = {
-    'red-token-1': { row: 2.5, col: 2.5 },
-    'red-token-2': { row: 2.5, col: 2.5 },
-    'red-token-3': { row: 2.5, col: 2.5 },
-    'red-token-4': { row: 2.5, col: 2.5 },
+    'red-token-1': { row: 1.5, col: 1.5 },
+    'red-token-2': { row: 1.5, col: 3.5 },
+    'red-token-3': { row: 3.5, col: 1.5 },
+    'red-token-4': { row: 3.5, col: 3.5 },
 
-    'green-token-1': { row: 2.5, col: 11.5 },
-    'green-token-2': { row: 2.5, col: 11.5 },
-    'green-token-3': { row: 2.5, col: 11.5 },
-    'green-token-4': { row: 2.5, col: 11.5 },
+    'green-token-1': { row: 1.5, col: 10.5 },
+    'green-token-2': { row: 1.5, col: 12.5 },
+    'green-token-3': { row: 3.5, col: 10.5 },
+    'green-token-4': { row: 3.5, col: 12.5 },
 
-    'yellow-token-1': { row: 11.5, col: 2.5 },
-    'yellow-token-2': { row: 11.5, col: 2.5 },
-    'yellow-token-3': { row: 11.5, col: 2.5 },
-    'yellow-token-4': { row: 11.5, col: 2.5 },
+    'yellow-token-1': { row: 10.5, col: 1.5 },
+    'yellow-token-2': { row: 10.5, col: 3.5 },
+    'yellow-token-3': { row: 12.5, col: 1.5 },
+    'yellow-token-4': { row: 12.5, col: 3.5 },
 
-    'blue-token-1': { row: 11.5, col: 11.5 },
-    'blue-token-2': { row: 11.5, col: 11.5 },
-    'blue-token-3': { row: 11.5, col: 11.5 },
-    'blue-token-4': { row: 11.5, col: 11.5 }
+    'blue-token-1': { row: 10.5, col: 10.5 },
+    'blue-token-2': { row: 10.5, col: 12.5 },
+    'blue-token-3': { row: 12.5, col: 10.5 },
+    'blue-token-4': { row: 12.5, col: 12.5 }
   };
 
   for (const id in tokens) {
@@ -250,51 +256,52 @@ window.addEventListener('load', function () {
 
 const dice = document.getElementById('dice');
 dice.addEventListener('click', () => {
-  // isAnimating check will remain to prevent multiple rolls
   if (isAnimating) {
     return;
   }
 
-  let diceRoll = Math.floor(Math.random() * 6) + 1;
-  dice.textContent = diceRoll;
-  isAnimating = true;
+  currentDiceRoll = Math.floor(Math.random() * 6) + 1;
+  dice.textContent = currentDiceRoll;
 
   const currentPositions = positions[currentPlayer];
   const tokensOnBoard = currentPositions.filter(pos => pos !== -1 && pos !== 999);
   const tokensAtHome = currentPositions.filter(pos => pos === -1);
-  const tokenAtHomeIndex = currentPositions.findIndex(pos => pos === -1);
   const tokenOnBoardIndex = currentPositions.findIndex(pos => pos !== -1 && pos !== 999);
 
-  if (diceRoll === 6) {
-    if (tokensAtHome.length > 0 && tokensOnBoard.length > 0) {
-      // 6 aane par, agar dono option hain, to default ghar se token bahar nikalen
-      moveToken(currentPlayer, tokenAtHomeIndex, diceRoll, () => {
-        isAnimating = false;
-      });
-    } else if (tokensAtHome.length > 0) {
-      // Sirf ghar mein tokens hain, to unko bahar nikalen
-      moveToken(currentPlayer, tokenAtHomeIndex, diceRoll, () => {
-        isAnimating = false;
+  if (currentDiceRoll === 6) {
+    if (tokensAtHome.length > 0) {
+      const homeTokens = document.querySelectorAll(`.token.${currentPlayer}`);
+      homeTokens.forEach(token => {
+        const tokenIndex = parseInt(token.dataset.index);
+        if (positions[currentPlayer][tokenIndex] === -1) {
+          token.classList.add('highlight-token');
+          const moveOnSix = (event) => {
+            isAnimating = true;
+            moveToken(currentPlayer, tokenIndex, currentDiceRoll, () => {
+              isAnimating = false;
+              removeTokenClickListeners();
+            });
+            event.target.removeEventListener('click', moveOnSix);
+          };
+          token.addEventListener('click', moveOnSix);
+        }
       });
     } else if (tokensOnBoard.length > 0) {
-      // Sirf board par tokens hain, to unko move karen
-      moveToken(currentPlayer, tokenOnBoardIndex, diceRoll, () => {
+      isAnimating = true;
+      moveToken(currentPlayer, tokenOnBoardIndex, currentDiceRoll, () => {
         isAnimating = false;
       });
     } else {
-      // No tokens at all, but roll is 6, so another turn without a move.
       isAnimating = false;
     }
   } else {
-    // Roll 6 nahi hai
     if (tokensOnBoard.length > 0) {
-      // Agar tokens board par hain, to unko move karen
-      moveToken(currentPlayer, tokenOnBoardIndex, diceRoll, () => {
+      isAnimating = true;
+      moveToken(currentPlayer, tokenOnBoardIndex, currentDiceRoll, () => {
         nextPlayer();
         isAnimating = false;
       });
     } else {
-      // Koi token bahar nahi hai, to turn next player ko chali jayegi
       nextPlayer();
       isAnimating = false;
     }
