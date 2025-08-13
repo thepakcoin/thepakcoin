@@ -158,10 +158,12 @@ function moveToken(player, tokenIndex, steps, callback) {
     if (callback) callback();
     return;
   }
-  if (currentPos + steps >= mainPathLength + homePath.length) {
+
+  if (currentPos < 0 || currentPos + steps >= mainPathLength + homePath.length) {
     if (callback) callback();
     return;
   }
+
   let targetPos = currentPos + steps;
   let step = currentPos;
 
@@ -173,28 +175,84 @@ function moveToken(player, tokenIndex, steps, callback) {
 
       if (step < mainPathLength) {
         newCoords = mainPath[step];
-      } else if (step >= mainPathLength && step < mainPathLength + homePath.length) {
+      } else {
         let homePathIndex = step - mainPathLength;
         newCoords = homePath[homePathIndex];
-      } else {
-        clearInterval(interval);
+      }
+
+      updateTokenPosition(token, newCoords);
+    } else {
+      clearInterval(interval);
+
+      positions[player][tokenIndex] = targetPos;
+
+      // ✅ Token has reached home
+      if (targetPos >= mainPathLength + homePath.length) {
         positions[player][tokenIndex] = 999;
         token.style.display = 'none';
         if (callback) callback();
         return;
       }
-      updateTokenPosition(token, newCoords);
-    } else {
-      clearInterval(interval);
-      positions[player][tokenIndex] = targetPos;
-      if (targetPos >= mainPathLength + homePath.length) {
-        positions[player][tokenIndex] = 999;
-        token.style.display = 'none';
+
+      // ✅ Killing logic
+      let currentCoords;
+      if (targetPos < mainPathLength) {
+        currentCoords = mainPath[targetPos];
+      } else {
+        let homePathIndex = targetPos - mainPathLength;
+        currentCoords = homePath[homePathIndex];
       }
+
+      // Check if this is a safe spot
+      const isSafe = extraSafeSpots.some(
+        spot => spot.row === currentCoords.row && spot.col === currentCoords.col
+      ) || document.querySelector(`.cell:nth-child(${currentCoords.row * 15 + currentCoords.col + 1})`)?.classList.contains('safe-spot');
+
+      if (!isSafe) {
+        players.forEach(opponent => {
+          if (opponent === player) return;
+
+          positions[opponent].forEach((pos, idx) => {
+            if (pos < 0 || pos >= mainPath.length + homePath.length) return;
+
+            let oppCoords;
+            if (pos < paths[opponent].length) {
+              oppCoords = paths[opponent][pos];
+            } else {
+              let homeIdx = pos - paths[opponent].length;
+              oppCoords = homePaths[opponent][homeIdx];
+            }
+
+            if (oppCoords.row === currentCoords.row && oppCoords.col === currentCoords.col) {
+              // Kill opponent token
+              positions[opponent][idx] = -1;
+              const killedTokenId = `${opponent}-token-${idx + 1}`;
+              const killedToken = document.getElementById(killedTokenId);
+
+              // Reset position to original base
+              const basePositions = {
+                red: [{ row: 1.5, col: 1.5 }, { row: 1.5, col: 3.5 }, { row: 3.5, col: 1.5 }, { row: 3.5, col: 3.5 }],
+                green: [{ row: 1.5, col: 10.5 }, { row: 1.5, col: 12.5 }, { row: 3.5, col: 10.5 }, { row: 3.5, col: 12.5 }],
+                yellow: [{ row: 10.5, col: 1.5 }, { row: 10.5, col: 3.5 }, { row: 12.5, col: 1.5 }, { row: 12.5, col: 3.5 }],
+                blue: [{ row: 10.5, col: 10.5 }, { row: 10.5, col: 12.5 }, { row: 12.5, col: 10.5 }, { row: 12.5, col: 12.5 }]
+              };
+
+              const resetPos = basePositions[opponent][idx];
+              const boardWidth = board.getBoundingClientRect().width;
+              const cellSize = boardWidth / 15;
+              killedToken.style.left = `${resetPos.col * cellSize + (cellSize - killedToken.offsetWidth) / 2}px`;
+              killedToken.style.top = `${resetPos.row * cellSize + (cellSize - killedToken.offsetHeight) / 2}px`;
+              killedToken.style.display = 'block';
+            }
+          });
+        });
+      }
+
       if (callback) callback();
     }
-  }, 300);
+  }, 100);
 }
+
 
 function nextPlayer() {
   const oldPlayerTokens = document.querySelectorAll(`.token.${currentPlayer}`);
