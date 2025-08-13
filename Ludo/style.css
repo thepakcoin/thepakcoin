@@ -241,9 +241,11 @@
   }
   
   .board {
-    width: 95vw;
-    height: 95vw;
+    width: 100vw;
+    height: 100vw;
     margin-top: 0;
+    border-radius: 10;
+    box-sizing: border-box;
   }
   
   .token {
@@ -283,34 +285,36 @@
 
 @media (min-width: 768px) {
   body {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 40px;
-    padding: 40;
+    position: relative;     /* So that board and dice position relative to body */
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
   }
-  
+
   .board {
+    position: absolute;
+    top: 20px;  
+    left: 150px;  
     width: 600px;
     height: 600px;
     margin-top: 0;
   }
-  
+
+  #dice-container {
+    position: absolute;
+    top: 500px;  
+    left: 900px;
+    flex-direction: column;
+    background: transparent;
+    box-shadow: none;
+  }
+
   .token {
     width: 32px;
     height: 32px;
   }
-  
-  #dice-container {
-    position: static;
-    flex-direction: column;
-    padding: 15px;
-    background: transparent;
-    box-shadow: none;
-  }
-  
+
   .audio-buttons {
     flex-direction: column;
     top: 50%;
