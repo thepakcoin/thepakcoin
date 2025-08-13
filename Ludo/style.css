@@ -204,13 +204,41 @@
  }
 
 
- .star {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   font-size: 24px;
-   user-select: none;
- }
+.star {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0;
+  border-radius: 8px; /* agar thoda rounded chahiye */
+  overflow: hidden;
+}
+
+.star > div {
+  width: 100%;
+  height: 100%;
+}
+
+/* Colors for each quadrant */
+.star > div:nth-child(1) {
+  background-color: red;
+}
+
+.star > div:nth-child(2) {
+  background-color: blue;
+}
+
+.star > div:nth-child(3) {
+  background-color: red;
+}
+
+.star > div:nth-child(4) {
+  background-color: yellow;
+}
+
+
+
 
  .safe-spot {
    background-color: slategrey;
