@@ -1,6 +1,8 @@
 const board = document.getElementById('board');
 
-// Paths ko update kiya gaya hai taake woh sirf main path ko represent karein (51 cells)
+// Paths and Home Paths arrays are the same as before, no need to change them.
+// ... (paths and homePaths arrays are here) ...
+
 const paths = {
   red: [
     { row: 6, col: 1 }, { row: 6, col: 2 }, { row: 6, col: 3 }, { row: 6, col: 4 }, { row: 6, col: 5 },
@@ -52,7 +54,6 @@ const paths = {
   ]
 };
 
-// Home path alag se define kiya gaya hai
 const homePaths = {
   red: [
     { row: 7, col: 1 }, { row: 7, col: 2 }, { row: 7, col: 3 }, { row: 7, col: 4 }, { row: 7, col: 5 }, { row: 7, col: 6 }
@@ -78,6 +79,7 @@ let positions = {
 let players = ['red', 'green', 'yellow', 'blue'];
 let currentPlayerIndex = 0;
 let currentPlayer = players[currentPlayerIndex];
+let isAnimating = false;
 
 const entryPoints = [
   { row: 6, col: 1, color: 'red' },
@@ -98,10 +100,14 @@ for (let row = 0; row < 15; row++) {
     const cell = document.createElement('div');
     cell.classList.add('cell');
 
+
+
     if (row < 6 && col < 6) cell.classList.add('red');
     else if (row < 6 && col > 8) cell.classList.add('green');
     else if (row > 8 && col < 6) cell.classList.add('yellow');
     else if (row > 8 && col > 8) cell.classList.add('blue');
+
+
 
     if (row >= 6 && row <= 8 && col >= 6 && col <= 8) {
       cell.classList.add('star');
@@ -109,6 +115,8 @@ for (let row = 0; row < 15; row++) {
         cell.textContent = '★';
       }
     }
+
+
 
     const isEntry = entryPoints.some(
       (ep) => ep.row === row && ep.col === col
@@ -132,7 +140,7 @@ for (let row = 0; row < 15; row++) {
   }
 }
 
-// Ye function token ko uski nayi position par move karta hai
+
 function updateTokenPosition(token, newCoords) {
   const boardWidth = board.getBoundingClientRect().width;
   const cellSize = boardWidth / 15;
@@ -140,57 +148,60 @@ function updateTokenPosition(token, newCoords) {
   token.style.top = `${newCoords.row * cellSize + (cellSize - token.offsetHeight) / 2}px`;
 }
 
-// Naya moveToken function jo home entry ko handle karta hai
-function moveToken(player, tokenIndex, steps) {
-    let mainPath = paths[player];
-    let homePath = homePaths[player];
-    let currentPos = positions[player][tokenIndex];
-    let tokenId = `${player}-token-${tokenIndex + 1}`;
-    let token = document.getElementById(tokenId);
+function moveToken(player, tokenIndex, steps, callback) {
+  let mainPath = paths[player];
+  let homePath = homePaths[player];
+  let currentPos = positions[player][tokenIndex];
+  let tokenId = `${player}-token-${tokenIndex + 1}`;
+  let token = document.getElementById(tokenId);
 
-    const mainPathLength = mainPath.length;
+  const mainPathLength = mainPath.length;
 
-    // Pehle check karein ke token ghar ke andar hai ya baahar
-    if (currentPos === -1) {
-        // Token ghar ke andar hai
-        if (steps === 6) {
-            positions[player][tokenIndex] = 0; // First position on main path
-            let newCoords = mainPath[0];
-            updateTokenPosition(token, newCoords);
-            console.log(`${player} token ${tokenIndex + 1} ghar se baahar nikla`);
-        } else {
-            console.log(`${player} token ${tokenIndex + 1} sirf 6 par hi nikal sakta hai`);
-        }
+  if (currentPos === -1 && steps === 6) {
+    positions[player][tokenIndex] = 0;
+    let newCoords = mainPath[0];
+    updateTokenPosition(token, newCoords);
+    if (callback) callback(true);
+    return;
+  }
+
+  let targetPos = currentPos + steps;
+  let step = currentPos;
+
+  const interval = setInterval(() => {
+    if (step < targetPos) {
+      step++;
+      positions[player][tokenIndex] = step;
+      let newCoords;
+
+      if (step < mainPathLength) {
+        newCoords = mainPath[step];
+      } else if (step >= mainPathLength && step < mainPathLength + homePath.length) {
+        let homePathIndex = step - mainPathLength;
+        newCoords = homePath[homePathIndex];
+      } else {
+        clearInterval(interval);
+        positions[player][tokenIndex] = 999;
+        token.style.display = 'none';
+        if (callback) callback(true);
         return;
-    }
-
-    // Token pehle se hi board par hai
-    let newPos = currentPos + steps;
-
-    // Check for home entry
-    if (newPos >= mainPathLength) {
-        let remainingSteps = newPos - mainPathLength;
-
-        if (remainingSteps < homePath.length) {
-            // Token home path mein move kar raha hai
-            let newCoords = homePath[remainingSteps];
-            positions[player][tokenIndex] = mainPathLength + remainingSteps;
-            updateTokenPosition(token, newCoords);
-        } else if (remainingSteps === homePath.length) {
-            // Token home pahunch gaya hai
-            console.log(`${player} token ${tokenIndex + 1} has reached home!`);
-            positions[player][tokenIndex] = 999; // A final position marker
-            token.style.display = 'none';
-        } else {
-            // Overshot the home path
-            console.log(`${player} token ${tokenIndex + 1} can't move. Overshot home.`);
-        }
+      }
+      updateTokenPosition(token, newCoords);
     } else {
-        // Token main path par move kar raha hai
-        let newCoords = mainPath[newPos];
-        positions[player][tokenIndex] = newPos;
-        updateTokenPosition(token, newCoords);
+      clearInterval(interval);
+      positions[player][tokenIndex] = targetPos;
+      if (targetPos >= mainPathLength + homePath.length) {
+        positions[player][tokenIndex] = 999;
+        token.style.display = 'none';
+      }
+      if (callback) callback(true);
     }
+  }, 300);
+}
+
+function nextPlayer() {
+  currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+  currentPlayer = players[currentPlayerIndex];
 }
 
 window.addEventListener('load', function () {
@@ -239,14 +250,53 @@ window.addEventListener('load', function () {
 
 const dice = document.getElementById('dice');
 dice.addEventListener('click', () => {
+  // isAnimating check will remain to prevent multiple rolls
+  if (isAnimating) {
+    return;
+  }
+
   let diceRoll = Math.floor(Math.random() * 6) + 1;
   dice.textContent = diceRoll;
+  isAnimating = true;
 
-  // Ab hum sirf pehle token ko move kar rahe hain for testing
-  moveToken(currentPlayer, 0, diceRoll);
+  const currentPositions = positions[currentPlayer];
+  const tokensOnBoard = currentPositions.filter(pos => pos !== -1 && pos !== 999);
+  const tokensAtHome = currentPositions.filter(pos => pos === -1);
+  const tokenAtHomeIndex = currentPositions.findIndex(pos => pos === -1);
+  const tokenOnBoardIndex = currentPositions.findIndex(pos => pos !== -1 && pos !== 999);
 
-  if (diceRoll !== 6) {
-    currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
-    currentPlayer = players[currentPlayerIndex];
+  if (diceRoll === 6) {
+    if (tokensAtHome.length > 0 && tokensOnBoard.length > 0) {
+      // 6 aane par, agar dono option hain, to default ghar se token bahar nikalen
+      moveToken(currentPlayer, tokenAtHomeIndex, diceRoll, () => {
+        isAnimating = false;
+      });
+    } else if (tokensAtHome.length > 0) {
+      // Sirf ghar mein tokens hain, to unko bahar nikalen
+      moveToken(currentPlayer, tokenAtHomeIndex, diceRoll, () => {
+        isAnimating = false;
+      });
+    } else if (tokensOnBoard.length > 0) {
+      // Sirf board par tokens hain, to unko move karen
+      moveToken(currentPlayer, tokenOnBoardIndex, diceRoll, () => {
+        isAnimating = false;
+      });
+    } else {
+      // No tokens at all, but roll is 6, so another turn without a move.
+      isAnimating = false;
+    }
+  } else {
+    // Roll 6 nahi hai
+    if (tokensOnBoard.length > 0) {
+      // Agar tokens board par hain, to unko move karen
+      moveToken(currentPlayer, tokenOnBoardIndex, diceRoll, () => {
+        nextPlayer();
+        isAnimating = false;
+      });
+    } else {
+      // Koi token bahar nahi hai, to turn next player ko chali jayegi
+      nextPlayer();
+      isAnimating = false;
+    }
   }
 });
