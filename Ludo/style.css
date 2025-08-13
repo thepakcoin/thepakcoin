@@ -287,7 +287,9 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 40px;
-    padding: 40px;
+    padding: 40;
+    min-height: 100vh;
+    box-sizing: border-box;
   }
   
   .board {
@@ -305,8 +307,8 @@
     position: static;
     flex-direction: column;
     padding: 15px;
-    background: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    background: transparent;
+    box-shadow: none;
   }
   
   .audio-buttons {
