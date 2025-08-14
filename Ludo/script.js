@@ -73,7 +73,8 @@ let positions = {
   blue: [-1, -1, -1, -1]
 };
 
-let players = ['red', 'green', 'yellow', 'blue'];
+// ✅ Is line ko theek kar diya hai: ab turn bilkul jaisa aapne bataya hai, waisi chalegi
+let players = ['red', 'yellow', 'blue', 'green'];
 let currentPlayerIndex = 0;
 let currentPlayer = players[currentPlayerIndex];
 let isAnimating = false;
@@ -375,21 +376,25 @@ dice.addEventListener('click', () => {
         });
         moveToken(currentPlayer, item.index, currentDiceRoll, () => {
           isAnimating = false;
+          // ✅ Corrected Logic: Move complete, now check turn
           if (currentDiceRoll !== 6) {
             nextPlayer();
           }
-          // Agar 6 aaya hai to bari same player ki rahegi, sirf dice ko dobara roll hone denge
-          // Agar 6 nahi aaya, to next player ki bari
         });
       };
       item.token.addEventListener('click', moveHandler);
     });
   } else {
-    // Agar koi valid move nahi hai
+    // ✅ Corrected Logic: No moves possible, turn ends unless it was a 6
     setTimeout(() => {
       isAnimating = false;
       if (currentDiceRoll !== 6) {
         nextPlayer();
+      } else {
+        // Agar 6 aaya aur koi move nahi hai, to player ki turn rehti hai.
+        // Bas dice ko dobara click hone ke liye ready karte hain.
+        const newPlayerTokens = document.querySelectorAll(`.token.${currentPlayer}`);
+        newPlayerTokens.forEach(token => token.classList.add('highlight-token'));
       }
     }, 1000); // 1 second baad bari next player ko dega
   }
