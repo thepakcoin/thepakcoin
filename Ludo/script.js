@@ -82,8 +82,8 @@ let currentDiceRoll = 0;
 const entryPoints = [
   { row: 6, col: 1, color: 'red' },
   { row: 1, col: 8, color: 'green' },
-  { row: 8, col: 13, color: 'yellow' },
-  { row: 13, col: 6, color: 'blue' }
+  { row: 13, col: 6, color: 'yellow' },
+  { row: 8, col: 13, color: 'blue' }
 ];
 
 const extraSafeSpots = [
