@@ -59,10 +59,10 @@ const homePaths = {
     { row: 1, col: 7 }, { row: 2, col: 7 }, { row: 3, col: 7 }, { row: 4, col: 7 }, { row: 5, col: 7 }, { row: 6, col: 7 }
   ],
   yellow: [
-    { row: 7, col: 13 }, { row: 7, col: 12 }, { row: 7, col: 11 }, { row: 7, col: 10 }, { row: 7, col: 9 }, { row: 7, col: 8 }
+    { row: 13, col: 7 }, { row: 12, col: 7 }, { row: 11, col: 7 }, { row: 10, col: 7 }, { row: 9, col: 7 }, { row: 8, col: 7 }
   ],
   blue: [
-    { row: 13, col: 7 }, { row: 12, col: 7 }, { row: 11, col: 7 }, { row: 10, col: 7 }, { row: 9, col: 7 }, { row: 8, col: 7 }
+    { row: 7, col: 13 }, { row: 7, col: 12 }, { row: 7, col: 11 }, { row: 7, col: 10 }, { row: 7, col: 9 }, { row: 7, col: 8 }
   ]
 };
 
@@ -104,11 +104,11 @@ for (let row = 0; row < 15; row++) {
     else if (row > 8 && col < 6) cell.classList.add('yellow');
     else if (row > 8 && col > 8) cell.classList.add('blue');
 
-    // Home Area Cells ko color-specific classes do
+    // Home Path cells ko color-specific classes do
     if (row === 7 && col > 0 && col < 7) cell.classList.add('home-path-red');
     else if (row > 0 && row < 7 && col === 7) cell.classList.add('home-path-green');
-    else if (row === 7 && col > 7 && col < 14) cell.classList.add('home-path-yellow');
-    else if (row > 7 && row < 14 && col === 7) cell.classList.add('home-path-blue');
+    else if (row > 7 && row < 14 && col === 7) cell.classList.add('home-path-yellow');
+    else if (row === 7 && col > 7 && col < 14) cell.classList.add('home-path-blue');
 
     if (row >= 6 && row <= 8 && col >= 6 && col <= 8) {
       cell.classList.add('star');
