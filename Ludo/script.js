@@ -104,6 +104,11 @@ for (let row = 0; row < 15; row++) {
     else if (row > 8 && col < 6) cell.classList.add('yellow');
     else if (row > 8 && col > 8) cell.classList.add('blue');
 
+    // Home Area Cells ko color-specific classes do
+    if (row === 7 && col > 0 && col < 7) cell.classList.add('home-path-red');
+    else if (row > 0 && row < 7 && col === 7) cell.classList.add('home-path-green');
+    else if (row === 7 && col > 7 && col < 14) cell.classList.add('home-path-yellow');
+    else if (row > 7 && row < 14 && col === 7) cell.classList.add('home-path-blue');
 
     if (row >= 6 && row <= 8 && col >= 6 && col <= 8) {
       cell.classList.add('star');
