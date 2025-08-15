@@ -12,6 +12,13 @@
             height: 100%;
             font-family: 'Segoe UI', sans-serif;
             color: black;
+            overflow: hidden; /* ✅ Desktop: scroll disable */
+        }
+
+        @media (max-width: 600px) {
+            html, body {
+                overflow: auto; /* ✅ Mobile: scroll allow */
+            }
         }
 
         .wrapper {
@@ -187,7 +194,7 @@
         </footer>
     </div>
 
-    <!-- ✅ SCROLL DETECT SCRIPT -->
+    <!-- ✅ JavaScript to handle scroll on mobile -->
     <script>
         if (window.innerWidth <= 600) {
             let lastScrollY = window.scrollY;
@@ -196,10 +203,10 @@
                 let currentScrollY = window.scrollY;
 
                 if (currentScrollY > lastScrollY) {
-                    // Scroll Down → Reload
+                    // Scroll down → Reload
                     location.reload();
                 } else if (currentScrollY < lastScrollY) {
-                    // Scroll Up → Stop user from going up
+                    // Scroll up → Prevent it
                     window.scrollTo(0, lastScrollY);
                 }
 
