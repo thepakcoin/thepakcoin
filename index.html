@@ -5,29 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>ThePakCoin</title>
     <style>
-        /* Basic Styling */
+        /* Global & Body Styling */
         body {
             margin: 0;
             padding: 0;
             background-color: white;
             font-family: 'Segoe UI', sans-serif;
             color: black;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
         }
 
-        /* Header Styling */
+        /* Header */
         header {
             width: 100%;
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1000;
         }
 
         .logo {
@@ -47,7 +43,7 @@
             color: white;
         }
 
-        /* Main Content Container */
+        /* Main Content - Centering */
         .main-content {
             flex-grow: 1;
             display: flex;
@@ -62,6 +58,7 @@
             max-width: 400px;
             width: 90%;
             border-radius: 10px;
+            box-sizing: border-box; /* Yeh zaroori hai padding aur border ke liye */
         }
 
         .container h2 {
@@ -69,6 +66,7 @@
             color: #00ff99;
         }
 
+        /* Input Fields */
         input[type="email"],
         input[type="password"] {
             width: 100%;
@@ -79,13 +77,15 @@
             background-color: transparent;
             color: black;
             outline: none;
+            box-sizing: border-box; /* Yeh bhi zaroori hai */
         }
 
         input::placeholder {
             color: black;
         }
 
-        .btn {
+        /* Buttons & Links */
+        .btn, .sub-link {
             width: 100%;
             padding: 0.7rem 1rem;
             background-color: transparent;
@@ -95,7 +95,9 @@
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
-            display: inline-block;
+            display: block;
+            text-align: center;
+            box-sizing: border-box; /* Is se width 100% sahi kaam karegi */
         }
 
         .btn-group {
@@ -110,29 +112,15 @@
             color: black;
             transition: 0.3s ease;
         }
-
-        .sub-link {
-            border: 2px solid black;
-            padding: 0.7rem;
-            border-radius: 5px;
-            color: black;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        /* Footer Styling */
+        
+        /* Footer */
         footer {
             width: 100%;
             padding: 1rem 2rem;
             display: flex;
             justify-content: center;
             gap: 2rem;
-            position: absolute;
-            bottom: 1.5rem;
-            left: 0;
-            z-index: 1000;
+            margin-top: auto; /* Yeh footer ko bottom par push karega */
         }
 
         .link {
@@ -156,7 +144,7 @@
         /* Media Queries for Responsiveness */
         @media (max-width: 600px) {
             header, footer {
-                padding: 1rem 1rem;
+                padding: 1rem;
             }
 
             .container {
@@ -167,7 +155,7 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 0.5rem;
-                bottom: 1rem;
+                padding-bottom: 2rem; /* Mobile par neeche se thodi space */
             }
         }
     </style>
