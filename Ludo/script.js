@@ -111,6 +111,20 @@ for (let row = 0; row < 15; row++) {
     else if (row > 7 && row < 14 && col === 7) cell.classList.add('home-path-yellow');
     else if (row === 7 && col > 7 && col < 14) cell.classList.add('home-path-blue');
 
+    if (row >= 6 && row <= 8 && col >= 6 && col <= 8) {
+      continue; // skip center 3x3 cells
+    }
+
+    const centerHome = document.createElement('div');
+    centerHome.classList.add('center-home');
+    centerHome.style.gridRowStart = '7';
+    centerHome.style.gridRowEnd = '10';
+    centerHome.style.gridColumnStart = '7';
+    centerHome.style.gridColumnEnd = '10';
+
+    board.appendChild(centerHome);
+
+
 
     const isEntry = entryPoints.some(
       (ep) => ep.row === row && ep.col === col
