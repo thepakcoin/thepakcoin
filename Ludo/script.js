@@ -98,14 +98,15 @@ for (let row = 0; row < 15; row++) {
   for (let col = 0; col < 15; col++) {
     const cell = document.createElement('div');
     cell.classList.add('cell');
-
+    cell.dataset.row = row;
+    cell.dataset.col = col;
 
     if (row < 6 && col < 6) cell.classList.add('red');
     else if (row < 6 && col > 8) cell.classList.add('green');
     else if (row > 8 && col < 6) cell.classList.add('yellow');
     else if (row > 8 && col > 8) cell.classList.add('blue');
 
-    // Home Path cells ko color-specific classes do
+
     if (row === 7 && col > 0 && col < 7) cell.classList.add('home-path-red');
     else if (row > 0 && row < 7 && col === 7) cell.classList.add('home-path-green');
     else if (row > 7 && row < 14 && col === 7) cell.classList.add('home-path-yellow');
@@ -114,16 +115,6 @@ for (let row = 0; row < 15; row++) {
     if (row >= 6 && row <= 8 && col >= 6 && col <= 8) {
       continue; // skip center 3x3 cells
     }
-
-    const centerHome = document.createElement('div');
-    centerHome.classList.add('center-home');
-    centerHome.style.gridRowStart = '7';
-    centerHome.style.gridRowEnd = '10';
-    centerHome.style.gridColumnStart = '7';
-    centerHome.style.gridColumnEnd = '10';
-
-    board.appendChild(centerHome);
-
 
 
     const isEntry = entryPoints.some(
@@ -147,6 +138,15 @@ for (let row = 0; row < 15; row++) {
     board.appendChild(cell);
   }
 }
+
+// ✅ ab centerHome sirf ek dafa add hoga
+const centerHome = document.createElement('div');
+centerHome.classList.add('center-home');
+centerHome.style.gridRowStart = '7';
+centerHome.style.gridRowEnd = '10';
+centerHome.style.gridColumnStart = '7';
+centerHome.style.gridColumnEnd = '10';
+board.appendChild(centerHome);
 
 function updateTokenPosition(token, newCoords) {
   const boardWidth = board.getBoundingClientRect().width;
@@ -216,10 +216,10 @@ function moveToken(player, tokenIndex, steps, callback) {
         currentCoords = homePath[homePathIndex];
       }
 
-      // Check if this is a safe spot
+      const cellEl = document.querySelector(`.cell[data-row="${currentCoords.row}"][data-col="${currentCoords.col}"]`);
       const isSafe = extraSafeSpots.some(
         spot => spot.row === currentCoords.row && spot.col === currentCoords.col
-      ) || document.querySelector(`.cell:nth-child(${currentCoords.row * 15 + currentCoords.col + 1})`)?.classList.contains('safe-spot');
+      ) || cellEl?.classList.contains('safe-spot');
 
       if (!isSafe) {
         players.forEach(opponent => {
