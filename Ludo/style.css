@@ -80,7 +80,7 @@ body {
 
 
 .center-home {
-  background-color: white;
+  background-color: gold;
   border: 2px solid black;
   grid-column: 7 / span 1;
   grid-row: 7 / span 1;
