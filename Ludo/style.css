@@ -41,17 +41,6 @@ body {
   min-height: 10px;
 }
 
-.home {
-  border: 2px solid white;
-  background-color: #f0e68c;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
 .red {
   background-color: #8B0000;
   color: white;
@@ -77,30 +66,6 @@ body {
   color: white;
   border: none;
 
-}
-
-.final-cell {
-  width: 50px;
-  height: 50px;
-  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-  margin: 2px;
-  border: 2px solid black;
-}
-
-#red-final {
-  background-color: red;
-}
-
-#green-final {
-  background-color: green;
-}
-
-#blue-final {
-  background-color: blue;
-}
-
-#yellow-final {
-  background-color: yellow;
 }
 
 .token {
@@ -201,39 +166,6 @@ body {
 
 .entry-point.blue {
   background-color: #00008B;
-}
-
-
-.star {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 0;
-  border-radius: 0px; /* agar thoda rounded chahiye */
-  overflow: hidden;
-}
-
-.star > div {
-  width: 100%;
-  height: 100%;
-}
-
-.star > div:nth-child(1) {
-  background-color: #8B0000; /* Red */
-}
-
-.star > div:nth-child(2) {
-  background-color: #006400; /* Green */
-}
-
-.star > div:nth-child(3) {
-  background-color: #8B8000; /* Yellow */
-}
-
-.star > div:nth-child(4) {
-  background-color: #00008B; /* Blue */
 }
 
 /* Home Path cells */
