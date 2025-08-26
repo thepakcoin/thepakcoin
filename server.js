@@ -1,34 +1,91 @@
-const express = require('express');
-const http = require('http');
-const socketIo = require('socket.io');
+// server.js
 
+const express = require("express");
 const app = express();
-const server = http.createServer(app);
-const io = socketIo(server);
+const http = require("http").createServer(app);
+const io = require("socket.io")(http);
 
-// Ludo folder ko static serve karo
-app.use(express.static('Ludo'));
+const PORT = process.env.PORT || 3000;
 
-io.on('connection', (socket) => {
-  console.log('New player connected:', socket.id);
+// Static files (Ludo folder ke andar html, css, js waghera)
+app.use(express.static("Ludo"));
 
-  // Dummy event: player join game
-  socket.on('joinGame', (playerName) => {
-    console.log(playerName + ' joined the game.');
-    // Yahan aage game state aur multiplayer logic add kar sakte ho
-  });
-
-  // Dummy event: player moves
-  socket.on('playerMove', (moveData) => {
-    io.emit('updateGameState', moveData);
-    // Yahan real game move logic add karo
-  });
-
-  socket.on('disconnect', () => {
-    console.log('Player disconnected:', socket.id);
-  });
+// Serve index.html (agar root pe koi jaaye)
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/index.html");
 });
 
-server.listen(3000, () => {
-  console.log('Server running on port 3000');
+// Players list
+let players = {};
+let turnOrder = [];
+let currentTurn = 0;
+
+// Socket.io logic
+io.on("connection", (socket) => {
+    console.log(`User connected: ${socket.id}`);
+
+    // Add new player
+    if (turnOrder.length < 4) {
+        players[socket.id] = {
+            id: socket.id,
+            color: getColorByIndex(turnOrder.length)
+        };
+        turnOrder.push(socket.id);
+
+        // Notify this player
+        socket.emit("playerData", players[socket.id]);
+
+        // Notify others
+        io.emit("playersUpdate", players);
+        io.emit("turnUpdate", turnOrder[currentTurn]);
+    } else {
+        socket.emit("roomFull");
+    }
+
+    // Dice roll
+    socket.on("rollDice", () => {
+        if (socket.id === turnOrder[currentTurn]) {
+            const diceValue = Math.floor(Math.random() * 6) + 1;
+            io.emit("diceRolled", {
+                playerId: socket.id,
+                value: diceValue
+            });
+        }
+    });
+
+    // End Turn
+    socket.on("endTurn", () => {
+        if (socket.id === turnOrder[currentTurn]) {
+            currentTurn = (currentTurn + 1) % turnOrder.length;
+            io.emit("turnUpdate", turnOrder[currentTurn]);
+        }
+    });
+
+    // Disconnect
+    socket.on("disconnect", () => {
+        console.log(`User disconnected: ${socket.id}`);
+
+        // Remove player
+        delete players[socket.id];
+        turnOrder = turnOrder.filter(id => id !== socket.id);
+
+        // Reset turn if needed
+        if (currentTurn >= turnOrder.length) {
+            currentTurn = 0;
+        }
+
+        io.emit("playersUpdate", players);
+        io.emit("turnUpdate", turnOrder[currentTurn] || null);
+    });
+});
+
+// Utility: assign colors to players
+function getColorByIndex(index) {
+    const colors = ["red", "blue", "green", "yellow"];
+    return colors[index] || "gray";
+}
+
+// Start server
+http.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
 });
