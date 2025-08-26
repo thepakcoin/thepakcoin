@@ -1,5 +1,24 @@
 const board = document.getElementById('board');
 
+const socket = io();
+
+// Socket events
+socket.on('welcome', (data) => {
+  console.log(data.message);
+});
+
+socket.on('dice-result', (data) => {
+  // Dice roll ka result dikhao
+  console.log(`Player ${data.playerId} rolled: ${data.roll}`);
+  // Update UI accordingly
+});
+
+// Dice roll button event
+document.getElementById('rollDiceBtn').addEventListener('click', () => {
+  const roll = Math.floor(Math.random() * 6) + 1;
+  socket.emit('dice-roll', { roll });
+});
+
 const paths = {
   red: [
     { row: 6, col: 1 }, { row: 6, col: 2 }, { row: 6, col: 3 }, { row: 6, col: 4 }, { row: 6, col: 5 },
